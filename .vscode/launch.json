@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "tap-airwallex discover",
+            "type": "python",
+            "request": "launch",
+            "program": "../tap_airwallex/tap.py",
+            "cwd": "/Users/keynarafaelpayano/Desktop/Hotglue/tap-airwallex/.secrets",
+            "args": [
+                "--config",
+                "config.json",
+                "--discover",
+                ">",
+                "catalog.json"
+            ],
+            "console": "integratedTerminal",
+            "python": "/Users/keynarafaelpayano/Desktop/Hotglue/tap-airwallex/.venv/bin/python3"
+        },
+        {
+            "name": "tap-airwallex get",
+            "type": "python",
+            "request": "launch",
+            "justMyCode": false,
+            "program": "../tap_airwallex/tap.py",
+            "cwd": "${workspaceFolder}/.secrets",
+            "args": [
+                "--config",
+                "config.json",
+                "--state",
+                "state.json",
+                "--catalog",
+                "selected-catalog.json",
+                ">",
+                "data.txt"
+            ],
+            "console": "integratedTerminal",
+            "python": "/Users/keynarafaelpayano/Desktop/Hotglue/tap-airwallex/.venv/bin/python3"
+        },
+    ]
+}
