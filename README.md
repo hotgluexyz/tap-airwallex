@@ -1,106 +1,109 @@
 # tap-airwallex
 
-`tap-airwallex` is a Singer tap for airwallex.
+A [Singer](https://www.singer.io/) tap that extracts data from the [Airwallex](https://www.airwallex.com/) API. It is built with [hotglue-singer-sdk](https://github.com/hotgluexyz/HotglueSingerSDK) and speaks the standard Singer message protocol on stdout, so you can pair it with any compatible target.
 
-Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
+## Features
+
+- Authenticates with Airwallex using API key and client ID (token obtained via the login endpoint).
+- Supports **production** and **sandbox** base URLs.
+- Incremental sync on `financial_transactions` using `created_at` and the `from_created_at` query parameter.
+
+### Streams
+
+| Stream                 | Endpoint                 | Primary key | Replication key |
+| ---------------------- | ------------------------ | ----------- | --------------- |
+| `financial_transactions` | `GET` + `/financial_transactions` on the configured API base | `id`        | `created_at`    |
+
+Pagination uses `page_size` / `page_num` when the API returns `has_more`.
+
+## Requirements
+
+- Python **3.7.1**–**3.10** (see `pyproject.toml`).
 
 ## Installation
 
-- [ ] `Developer TODO:` Update the below as needed to correctly describe the install procedure. For instance, if you do not have a PyPi repo, or if you want users to directly install from your git repo, you can modify this step as appropriate.
+From a clone of this repository:
 
 ```bash
-pipx install tap-airwallex
-```
-
-## Configuration
-
-### Accepted Config Options
-
-- [ ] `Developer TODO:` Provide a list of config options accepted by the tap.
-
-A full list of supported settings and capabilities for this
-tap is available by running:
-
-```bash
-tap-airwallex --about
-```
-
-### Configure using environment variables
-
-This Singer tap will automatically import any environment variables within the working directory's
-`.env` if the `--config=ENV` is provided, such that config values will be considered if a matching
-environment variable is set either in the terminal context or in the `.env` file.
-
-### Source Authentication and Authorization
-
-- [ ] `Developer TODO:` If your tap requires special access on the source system, or any special authentication requirements, provide those here.
-
-## Usage
-
-You can easily run `tap-airwallex` by itself or in a pipeline using [Meltano](https://meltano.com/).
-
-### Executing the Tap Directly
-
-```bash
-tap-airwallex --version
-tap-airwallex --help
-tap-airwallex --config CONFIG --discover > ./catalog.json
-```
-
-## Developer Resources
-
-- [ ] `Developer TODO:` As a first step, scan the entire project for the text "`TODO:`" and complete any recommended steps, deleting the "TODO" references once completed.
-
-### Initialize your Development Environment
-
-```bash
-pipx install poetry
+pip install poetry
 poetry install
 ```
 
-### Create and Run Tests
-
-Create tests within the `tap_airwallex/tests` subfolder and
-  then run:
-
-```bash
-poetry run pytest
-```
-
-You can also test the `tap-airwallex` CLI interface directly using `poetry run`:
+The `tap-airwallex` console script is available via:
 
 ```bash
 poetry run tap-airwallex --help
 ```
 
-### Testing with [Meltano](https://www.meltano.com)
+## Configuration
 
-_**Note:** This tap will work in any Singer environment and does not require Meltano.
-Examples here are for convenience and to streamline end-to-end orchestration scenarios._
+| Setting        | Type    | Required | Default | Description |
+| -------------- | ------- | -------- | ------- | ----------- |
+| `api_key`      | string  | yes      | —       | Airwallex API key (`x-api-key` for login). |
+| `client_id`    | string  | yes      | —       | Airwallex client ID (`x-client-id` for login). |
+| `is_sandbox`   | boolean | no       | `false` | If `true`, uses the demo API host (`api-demo.airwallex.com`). |
 
-Your project comes with a custom `meltano.yml` project file already created. Open the `meltano.yml` and follow any _"TODO"_ items listed in
-the file.
+When you pass `--config` with a **file path**, a successful login may update that file with `access_token` and related fields for reuse on the next run.
 
-Next, install Meltano (if you haven't already) and any needed plugins:
+### Example `config.json`
 
-```bash
-# Install meltano
-pipx install meltano
-# Initialize meltano within this directory
-cd tap-airwallex
-meltano install
+```json
+{
+  "api_key": "YOUR_API_KEY",
+  "client_id": "YOUR_CLIENT_ID",
+  "is_sandbox": false
+}
 ```
 
-Now you can test and orchestrate using Meltano:
+Do not commit real credentials. Prefer environment variables or a secrets manager in production.
+
+### Environment-based config
+
+You can load settings from the process environment using `--config=ENV` (the Singer SDK merges env into config). Run `tap-airwallex --about` for the authoritative setting names and types for your installed version.
+
+## Usage
+
+Discover stream catalog:
 
 ```bash
-# Test invocation:
-meltano invoke tap-airwallex --version
-# OR run a test `elt` pipeline:
-meltano elt tap-airwallex target-jsonl
+tap-airwallex --config config.json --discover > catalog.json
 ```
 
-### SDK Dev Guide
+Run a sync (with optional state):
 
-See the [dev guide](https://sdk.meltano.com/en/latest/dev_guide.html) for more instructions on how to use the SDK to 
-develop your own taps and targets.
+```bash
+tap-airwallex --config config.json --catalog catalog.json --state state.json
+```
+
+Pipe to any Singer target:
+
+```bash
+tap-airwallex --config config.json --catalog catalog.json | target-jsonl
+```
+
+Inspect built-in settings and stream metadata:
+
+```bash
+tap-airwallex --about
+```
+
+## API hosts
+
+| Mode        | Base URL |
+| ----------- | -------- |
+| Production  | `https://api.airwallex.com/api/v1` |
+| Sandbox     | `https://api-demo.airwallex.com/api/v1` |
+
+Official API documentation: [Airwallex Docs](https://www.airwallex.com/docs/).
+
+## Development
+
+```bash
+poetry install
+poetry run pytest
+poetry run tap-airwallex --help
+```
+
+## License
+
+Apache 2.0 — see `pyproject.toml`.
