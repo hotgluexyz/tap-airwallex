@@ -3,13 +3,14 @@
 from typing import List
 
 from hotglue_singer_sdk import Tap, Stream
-from hotglue_singer_sdk import typing as th  # JSON schema typing helpers
-# TODO: Import your custom stream types here:
+from hotglue_singer_sdk import typing as th  
 from tap_airwallex.streams import (
     FinancialTransactionsStream,
+    BillsStream,
 )
 STREAM_TYPES = [
     FinancialTransactionsStream,
+    BillsStream,
 ]
 
 
