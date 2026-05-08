@@ -3,6 +3,8 @@
 from hotglue_singer_sdk import typing as th
 
 from tap_airwallex.client import AirwallexStream
+from typing import Any, Optional
+import requests
 
 
 class FinancialTransactionsStream(AirwallexStream):
@@ -125,3 +127,12 @@ class BillsStream(AirwallexStream):
         th.Property("updated_at", th.DateTimeType),
         th.Property("vendor_id", th.StringType),
     ).to_dict()
+
+    def get_next_page_token(
+        self, response: requests.Response, previous_token: Optional[Any]
+    ) -> Optional[Any]:
+        """Return a token for identifying next page or None if no more pages."""
+        previous_token = previous_token or 0
+        res_json = response.json()
+        next_page_token = res_json.get("page_after")
+        return next_page_token
