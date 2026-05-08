@@ -5,6 +5,7 @@ from hotglue_singer_sdk import typing as th
 from tap_airwallex.client import AirwallexStream
 from typing import Any, Optional
 import requests
+from typing import Dict, Any
 
 
 class FinancialTransactionsStream(AirwallexStream):
@@ -136,3 +137,15 @@ class BillsStream(AirwallexStream):
         res_json = response.json()
         next_page_token = res_json.get("page_after")
         return next_page_token
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        params: dict = {}
+        if next_page_token:
+            params["page"] = next_page_token
+        if self.replication_key and self.replication_key_filter_field:
+            start_date = self.get_starting_time(context)
+            params[self.replication_key_filter_field] = start_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        return params
