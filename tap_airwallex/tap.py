@@ -5,12 +5,16 @@ from typing import List
 from hotglue_singer_sdk import Tap, Stream
 from hotglue_singer_sdk import typing as th  
 from tap_airwallex.streams import (
+    AccountsStream,
+    AccountDetailsStream,
     FinancialTransactionsStream,
     BillsStream,
 )
 STREAM_TYPES = [
     FinancialTransactionsStream,
     BillsStream,
+    AccountsStream,
+    AccountDetailsStream,
 ]
 
 

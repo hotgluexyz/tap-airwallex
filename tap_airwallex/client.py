@@ -66,9 +66,16 @@ class AirwallexStream(RESTStream):
             params[self.replication_key_filter_field] = start_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         return params
 
-
-    # def parse_response(self, response: requests.Response) -> Iterable[dict]:
-    #     """Parse the response and return an iterator of result rows."""
-    #     # TODO: Parse response body and return a set of records.
-    #     yield from extract_jsonpath(self.records_jsonpath, input=response.json())
-
+    def prepare_request(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> requests.PreparedRequest:
+        """Pass partition context to the shared authenticator before each request."""
+        auth = self.authenticator
+        if auth is not None:
+            auth._stream = self
+            permission_type = getattr(self, "permission_type", None)
+            if permission_type == "account":
+                auth.account_id = (context or {}).get("account_id")
+            elif permission_type == "organization":
+                auth.account_id = None
+        return super().prepare_request(context, next_page_token)
