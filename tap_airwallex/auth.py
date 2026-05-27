@@ -12,14 +12,28 @@ import requests
 class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
     """Authenticator class for airwallex."""
 
+    def __init__(self, stream, auth_endpoint=None, oauth_scopes=None, default_expiration=None, config_file=None):
+        super().__init__(
+            stream=stream,
+            auth_endpoint=auth_endpoint,
+            oauth_scopes=oauth_scopes,
+            default_expiration=default_expiration,
+            config_file=config_file,
+        )
+        self.account_id = None
+        self._token_account_id = None
+
     @property
     def oauth_request_headers(self) -> str:
         """Return the authentication endpoint."""
-        return {
+        payload = {
             "Content-Type": "application/json",
             "x-api-key": self.config["api_key"],
             "x-client-id": self.config["client_id"]
         }
+        if getattr(self._stream, "permission_type", None) == "account" and self.account_id:
+            payload["x-login-as"] = self.account_id
+        return payload
 
     def is_token_valid(self) -> bool:
         """Check if token is valid.
@@ -27,6 +41,15 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
         Returns:
             True if the token is valid (fresh).
         """
+        permission_type = getattr(self._stream, "permission_type", None)
+        if permission_type == "account" and not self.account_id:
+            raise InvalidCredentialsError(f"Account ID is required for stream: {self._stream.name} because permission type is account")
+        if permission_type == "account" and self.account_id != self._token_account_id:
+            self._token_account_id = self.account_id
+            return False
+        if permission_type == "organization" and self._token_account_id is not None:
+            self._token_account_id = None
+            return False
         # if expires_in is not set, try to get it from the tap config
         if self.expires_in is None and self._tap.config.get("expires_at"):
             self.expires_in = self._tap.config.get("expires_at")
@@ -52,6 +75,7 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
         self.access_token = token_json["token"]
         expires_in = token_json.get("expires_at")
         self.expires_in = parse(expires_in).timestamp()
+        self._token_account_id = self.account_id
 
         # Update the tap config with the new access_token and refresh_token
         self._tap._config["access_token"] = token_json["token"]

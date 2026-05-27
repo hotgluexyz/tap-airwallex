@@ -3,9 +3,66 @@
 from hotglue_singer_sdk import typing as th
 
 from tap_airwallex.client import AirwallexStream
-from typing import Any, Optional
+from typing import Any, Optional, Iterable
 import requests
 from typing import Dict, Any
+
+from tap_airwallex.schema_helpers import _account_details_type, _account_customer_agreements_type, _account_primary_contact_type, _bill_attachment_type, _bill_payment_type, _bill_line_item_type
+
+
+class AccountsStream(AirwallexStream):
+    """Define custom stream."""
+
+    name = "accounts"
+    path = "/"
+    primary_keys = ["id"]
+    schema = th.PropertiesList(
+        th.Property("id", th.StringType),
+    ).to_dict()
+
+    def get_records(self, context: Optional[dict]) -> Iterable[dict]:
+        """Return a list of records."""
+        account_ids = self.config.get("account_ids", [])
+        if isinstance(account_ids, str):
+            account_ids = account_ids.split(",")
+            account_ids = [account_id.strip() for account_id in account_ids]
+
+        for account_id in account_ids:
+            yield {"id": account_id}
+
+    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
+        """Return a dictionary of values to be used in child context."""
+        return {
+            "account_id": record["id"]
+        }
+
+class AccountDetailsStream(AirwallexStream):
+    """Define custom stream."""
+
+    name = "account_details"
+    path = "/account"
+    primary_keys = ["id"]
+    records_jsonpath = "$.[*]"
+    parent_stream_type = AccountsStream
+    permission_type = "account"
+
+    schema = th.PropertiesList(
+        th.Property("account_details", _account_details_type),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("customer_agreements", _account_customer_agreements_type),
+        th.Property("id", th.StringType),
+        th.Property("nickname", th.StringType),
+        th.Property("primary_contact", _account_primary_contact_type),
+        th.Property("status", th.StringType),
+        th.Property("view_type", th.StringType),
+    ).to_dict()
+
+    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
+        """Return a dictionary of values to be used in child context."""
+        return {
+            "legal_entity_id": record["account_details"]["legal_entity_id"],
+            "account_id": context.get("account_id")
+        }
 
 
 class FinancialTransactionsStream(AirwallexStream):
@@ -16,6 +73,9 @@ class FinancialTransactionsStream(AirwallexStream):
     primary_keys = ["id"]
     replication_key = "created_at"
     replication_key_filter_field = "from_created_at"
+    parent_stream_type = AccountDetailsStream
+    permission_type = "account"
+
     schema = th.PropertiesList(
         th.Property("id", th.StringType),
         th.Property("batch_id", th.StringType),
@@ -34,67 +94,9 @@ class FinancialTransactionsStream(AirwallexStream):
         th.Property("description", th.StringType),
         th.Property("status", th.StringType),
         th.Property("created_at", th.DateTimeType),
+        th.Property("legal_entity_id", th.StringType),
+        th.Property("account_id", th.StringType),
     ).to_dict()
-
-
-_bill_card_transaction_type = th.ObjectType(
-    th.Property("account_id", th.StringType),
-    th.Property("card_funding_type", th.StringType),
-    th.Property("card_id", th.StringType),
-    th.Property("card_transaction_id", th.StringType),
-    th.Property("source_amount", th.StringType),
-    th.Property("source_currency", th.StringType),
-    th.Property("transacted_at", th.DateTimeType),
-)
-
-_bill_transfer_type = th.ObjectType(
-    th.Property("account_id", th.StringType),
-    th.Property("multi_bill", th.BooleanType),
-    th.Property("source_amount", th.StringType),
-    th.Property("source_currency", th.StringType),
-    th.Property("transfer_date", th.DateTimeType),
-    th.Property("transfer_id", th.StringType),
-)
-
-_bill_payment_type = th.ObjectType(
-    th.Property("amount", th.StringType),
-    th.Property("card_transaction", _bill_card_transaction_type),
-    th.Property("created_at", th.DateTimeType),
-    th.Property("currency", th.StringType),
-    th.Property("id", th.StringType),
-    th.Property("transfer", _bill_transfer_type),
-    th.Property("type", th.StringType),
-)
-
-_bill_attachment_type = th.ObjectType(
-    th.Property("content_type", th.StringType),
-    th.Property("created_at", th.DateTimeType),
-    th.Property("file_name", th.StringType),
-    th.Property("file_url", th.StringType),
-    th.Property("id", th.StringType),
-)
-
-_bill_accounting_field_selection_type = th.ObjectType(
-    th.Property("external_id", th.StringType),
-    th.Property("name", th.StringType),
-    th.Property("type", th.StringType),
-    th.Property("value", th.StringType),
-    th.Property("value_label", th.StringType),
-)
-
-_bill_line_item_type = th.ObjectType(
-    th.Property(
-        "accounting_field_selections",
-        th.ArrayType(_bill_accounting_field_selection_type),
-    ),
-    th.Property("description", th.StringType),
-    th.Property("id", th.StringType),
-    th.Property("purchase_order_line_item_id", th.StringType),
-    th.Property("quantity", th.StringType),
-    th.Property("tax_amount", th.StringType),
-    th.Property("total_amount", th.StringType),
-    th.Property("unit_price", th.StringType),
-)
 
 
 class BillsStream(AirwallexStream):
@@ -105,6 +107,8 @@ class BillsStream(AirwallexStream):
     primary_keys = ["id"]
     replication_key = "created_at"
     replication_key_filter_field = "from_created_at"
+    permission_type = "organization"
+
     schema = th.PropertiesList(
         th.Property("approvers", th.ArrayType(th.StringType)),
         th.Property("attachments", th.ArrayType(_bill_attachment_type)),
