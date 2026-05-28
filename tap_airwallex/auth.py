@@ -4,7 +4,7 @@
 from hotglue_singer_sdk.authenticators import OAuthAuthenticator
 from hotglue_singer_sdk.authenticators import SingletonMeta
 from pendulum import parse
-from datetime import datetime
+from datetime import datetime, timezone
 import json
 from hotglue_etl_exceptions import InvalidCredentialsError
 import requests
@@ -46,12 +46,8 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
         if permission_type == "account" and not self.account_id:
             raise InvalidCredentialsError(f"Account ID is required for stream: {self._stream.name} because permission type is account")
         if permission_type == "account" and self.account_id != self._token_account_id:
-            self.logger.info(f"Updating token due to account ID mismatch: {self.account_id} != {self._token_account_id}")
-            self._token_account_id = self.account_id
-            self.logger.info(f"Updated token account ID to: {self._token_account_id}")
             return False
         if permission_type == "organization" and self._token_account_id is not None:
-            self._token_account_id = None
             return False
         # if expires_in is not set, try to get it from the tap config
         if self.expires_in is None and self._tap.config.get("expires_at"):
@@ -59,12 +55,14 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
             self.expires_in = parse(self.expires_in).timestamp()
         if not self.expires_in:
             return False
-        if int(self.expires_in) - int(datetime.utcnow().timestamp()) > 120:
+        if int(self.expires_in) - int(datetime.now(timezone.utc).timestamp()) > 120:
             return True
         return False
 
     def update_access_token_locally(self) -> None:
         """Update `access_token` locally."""
+        # add account_id as _token_account_id before make the request
+        self._token_account_id = self.account_id
 
         token_response = requests.post(self.auth_endpoint, headers=self.oauth_request_headers)
         try:
@@ -78,7 +76,6 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
         self.access_token = token_json["token"]
         expires_in = token_json.get("expires_at")
         self.expires_in = parse(expires_in).timestamp()
-        self._token_account_id = self.account_id
 
         # Update the tap config with the new access_token and refresh_token
         self._tap._config["access_token"] = token_json["token"]
