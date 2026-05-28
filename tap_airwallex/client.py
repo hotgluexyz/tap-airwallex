@@ -48,9 +48,6 @@ class AirwallexStream(RESTStream):
     ) -> Optional[Any]:
         """Return a token for identifying next page or None if no more pages."""
         previous_token = previous_token or 0
-        if self.name == "financial_transactions":
-            self.logger.info(f"Response: {response.json()}")
-
         res_json = response.json()
         if res_json.get("has_more"):
             return previous_token + 1
