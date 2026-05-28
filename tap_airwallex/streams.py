@@ -71,8 +71,6 @@ class FinancialTransactionsStream(AirwallexStream):
     name = "financial_transactions"
     path = "/financial_transactions"
     primary_keys = ["id"]
-    replication_key = "created_at"
-    replication_key_filter_field = "from_created_at"
     parent_stream_type = AccountDetailsStream
     permission_type = "account"
 
