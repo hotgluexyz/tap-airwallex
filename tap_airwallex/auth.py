@@ -32,6 +32,7 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
             "x-client-id": self.config["client_id"]
         }
         if getattr(self._stream, "permission_type", None) == "account" and self.account_id:
+            self.logger.info(f"Logging in as account: {self.account_id}")
             payload["x-login-as"] = self.account_id
         return payload
 
@@ -45,7 +46,9 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
         if permission_type == "account" and not self.account_id:
             raise InvalidCredentialsError(f"Account ID is required for stream: {self._stream.name} because permission type is account")
         if permission_type == "account" and self.account_id != self._token_account_id:
+            self.logger.info(f"Updating token due to account ID mismatch: {self.account_id} != {self._token_account_id}")
             self._token_account_id = self.account_id
+            self.logger.info(f"Updated token account ID to: {self._token_account_id}")
             return False
         if permission_type == "organization" and self._token_account_id is not None:
             self._token_account_id = None
