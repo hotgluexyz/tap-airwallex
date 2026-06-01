@@ -40,6 +40,11 @@ class Tapairwallex(Tap):
             th.BooleanType,
             default=False,
             description="Whether to use the sandbox environment"
+        ),
+        th.Property(
+            "financial_transactions_start_date",
+            th.DateType,
+            description="Start date for financial transactions"
         )
     ).to_dict()
 

@@ -8,7 +8,7 @@ import requests
 from typing import Dict, Any
 
 from tap_airwallex.schema_helpers import _account_details_type, _account_customer_agreements_type, _account_primary_contact_type, _bill_attachment_type, _bill_payment_type, _bill_line_item_type
-
+from pendulum import parse
 
 class AccountsStream(AirwallexStream):
     """Define custom stream."""
@@ -96,6 +96,14 @@ class FinancialTransactionsStream(AirwallexStream):
         th.Property("account_id", th.StringType),
     ).to_dict()
 
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        params = super().get_url_params(context, next_page_token)
+        if self.config.get("financial_transactions_start_date"):
+            params["from_created_at"] = parse(self.config.get("financial_transactions_start_date")).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        return params
 
 class BillsStream(AirwallexStream):
     """Define custom stream."""
