@@ -44,7 +44,8 @@ class Tapairwallex(Tap):
         th.Property(
             "financial_transactions_start_date",
             th.DateType,
-            description="Start date for financial transactions"
+            description="Start date for financial transactions",
+            default="2000-01-01"
         )
     ).to_dict()
 
