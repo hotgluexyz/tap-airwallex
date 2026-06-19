@@ -202,11 +202,3 @@ class TransfersStream(AirwallexStream):
         th.Property("transfer_method", th.StringType),
         th.Property("updated_at", th.DateTimeType),
     ).to_dict()
-
-    def get_url_params(
-        self, context: Optional[dict], next_page_token: Optional[Any]
-    ) -> Dict[str, Any]:
-        """Return a dictionary of values to be used in URL parameterization."""
-        params = super().get_url_params(context, next_page_token)
-        params["from_created_at"] = parse(self.config.get("start_date")).strftime("%Y-%m-%dT%H:%M:%SZ")
-        return params
