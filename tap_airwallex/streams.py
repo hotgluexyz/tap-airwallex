@@ -202,3 +202,21 @@ class TransfersStream(AirwallexStream):
         th.Property("transfer_method", th.StringType),
         th.Property("updated_at", th.DateTimeType),
     ).to_dict()
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        params: dict = {}
+        next_page_token = next_page_token or 0
+        params["page"] = next_page_token
+        return params
+
+    def get_next_page_token(
+        self, response: requests.Response, previous_token: Optional[Any]
+    ) -> Optional[Any]:
+        """Return a token for identifying next page or None if no more pages."""
+        res_json = response.json()
+        next_page_token = res_json.get("page_after")
+        if next_page_token:
+            return next_page_token
