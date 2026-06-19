@@ -6,8 +6,20 @@ from tap_airwallex.client import AirwallexStream
 from typing import Any, Optional, Iterable
 import requests
 from typing import Dict, Any
+from pendulum import parse
 
-from tap_airwallex.schema_helpers import _account_details_type, _account_customer_agreements_type, _account_primary_contact_type, _bill_attachment_type, _bill_payment_type, _bill_line_item_type
+from tap_airwallex.schema_helpers import (
+    _account_customer_agreements_type,
+    _account_details_type,
+    _account_primary_contact_type,
+    _bill_attachment_type,
+    _bill_line_item_type,
+    _bill_payment_type,
+    _transfer_beneficiary_type,
+    _transfer_conversion_type,
+    _transfer_funding_type,
+    _transfer_payer_type,
+)
 
 
 class AccountsStream(AirwallexStream):
@@ -150,4 +162,51 @@ class BillsStream(AirwallexStream):
         if self.replication_key and self.replication_key_filter_field:
             start_date = self.get_starting_time(context)
             params[self.replication_key_filter_field] = start_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        return params
+
+
+class TransfersStream(AirwallexStream):
+    """Define custom stream."""
+
+    name = "transfers"
+    path = "/transfers"
+    primary_keys = ["id"]
+    parent_stream_type = AccountDetailsStream
+    permission_type = "account"
+
+    schema = th.PropertiesList(
+        th.Property("amount_beneficiary_receives", th.NumberType),
+        th.Property("amount_payer_pays", th.NumberType),
+        th.Property("beneficiary", _transfer_beneficiary_type),
+        th.Property("beneficiary_id", th.StringType),
+        th.Property("conversion", _transfer_conversion_type),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("fee_amount", th.NumberType),
+        th.Property("fee_currency", th.StringType),
+        th.Property("fee_paid_by", th.StringType),
+        th.Property("funding", _transfer_funding_type),
+        th.Property("id", th.StringType),
+        th.Property("payer", _transfer_payer_type),
+        th.Property("reason", th.StringType),
+        th.Property("reference", th.StringType),
+        th.Property("remarks", th.StringType),
+        th.Property("request_id", th.StringType),
+        th.Property("short_reference_id", th.StringType),
+        th.Property("source_amount", th.NumberType),
+        th.Property("source_currency", th.StringType),
+        th.Property("status", th.StringType),
+        th.Property("swift_charge_option", th.StringType),
+        th.Property("transfer_amount", th.NumberType),
+        th.Property("transfer_currency", th.StringType),
+        th.Property("transfer_date", th.StringType),
+        th.Property("transfer_method", th.StringType),
+        th.Property("updated_at", th.DateTimeType),
+    ).to_dict()
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        params = super().get_url_params(context, next_page_token)
+        params["from_created_at"] = parse(self.config.get("start_date")).strftime("%Y-%m-%dT%H:%M:%SZ")
         return params

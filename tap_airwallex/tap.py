@@ -9,12 +9,14 @@ from tap_airwallex.streams import (
     AccountDetailsStream,
     FinancialTransactionsStream,
     BillsStream,
+    TransfersStream,
 )
 STREAM_TYPES = [
     FinancialTransactionsStream,
     BillsStream,
     AccountsStream,
     AccountDetailsStream,
+    TransfersStream,
 ]
 
 

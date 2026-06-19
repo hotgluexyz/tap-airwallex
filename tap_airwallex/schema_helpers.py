@@ -239,3 +239,59 @@ _bill_line_item_type = th.ObjectType(
     th.Property("unit_price", th.StringType),
 )
 
+_transfer_address_type = th.ObjectType(
+    th.Property("city", th.StringType),
+    th.Property("country_code", th.StringType),
+    th.Property("postcode", th.StringType),
+    th.Property("state", th.StringType),
+    th.Property("street_address", th.StringType),
+)
+
+_transfer_beneficiary_additional_info_type = th.ObjectType(
+    th.Property("personal_id_number", th.StringType),
+    th.Property("personal_id_type", th.StringType),
+    th.Property("personal_mobile_number", th.StringType),
+)
+
+_transfer_beneficiary_bank_details_type = th.ObjectType(
+    th.Property("account_currency", th.StringType),
+    th.Property("account_name", th.StringType),
+    th.Property("account_number", th.StringType),
+    th.Property("bank_country_code", th.StringType),
+    th.Property("bank_name", th.StringType),
+    th.Property("swift_code", th.StringType),
+)
+
+_transfer_beneficiary_type = th.ObjectType(
+    th.Property("additional_info", _transfer_beneficiary_additional_info_type),
+    th.Property("address", _transfer_address_type),
+    th.Property("bank_details", _transfer_beneficiary_bank_details_type),
+    th.Property("date_of_birth", th.StringType),
+    th.Property("entity_type", th.StringType),
+    th.Property("first_name", th.StringType),
+    th.Property("last_name", th.StringType),
+    th.Property("type", th.StringType),
+)
+
+_transfer_conversion_type = th.ObjectType(
+    th.Property("currency_pair", th.StringType),
+    th.Property("rate", th.NumberType),
+)
+
+_transfer_funding_type = th.ObjectType(
+    th.Property("status", th.StringType),
+)
+
+_transfer_payer_additional_info_type = th.ObjectType(
+    th.Property("business_incorporation_date", th.StringType),
+    th.Property("business_registration_number", th.StringType),
+    th.Property("business_registration_type", th.StringType),
+)
+
+_transfer_payer_type = th.ObjectType(
+    th.Property("additional_info", _transfer_payer_additional_info_type),
+    th.Property("address", _transfer_address_type),
+    th.Property("company_name", th.StringType),
+    th.Property("entity_type", th.StringType),
+)
+
