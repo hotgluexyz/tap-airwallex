@@ -295,3 +295,82 @@ _transfer_payer_type = th.ObjectType(
     th.Property("entity_type", th.StringType),
 )
 
+_card_transaction_amounts_type = th.ObjectType(
+    th.Property("currency", th.StringType),
+    th.Property("total_authorized", th.NumberType),
+    th.Property("total_credited", th.NumberType),
+    th.Property("total_debited", th.NumberType),
+    th.Property("total_declined", th.NumberType),
+    th.Property("total_expired", th.NumberType),
+    th.Property("total_pending", th.NumberType),
+    th.Property("total_reversed", th.NumberType),
+)
+
+_card_transaction_fee_detail_type = th.ObjectType(
+    th.Property("amount", th.NumberType),
+    th.Property("currency", th.StringType),
+    th.Property("type", th.StringType),
+)
+
+_card_transaction_merchant_additional_info_type = th.ObjectType(
+    th.Property("merchant_brand_category_id", th.IntegerType),
+    th.Property("merchant_brand_subcategory_id", th.IntegerType),
+)
+
+_card_transaction_merchant_type = th.ObjectType(
+    th.Property(
+        "additional_merchant_info",
+        _card_transaction_merchant_additional_info_type,
+    ),
+    th.Property("category_code", th.StringType),
+    th.Property("city", th.StringType),
+    th.Property("country", th.StringType),
+    th.Property("identifier", th.StringType),
+    th.Property("name", th.StringType),
+)
+
+_issuing_transaction_merchant_additional_info_type = th.ObjectType(
+    th.Property("merchant_category", th.StringType),
+    th.Property("merchant_sub_category", th.StringType),
+)
+
+_issuing_transaction_merchant_type = th.ObjectType(
+    th.Property(
+        "additional_merchant_info",
+        _issuing_transaction_merchant_additional_info_type,
+    ),
+    th.Property("category_code", th.StringType),
+    th.Property("city", th.StringType),
+    th.Property("country", th.StringType),
+    th.Property("identifier", th.StringType),
+    th.Property("name", th.StringType),
+)
+
+_issuing_transaction_risk_details_type = th.ObjectType(
+    th.Property("risk_actions_performed", th.ArrayType(th.StringType)),
+    th.Property("risk_factors", th.ArrayType(th.StringType)),
+    th.Property("three_dsecure_outcome", th.StringType),
+)
+
+_expense_card_transaction_type = th.ObjectType(
+    th.Property("amount", th.StringType),
+    th.Property("currency", th.StringType),
+    th.Property("status", th.StringType),
+)
+
+_expense_comment_type = th.ObjectType(
+    th.Property("content", th.StringType),
+    th.Property("created_at", th.DateTimeType),
+    th.Property("created_by", th.StringType),
+)
+
+_expense_line_item_type = th.ObjectType(
+    th.Property(
+        "accounting_field_selections",
+        th.ArrayType(_bill_accounting_field_selection_type),
+    ),
+    th.Property("description", th.StringType),
+    th.Property("id", th.StringType),
+    th.Property("transaction_amount", th.StringType),
+)
+
