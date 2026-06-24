@@ -2,7 +2,7 @@
 
 from hotglue_singer_sdk import typing as th
 
-from tap_airwallex.client import AirwallexStream
+from tap_airwallex.client import AirwallexStream, SpendStream
 from typing import Any, Optional, Iterable
 import requests
 from typing import Dict, Any
@@ -113,7 +113,7 @@ class FinancialTransactionsStream(AirwallexStream):
     ).to_dict()
 
 
-class BillsStream(AirwallexStream):
+class BillsStream(SpendStream):
     """Define custom stream."""
 
     name = "bills"
@@ -146,27 +146,6 @@ class BillsStream(AirwallexStream):
         th.Property("updated_at", th.DateTimeType),
         th.Property("vendor_id", th.StringType),
     ).to_dict()
-
-    def get_next_page_token(
-        self, response: requests.Response, previous_token: Optional[Any]
-    ) -> Optional[Any]:
-        """Return a token for identifying next page or None if no more pages."""
-        previous_token = previous_token or 0
-        res_json = response.json()
-        next_page_token = res_json.get("page_after")
-        return next_page_token
-
-    def get_url_params(
-        self, context: Optional[dict], next_page_token: Optional[Any]
-    ) -> Dict[str, Any]:
-        """Return a dictionary of values to be used in URL parameterization."""
-        params: dict = {}
-        if next_page_token:
-            params["page"] = next_page_token
-        if self.replication_key and self.replication_key_filter_field:
-            start_date = self.get_starting_time(context)
-            params[self.replication_key_filter_field] = start_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
-        return params
 
 
 class TransfersStream(AirwallexStream):
@@ -226,12 +205,14 @@ class TransfersStream(AirwallexStream):
             return next_page_token
 
 
-class ExpensesStream(AirwallexStream):
+class ExpensesStream(SpendStream):
     """Define issuing transactions stream."""
 
     name = "expenses"
     path = "/spend/expenses"
     primary_keys = ["id"]
+    replication_key = "created_at"
+    replication_key_filter_field = "from_created_at"
     permission_type = "organization"
 
     schema = th.PropertiesList(
