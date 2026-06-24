@@ -12,9 +12,13 @@ from tap_airwallex.schema_helpers import (
     _account_customer_agreements_type,
     _account_details_type,
     _account_primary_contact_type,
+    _bill_accounting_field_selection_type,
     _bill_attachment_type,
     _bill_line_item_type,
     _bill_payment_type,
+    _expense_card_transaction_type,
+    _expense_comment_type,
+    _expense_line_item_type,
     _transfer_beneficiary_type,
     _transfer_conversion_type,
     _transfer_funding_type,
@@ -220,3 +224,38 @@ class TransfersStream(AirwallexStream):
         next_page_token = res_json.get("page_after")
         if next_page_token:
             return next_page_token
+
+
+class ExpensesStream(AirwallexStream):
+    """Define issuing transactions stream."""
+
+    name = "expenses"
+    path = "/spend/expenses"
+    primary_keys = ["id"]
+    permission_type = "organization"
+
+    schema = th.PropertiesList(
+        th.Property("account_id", th.StringType),
+        th.Property(
+            "accounting_field_selections",
+            th.ArrayType(_bill_accounting_field_selection_type),
+        ),
+        th.Property("approvers", th.ArrayType(th.StringType)),
+        th.Property("attachments", th.ArrayType(_bill_attachment_type)),
+        th.Property("attendees", th.ArrayType(th.ObjectType())),
+        th.Property("billing_amount", th.StringType),
+        th.Property("billing_currency", th.StringType),
+        th.Property("card_id", th.StringType),
+        th.Property("card_transaction", _expense_card_transaction_type),
+        th.Property("comments", th.ArrayType(_expense_comment_type)),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("description", th.StringType),
+        th.Property("id", th.StringType),
+        th.Property("legal_entity_id", th.StringType),
+        th.Property("line_items", th.ArrayType(_expense_line_item_type)),
+        th.Property("merchant", th.StringType),
+        th.Property("settled_at", th.DateTimeType),
+        th.Property("status", th.StringType),
+        th.Property("sync_status", th.StringType),
+        th.Property("updated_at", th.DateTimeType),
+    ).to_dict()
