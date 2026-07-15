@@ -41,6 +41,7 @@ class AirwallexStream(RESTStream):
         headers = {}
         if "user_agent" in self.config:
             headers["User-Agent"] = self.config.get("user_agent")
+        headers["x-api-version"] = "2026-06-30"
         return headers
 
     def get_next_page_token(
