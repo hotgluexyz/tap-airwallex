@@ -6,7 +6,7 @@ from tap_airwallex.client import AirwallexStream, SpendStream
 from typing import Any, Optional, Iterable
 import requests
 from typing import Dict, Any
-from pendulum import parse
+from datetime import datetime, timezone
 
 from tap_airwallex.schema_helpers import (
     _account_customer_agreements_type,
@@ -280,3 +280,11 @@ class IssuingTransactionsStream(AirwallexStream):
         th.Property("transaction_type", th.StringType),
     ).to_dict()
 
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        params = super().get_url_params(context, next_page_token)
+        params["from_created_at"] = self.get_starting_time(context).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        params["to_created_at"] = datetime.now(tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        return params
