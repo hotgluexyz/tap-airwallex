@@ -3,9 +3,8 @@
 from hotglue_singer_sdk import typing as th
 
 from tap_airwallex.client import AirwallexStream, SpendStream
-from typing import Any, Optional, Iterable
+from typing import Any, Optional, Iterable, Dict
 import requests
-from typing import Dict, Any
 from datetime import datetime, timezone
 
 from tap_airwallex.schema_helpers import (
@@ -278,6 +277,8 @@ class IssuingTransactionsStream(AirwallexStream):
         th.Property("transaction_date", th.DateTimeType),
         th.Property("transaction_id", th.StringType),
         th.Property("transaction_type", th.StringType),
+        th.Property("legal_entity_id", th.StringType),
+        th.Property("account_id", th.StringType),
     ).to_dict()
 
     def get_url_params(

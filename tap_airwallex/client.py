@@ -1,13 +1,11 @@
 """REST client handling, including airwallexStream base class."""
 
-from types import prepare_class
 import requests
 from pathlib import Path
-from typing import Any, Dict, Optional, Union, List, Iterable
+from typing import Any, Dict, Optional
 
 from memoization import cached
 
-from hotglue_singer_sdk.helpers.jsonpath import extract_jsonpath
 from hotglue_singer_sdk.streams import RESTStream
 
 from tap_airwallex.auth import AirwallexAuthenticator
