@@ -15,6 +15,9 @@ from tap_airwallex.schema_helpers import (
     _bill_attachment_type,
     _bill_line_item_type,
     _bill_payment_type,
+    _card_transaction_amounts_type,
+    _card_transaction_fee_detail_type,
+    _card_transaction_merchant_type,
     _expense_card_transaction_type,
     _expense_comment_type,
     _expense_line_item_type,
@@ -289,3 +292,32 @@ class IssuingTransactionsStream(AirwallexStream):
         params["from_created_at"] = self.get_starting_time(context).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         params["to_created_at"] = datetime.now(tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         return params
+
+
+class CardTransactionsStream(AirwallexStream):
+    """Define card transactions stream."""
+
+    name = "card_transactions"
+    path = "/issuing/card_transactions"
+    primary_keys = ["id"]
+    parent_stream_type = AccountDetailsStream
+    permission_type = "account"
+
+    schema = th.PropertiesList(
+        th.Property("billing_amounts", _card_transaction_amounts_type),
+        th.Property("card_id", th.StringType),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("expiry_date", th.DateTimeType),
+        th.Property("fee_details", th.ArrayType(_card_transaction_fee_detail_type)),
+        th.Property("fund_direction", th.StringType),
+        th.Property("id", th.StringType),
+        th.Property("lifecycle_id", th.StringType),
+        th.Property("masked_card_number", th.StringType),
+        th.Property("merchant", _card_transaction_merchant_type),
+        th.Property("status", th.StringType),
+        th.Property("transaction_amounts", _card_transaction_amounts_type),
+        th.Property("updated_at", th.DateTimeType),
+        th.Property("legal_entity_id", th.StringType),
+        th.Property("account_id", th.StringType),
+    ).to_dict()
+
