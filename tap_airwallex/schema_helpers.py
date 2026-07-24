@@ -352,6 +352,12 @@ _issuing_transaction_risk_details_type = th.ObjectType(
     th.Property("three_dsecure_outcome", th.StringType),
 )
 
+_issuing_transaction_card_transaction_data_type = th.ObjectType(
+    th.Property("card_transaction_event_id", th.StringType),
+    th.Property("card_transaction_id", th.StringType),
+    th.Property("card_transaction_lifecycle_id", th.StringType),
+)
+
 _expense_card_transaction_type = th.ObjectType(
     th.Property("amount", th.StringType),
     th.Property("currency", th.StringType),

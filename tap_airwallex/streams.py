@@ -3,10 +3,9 @@
 from hotglue_singer_sdk import typing as th
 
 from tap_airwallex.client import AirwallexStream, SpendStream
-from typing import Any, Optional, Iterable
+from typing import Any, Optional, Iterable, Dict
 import requests
-from typing import Dict, Any
-from pendulum import parse
+from datetime import datetime, timezone
 
 from tap_airwallex.schema_helpers import (
     _account_customer_agreements_type,
@@ -19,6 +18,9 @@ from tap_airwallex.schema_helpers import (
     _expense_card_transaction_type,
     _expense_comment_type,
     _expense_line_item_type,
+    _issuing_transaction_card_transaction_data_type,
+    _issuing_transaction_merchant_type,
+    _issuing_transaction_risk_details_type,
     _transfer_beneficiary_type,
     _transfer_conversion_type,
     _transfer_funding_type,
@@ -206,7 +208,7 @@ class TransfersStream(AirwallexStream):
 
 
 class ExpensesStream(SpendStream):
-    """Define issuing transactions stream."""
+    """Define expenses stream."""
 
     name = "expenses"
     path = "/spend/expenses"
@@ -240,3 +242,50 @@ class ExpensesStream(SpendStream):
         th.Property("sync_status", th.StringType),
         th.Property("updated_at", th.DateTimeType),
     ).to_dict()
+
+
+class IssuingTransactionsStream(AirwallexStream):
+    """Define issuing transactions stream."""
+
+    name = "issuing_transactions"
+    path = "/issuing/transactions"
+    primary_keys = ["transaction_id"]
+    parent_stream_type = AccountDetailsStream
+    permission_type = "account"
+
+    schema = th.PropertiesList(
+        th.Property("acquiring_institution_identifier", th.StringType),
+        th.Property("auth_code", th.StringType),
+        th.Property("billing_amount", th.NumberType),
+        th.Property("billing_currency", th.StringType),
+        th.Property("card_id", th.StringType),
+        th.Property("card_nickname", th.StringType),
+        th.Property(
+            "card_transaction_data",
+            _issuing_transaction_card_transaction_data_type,
+        ),
+        th.Property("lifecycle_id", th.StringType),
+        th.Property("masked_card_number", th.StringType),
+        th.Property("merchant", _issuing_transaction_merchant_type),
+        th.Property("network_transaction_id", th.StringType),
+        th.Property("posted_date", th.DateTimeType),
+        th.Property("retrieval_ref", th.StringType),
+        th.Property("risk_details", _issuing_transaction_risk_details_type),
+        th.Property("status", th.StringType),
+        th.Property("transaction_amount", th.NumberType),
+        th.Property("transaction_currency", th.StringType),
+        th.Property("transaction_date", th.DateTimeType),
+        th.Property("transaction_id", th.StringType),
+        th.Property("transaction_type", th.StringType),
+        th.Property("legal_entity_id", th.StringType),
+        th.Property("account_id", th.StringType),
+    ).to_dict()
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        params = super().get_url_params(context, next_page_token)
+        params["from_created_at"] = self.get_starting_time(context).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        params["to_created_at"] = datetime.now(tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        return params
