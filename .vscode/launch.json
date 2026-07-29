@@ -10,7 +10,7 @@
             "type": "python",
             "request": "launch",
             "program": "../tap_airwallex/tap.py",
-            "cwd": "/Users/keynarafaelpayano/Desktop/Hotglue/tap-airwallex/.secrets",
+            "cwd": "${workspaceFolder}/.secrets",
             "args": [
                 "--config",
                 "config.json",
@@ -19,7 +19,7 @@
                 "catalog.json"
             ],
             "console": "integratedTerminal",
-            "python": "/Users/keynarafaelpayano/Desktop/Hotglue/tap-airwallex/.venv/bin/python3"
+            "python": "${workspaceFolder}/.venv/bin/python3"
         },
         {
             "name": "tap-airwallex get",
@@ -34,12 +34,12 @@
                 "--state",
                 "state.json",
                 "--catalog",
-                "selected-catalog.json",
+                "catalog-selected.json",
                 ">",
                 "data.txt"
             ],
             "console": "integratedTerminal",
-            "python": "/Users/keynarafaelpayano/Desktop/Hotglue/tap-airwallex/.venv/bin/python3"
+            "python": "${workspaceFolder}/.venv/bin/python3"
         },
     ]
 }

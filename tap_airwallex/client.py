@@ -65,6 +65,17 @@ class AirwallexStream(RESTStream):
             params[self.replication_key_filter_field] = start_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         return params
 
+    def validate_response(self, response: requests.Response) -> None:
+        """Log Airwallex error body before raising — SDK message only includes path."""
+        if 400 <= response.status_code < 500:
+            self.logger.error(
+                "Airwallex API error %s: url=%s body=%s",
+                response.status_code,
+                response.url,
+                response.text,
+            )
+        super().validate_response(response)
+
     def prepare_request(
         self, context: Optional[dict], next_page_token: Optional[Any]
     ) -> requests.PreparedRequest:
