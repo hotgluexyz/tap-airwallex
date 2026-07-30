@@ -10,11 +10,20 @@ A [Singer](https://www.singer.io/) tap that extracts data from the [Airwallex](h
 
 ### Streams
 
-| Stream                 | Endpoint                 | Primary key | Replication key |
-| ---------------------- | ------------------------ | ----------- | --------------- |
-| `financial_transactions` | `GET` + `/financial_transactions` on the configured API base | `id`        | `created_at`    |
+| Stream | Endpoint | Primary key | Replication key |
+| ------ | -------- | ----------- | --------------- |
+| `accounts` | `GET /` (from config `account_ids`) | `id` | — |
+| `account_details` | `GET /account` | `id` | — |
+| `financial_transactions` | `GET /financial_transactions` | `id` | `created_at` |
+| `bills` | `GET /spend/bills` | `id` | `created_at` |
+| `transfers` | `GET /transfers` | `id` | — |
+| `expenses` | `GET /spend/expenses` | `id` | `created_at` |
+| `issuing_transactions` | `GET /issuing/transactions` | `transaction_id` | — |
+| `direct_debits` | `GET /direct_debits` | `transaction_id` | `created_at` |
+| `deposits` | `GET /deposits` | `id` | `created_at` |
+| `conversions` | `GET /fx/conversions` | `conversion_id` | `created_at` |
 
-Pagination uses `page_size` / `page_num` when the API returns `has_more`.
+Pagination uses `page_size` / `page_num` when the API returns `has_more` (except `transfers`, which uses cursor-based `page_after`).
 
 ## Requirements
 
