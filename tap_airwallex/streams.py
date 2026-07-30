@@ -3,11 +3,9 @@
 from hotglue_singer_sdk import typing as th
 
 from tap_airwallex.client import AirwallexStream, SpendStream, DateRangeStream
-from typing import Any, Optional, Iterable, Dict, Tuple, Iterator
+from typing import Any, Optional, Iterable, Dict
 import requests
-from datetime import datetime, timedelta, timezone
-
-from hotglue_singer_sdk.exceptions import FatalAPIError
+from datetime import datetime, timezone
 
 from tap_airwallex.schema_helpers import (
     _account_customer_agreements_type,
