@@ -158,7 +158,7 @@ class DateRangeStream(AirwallexStream):
             self._window_start = window_start
             self._window_end = window_end
             self.logger.info(
-                "issuing_transactions window %s -> %s",
+                f"{self.name} window %s -> %s",
                 window_start.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
                 window_end.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
             )
