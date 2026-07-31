@@ -2,12 +2,10 @@
 
 from hotglue_singer_sdk import typing as th
 
-from tap_airwallex.client import AirwallexStream, SpendStream
-from typing import Any, Optional, Iterable, Dict, Tuple, Iterator
+from tap_airwallex.client import AirwallexStream, SpendStream, DateRangeStream
+from typing import Any, Optional, Iterable, Dict
 import requests
-from datetime import datetime, timedelta, timezone
-
-from hotglue_singer_sdk.exceptions import FatalAPIError
+from datetime import datetime, timezone
 
 from tap_airwallex.schema_helpers import (
     _account_customer_agreements_type,
@@ -246,7 +244,7 @@ class ExpensesStream(SpendStream):
     ).to_dict()
 
 
-class IssuingTransactionsStream(AirwallexStream):
+class IssuingTransactionsStream(DateRangeStream):
     """Define issuing transactions stream."""
 
     name = "issuing_transactions"
@@ -285,70 +283,167 @@ class IssuingTransactionsStream(AirwallexStream):
         th.Property("account_id", th.StringType),
     ).to_dict()
 
-    @staticmethod
-    def _to_utc(dt: datetime) -> datetime:
-        if dt.tzinfo is None:
-            return dt.replace(tzinfo=timezone.utc)
-        return dt.astimezone(timezone.utc)
 
-    @classmethod
-    def _monthly_windows(
-        cls, start: datetime, end: datetime
-    ) -> Iterator[Tuple[datetime, datetime]]:
-        """Yield inclusive (from_created_at, to_created_at) monthly windows."""
-        start = cls._to_utc(start)
-        end = cls._to_utc(end)
-        cursor = start
-        while cursor < end:
-            year, month = cursor.year, cursor.month
-            if month == 12:
-                next_month = datetime(year + 1, 1, 1, tzinfo=timezone.utc)
-            else:
-                next_month = datetime(year, month + 1, 1, tzinfo=timezone.utc)
-            window_end = min(next_month, end)
-            if window_end < end:
-                # API treats both bounds as inclusive; avoid double-counting the boundary.
-                yield cursor, window_end - timedelta(microseconds=1)
-                cursor = next_month
-            else:
-                yield cursor, end
-                break
+class DirectDebitsStream(AirwallexStream):
+    """Define direct debits stream."""
 
-    def request_records(self, context: Optional[dict]) -> Iterable[dict]:
-        """Paginate within monthly date windows to stay under max page_num."""
-        start = self.get_starting_time(context)
-        end = datetime.now(tz=timezone.utc)
-        for window_start, window_end in self._monthly_windows(start, end):
-            self._window_start = window_start
-            self._window_end = window_end
-            self.logger.info(
-                "issuing_transactions window %s -> %s",
-                window_start.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
-                window_end.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
-            )
-            yield from super().request_records(context)
+    name = "direct_debits"
+    path = "/direct_debits"
+    primary_keys = ["transaction_id"]
+    permission_type = "account"
+    parent_stream_type = AccountDetailsStream
+
+    schema = th.PropertiesList(
+        th.Property("amount", th.NumberType),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("currency", th.StringType),
+        th.Property("debtor_name", th.StringType),
+        th.Property("global_account_id", th.StringType),
+        th.Property("mandate_id", th.StringType),
+        th.Property("statement_ref", th.StringType),
+        th.Property("status", th.StringType),
+        th.Property("transaction_id", th.StringType),
+    ).to_dict()
+
+
+class DepositsStream(DateRangeStream):
+    """Define deposits stream."""
+
+    name = "deposits"
+    path = "/deposits"
+    primary_keys = ["id"]
+    permission_type = "account"
+    parent_stream_type = AccountDetailsStream
+
+    schema = th.PropertiesList(
+        th.Property("amount", th.NumberType),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("currency", th.StringType),
+        th.Property("estimated_settled_at", th.DateTimeType),
+        th.Property(
+            "failure_details",
+            th.CustomType({"type": ["object", "string"]}),
+        ),
+        th.Property(
+            "fee",
+            th.ObjectType(
+                th.Property("amount", th.NumberType),
+                th.Property("currency", th.StringType),
+            ),
+        ),
+        th.Property("funding_source_id", th.StringType),
+        th.Property("global_account_id", th.StringType),
+        th.Property("id", th.StringType),
+        th.Property(
+            "payer",
+            th.CustomType({"type": ["object", "string"]}),
+        ),
+        th.Property("provider_transaction_id", th.StringType),
+        th.Property("reference", th.StringType),
+        th.Property("settled_at", th.DateTimeType),
+        th.Property("status", th.StringType),
+        th.Property("type", th.StringType),
+    ).to_dict()
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        next_page_token = next_page_token or 0
+        params = super().get_url_params(context, next_page_token)
+        return params
+
+
+class ConversionsStream(AirwallexStream):
+    """Define FX conversions stream."""
+
+    name = "conversions"
+    path = "/fx/conversions"
+    primary_keys = ["conversion_id"]
+    replication_key = "created_at"
+    replication_key_filter_field = "from_created_at"
+    permission_type = "account"
+    parent_stream_type = AccountDetailsStream
+
+    schema = th.PropertiesList(
+        th.Property(
+            "application_fee_options",
+            th.ArrayType(
+                th.ObjectType(
+                    th.Property("amount", th.StringType),
+                    th.Property("currency", th.StringType),
+                    th.Property(
+                        "metadata",
+                        th.CustomType({"type": ["object", "string"]}),
+                    ),
+                    th.Property("percentage", th.StringType),
+                    th.Property("source_type", th.StringType),
+                    th.Property("type", th.StringType),
+                )
+            ),
+        ),
+        th.Property(
+            "application_fees",
+            th.ArrayType(
+                th.ObjectType(
+                    th.Property("amount", th.StringType),
+                    th.Property("currency", th.StringType),
+                    th.Property("source_type", th.StringType),
+                )
+            ),
+        ),
+        th.Property("awx_rate", th.NumberType),
+        th.Property("buy_amount", th.NumberType),
+        th.Property("buy_currency", th.StringType),
+        th.Property("client_rate", th.NumberType),
+        th.Property("conversion_date", th.StringType),
+        th.Property("conversion_id", th.StringType),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("currency_pair", th.StringType),
+        th.Property("dealt_currency", th.StringType),
+        th.Property(
+            "funding",
+            th.ObjectType(
+                th.Property("debit_type", th.StringType),
+                th.Property("failure_reason", th.StringType),
+                th.Property("funding_source_id", th.StringType),
+                th.Property("status", th.StringType),
+            ),
+        ),
+        th.Property(
+            "funding_source",
+            th.ObjectType(
+                th.Property("debit_type", th.StringType),
+                th.Property("id", th.StringType),
+            ),
+        ),
+        th.Property("mid_rate", th.NumberType),
+        th.Property("quote_id", th.StringType),
+        th.Property(
+            "rate_details",
+            th.ArrayType(
+                th.ObjectType(
+                    th.Property("buy_amount", th.NumberType),
+                    th.Property("level", th.StringType),
+                    th.Property("rate", th.NumberType),
+                    th.Property("sell_amount", th.NumberType),
+                )
+            ),
+        ),
+        th.Property("request_id", th.StringType),
+        th.Property("sell_amount", th.NumberType),
+        th.Property("sell_currency", th.StringType),
+        th.Property("settlement_cutoff_at", th.DateTimeType),
+        th.Property("short_reference_id", th.StringType),
+        th.Property("status", th.StringType),
+        th.Property("updated_at", th.DateTimeType),
+    ).to_dict()
 
     def get_url_params(
         self, context: Optional[dict], next_page_token: Optional[Any]
     ) -> Dict[str, Any]:
         """Return a dictionary of values to be used in URL parameterization."""
         params = super().get_url_params(context, next_page_token)
-        params["from_created_at"] = self._window_start.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
-        params["to_created_at"] = self._window_end.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        params["from_created_at"] = self.get_starting_time(context).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        params["to_created_at"] = datetime.now(tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         return params
-
-    def get_next_page_token(
-        self, response: requests.Response, previous_token: Optional[Any]
-    ) -> Optional[Any]:
-        """Return next page_num, or raise if the window exceeds Airwallex's max."""
-        previous_token = previous_token or 0
-        if not response.json().get("has_more"):
-            return None
-        next_token = previous_token + 1
-        if next_token > self.max_page_num:
-            raise FatalAPIError(
-                f"issuing_transactions exceeded max page_num ({self.max_page_num}) "
-                f"for window {self._window_start.isoformat()} -> "
-                f"{self._window_end.isoformat()}; narrow the date window"
-            )
-        return next_token

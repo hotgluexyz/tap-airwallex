@@ -2,11 +2,13 @@
 
 import requests
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Iterator, Tuple, Iterable
+from datetime import datetime, timedelta, timezone
 
 from memoization import cached
 
 from hotglue_singer_sdk.streams import RESTStream
+from hotglue_singer_sdk.exceptions import FatalAPIError
 
 from tap_airwallex.auth import AirwallexAuthenticator
 
@@ -58,7 +60,7 @@ class AirwallexStream(RESTStream):
         """Return a dictionary of values to be used in URL parameterization."""
         params: dict = {}
         params["page_size"] = 100
-        if next_page_token:
+        if next_page_token is not None:
             params["page_num"] = next_page_token
         if self.replication_key and self.replication_key_filter_field:
             start_date = self.get_starting_time(context)
@@ -114,3 +116,75 @@ class SpendStream(AirwallexStream):
             start_date = self.get_starting_time(context)
             params[self.replication_key_filter_field] = start_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         return params
+
+
+class DateRangeStream(AirwallexStream):
+    """Define date range stream."""
+
+    @staticmethod
+    def _to_utc(dt: datetime) -> datetime:
+        if dt.tzinfo is None:
+            return dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+
+    @classmethod
+    def _monthly_windows(
+        cls, start: datetime, end: datetime
+    ) -> Iterator[Tuple[datetime, datetime]]:
+        """Yield inclusive (from_created_at, to_created_at) monthly windows."""
+        start = cls._to_utc(start)
+        end = cls._to_utc(end)
+        cursor = start
+        while cursor < end:
+            year, month = cursor.year, cursor.month
+            if month == 12:
+                next_month = datetime(year + 1, 1, 1, tzinfo=timezone.utc)
+            else:
+                next_month = datetime(year, month + 1, 1, tzinfo=timezone.utc)
+            window_end = min(next_month, end)
+            if window_end < end:
+                # API treats both bounds as inclusive; avoid double-counting the boundary.
+                yield cursor, window_end - timedelta(microseconds=1)
+                cursor = next_month
+            else:
+                yield cursor, end
+                break
+
+    def request_records(self, context: Optional[dict]) -> Iterable[dict]:
+        """Paginate within monthly date windows to stay under max page_num."""
+        start = self.get_starting_time(context)
+        end = datetime.now(tz=timezone.utc)
+        for window_start, window_end in self._monthly_windows(start, end):
+            self._window_start = window_start
+            self._window_end = window_end
+            self.logger.info(
+                f"{self.name} window %s -> %s",
+                window_start.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
+                window_end.strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
+            )
+            yield from super().request_records(context)
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        params = super().get_url_params(context, next_page_token)
+        params["from_created_at"] = self._window_start.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        params["to_created_at"] = self._window_end.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        return params
+
+    def get_next_page_token(
+        self, response: requests.Response, previous_token: Optional[Any]
+    ) -> Optional[Any]:
+        """Return next page_num, or raise if the window exceeds Airwallex's max."""
+        previous_token = previous_token or 0
+        if not response.json().get("has_more"):
+            return None
+        next_token = previous_token + 1
+        if next_token > self.max_page_num:
+            raise FatalAPIError(
+                f"issuing_transactions exceeded max page_num ({self.max_page_num}) "
+                f"for window {self._window_start.isoformat()} -> "
+                f"{self._window_end.isoformat()}; narrow the date window"
+            )
+        return next_token
