@@ -10,7 +10,7 @@ class Runner(VCRTapTestRunner):
         "x-client-id",
         "x-login-as",
     ]
-    PRESERVE_KEYS = {"next_cursor", "expires_at", "has_more"}
+    PRESERVE_KEYS = {"next_cursor", "expires_at", "has_more", "page_after"}
 
     def module(self) -> str:
         return "tap_airwallex.tap"
