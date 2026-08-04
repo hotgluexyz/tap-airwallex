@@ -88,7 +88,7 @@ class FinancialTransactionsStream(AirwallexStream):
 
     name = "financial_transactions"
     path = "/financial_transactions"
-    primary_keys = ["id"]
+    primary_keys = ["id", "transaction_type"]
     parent_stream_type = AccountDetailsStream
     permission_type = "account"
 

@@ -181,9 +181,10 @@ class DateRangeStream(AirwallexStream):
         if not response.json().get("has_more"):
             return None
         next_token = previous_token + 1
-        if next_token > self.max_page_num:
+        max_page_num = getattr(self, "max_page_num", None)
+        if max_page_num is not None and next_token > max_page_num:
             raise FatalAPIError(
-                f"issuing_transactions exceeded max page_num ({self.max_page_num}) "
+                f"{self.name} exceeded max page_num ({max_page_num}) "
                 f"for window {self._window_start.isoformat()} -> "
                 f"{self._window_end.isoformat()}; narrow the date window"
             )

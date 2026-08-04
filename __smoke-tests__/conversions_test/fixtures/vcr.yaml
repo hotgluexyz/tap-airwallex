@@ -1,0 +1,383 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.34.2
+    method: POST
+    uri: https://api-demo.airwallex.com/api/v1/authentication/login
+  response:
+    body:
+      string: '{"expires_at": "2026-08-04T14:26:44+0000", "token": "eyJ***"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '61'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:43 GMT
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-049331b29b724facbdda7f25af28962e-fddc19aa0ccb88ff-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 049331b29b724facbdda7f25af28962e
+      x-envoy-upstream-service-time:
+      - '157'
+    status:
+      code: 201
+      message: Created
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/account?page_size=100
+  response:
+    body:
+      string: '{"account_details": {"attachments": {"additional_files": []}, "business_details":
+        {"account_usage": {"estimated_monthly_revenue": {"amount": "-Fallback-scrubbed-kyEpnx",
+        "currency": "-Fallback-scrubbed-cEP"}, "product_reference": []}, "as_trustee":
+        null, "attachments": {"business_documents": []}, "business_address": {"country_code":
+        "-Fallback-scrubbed-vN", "postcode": "31991"}, "business_identifiers": [{"country_code":
+        "-Fallback-scrubbed-vN", "number": "-Fallback-scrubbed-ljgpddjRn", "type":
+        "-Fallback-scrubbed-hRe"}], "business_name": "-Fallback-scrubbed-uRjlaFMuzYlvPTFt",
+        "business_name_english": "-Fallback-scrubbed-uRjlaFMuzYlvPTFt", "business_name_trading":
+        null, "business_start_date": "-Fallback-scrubbed-pkFroaUwGn", "business_structure":
+        "-Fallback-scrubbed-TaoGBMm", "contact_number": null, "description_of_goods_or_services":
+        "-Fallback-scrubbed-uHXxshNjXVHQuADCWflysjLrCKUFIGzb", "explanation_for_high_risk_countries_exposure":
+        null, "exports_goods_or_services": null, "fax_number": null, "has_constitution_document":
+        null, "has_member_holding_public_office": null, "has_nominee_shareholders":
+        null, "has_prior_financial_institution_refusal": null, "has_ringgit_borrowing":
+        null, "industry_category_code": "-Fallback-scrubbed-pvMHidevqAyh", "no_shareholders_with_over_25percent":
+        null, "operating_country": [], "registration_address": {"country_code": "-Fallback-scrubbed-vN",
+        "postcode": "31991"}, "registration_address_english": {"address_line1": "71562
+        Smith Field", "country_code": "-Fallback-scrubbed-vN", "postcode": "31991",
+        "state": "-Fallback-scrubbed-rK", "suburb": "-Fallback-scrubbed-DHYLTKmKXhq"},
+        "state_of_incorporation": null, "url": "-Fallback-scrubbed-EvuZKJubkcHPJcvVuCxyrRjp",
+        "urls": ["-Fallback-scrubbed-EvuZKJubkcHPJcvVuCxyrRjp"]}, "business_person_details":
+        [{"attachments": {"business_person_documents": []}, "date_of_birth": "1970-07-15",
+        "email": "patricia79@example.org", "first_name_english": "-Fallback-scrubbed-hvSin",
+        "identifications": {"primary": {"identification_type": "-Fallback-scrubbed-wfldzw",
+        "issuing_country_code": "-Fallback-scrubbed-vN", "tax_id": {"number": "-Fallback-scrubbed-ljgpddjRn",
+        "type": "-Fallback-scrubbed-sOcn"}}}, "job_title": "-Fallback-scrubbed-eTl",
+        "last_name_english": "-Fallback-scrubbed-pYnxFf", "nationality": "-Fallback-scrubbed-vN",
+        "person_id": "-Fallback-scrubbed-OskjbdbdoGyUCXPzHfBTJLZPHXPeXKoVqYZj", "phone_number":
+        "+1-393-762-4591x50470", "residential_address": {"country_code": "-Fallback-scrubbed-vN",
+        "postcode": "31991"}, "roles": ["-Fallback-scrubbed-bcNzwPEDEjqaEAOV", "-Fallback-scrubbed-nyjZrPwbfWeIWXSeBH",
+        "-Fallback-scrubbed-DtxmBseRqgSdvMIgy"]}], "store_details": {"cross_border_transaction_percent":
+        "-Fallback-scrubbed-thZu", "employee_size": 2498, "estimated_transaction_volume":
+        {"average_amount_per_transaction": "-Fallback-scrubbed-CYaOiFv", "currency":
+        "-Fallback-scrubbed-FfU", "max_amount_per_transaction": "-Fallback-scrubbed-CYaOiFv",
+        "monthly_transaction_amount": "-Fallback-scrubbed-BeHEexvF"}, "financial_statements":
+        [], "fulfillment_days": 2550, "industry_code": "-Fallback-scrubbed-GFyBYUewpJMU",
+        "mcc": "-Fallback-scrubbed-NIJS", "operating_models": ["-Fallback-scrubbed-NnfsKTIynTUcRcn",
+        "-Fallback-scrubbed-TkahfaBWWQSapNnfqyDqdSCWIflYVK"], "payment_distribution":
+        [{"payment_type": "-Fallback-scrubbed-hdmgp", "percentage": "-Fallback-scrubbed-DfZs"},
+        {"payment_type": "-Fallback-scrubbed-HPMPw", "percentage": "-Fallback-scrubbed-DfZs"}],
+        "selling_to_country_codes": [], "shipping_from_country_codes": [], "store_description":
+        "-Fallback-scrubbed-vrOAKJgNFtuAjvQioQ", "store_name": "-Fallback-scrubbed-uRjlaFMuzYlvPTFt",
+        "store_photos": [], "store_websites": [{"url": "-Fallback-scrubbed-QohLMQEkAwSRZoZYXGdyavMsYsPQgXZPWekTZGltefGkuGTphVRYBOq"}]},
+        "trustee_details": null, "individual_details": null, "legal_entity_id": "-Fallback-scrubbed-BNmtxnVdSyQxABmaJLwtByxrO",
+        "legal_entity_identifier": null, "legal_entity_type": "-Fallback-scrubbed-qBNNsHQZ"},
+        "created_at": "-Fallback-scrubbed-frOzPOlpgHWKqYBYLqtJxNcB", "customer_agreements":
+        {"agreed_to_data_usage": false, "agreed_to_terms_and_conditions": false, "opt_in_for_marketing":
+        true, "terms_and_conditions": {"device_data": {}, "service_agreement_type":
+        "-Fallback-scrubbed-dtCR"}}, "id": "-Fallback-scrubbed-UISgdebFssrnCUnGJApDpuCjdyx",
+        "nickname": "-Fallback-scrubbed-UISgdebFssrnCUnGJApDpuCjdyx", "primary_contact":
+        {"attachments": {"identity_files": []}, "email": "patricia79@example.org",
+        "mobile": "+1-393-762-4591x50470"}, "status": "-Fallback-scrubbed-KLpeNT",
+        "view_type": "-Fallback-scrubbed-QjeazHQP"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '4603'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 62b85c43e9154853834e7d5feb2b1372
+      date:
+      - Tue, 04 Aug 2026 13:56:44 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-62b85c43e9154853834e7d5feb2b1372-bbbec6e39bce2ec1-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 62b85c43e9154853834e7d5feb2b1372
+      x-b3-traceid:
+      - 62b85c43e9154853834e7d5feb2b1372
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '66'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/fx/conversions?page_size=100&from_created_at=2026-01-01T00%3A00%3A00.000000Z&to_created_at=2026-08-04T13%3A54%3A00.000000Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [{"awx_rate": 6900.89645116707, "buy_amount":
+        711.704701357029, "buy_currency": "-Fallback-scrubbed-cEP", "client_rate":
+        -141.12029490119, "conversion_date": "-Fallback-scrubbed-MlXEcJmjct", "conversion_id":
+        "-Fallback-scrubbed-CWflykLgaovATmJWlNtGuedyrwCjKJzFwTbP", "created_at": "-Fallback-scrubbed-YWWJQCTPiMuJCgSwKmpWwKBm",
+        "currency_pair": "-Fallback-scrubbed-NQPIEK", "dealt_currency": "-Fallback-scrubbed-Erw",
+        "mid_rate": -9410963725.29584, "quote_id": "-Fallback-scrubbed-pRguTlbwMEhryJdayBdySXtnYmYKCLTxeRls",
+        "rate_details": [{"buy_amount": -56.2086980302067, "level": "-Fallback-scrubbed-wQD",
+        "rate": 6900.89645116707, "sell_amount": 8112352.6339912}, {"buy_amount":
+        711.704701357029, "level": "-Fallback-scrubbed-vSoNaB", "rate": -141.12029490119,
+        "sell_amount": 8112352.6339912}], "request_id": "-Fallback-scrubbed-QdYOqmuFsUofKHQJLVlnbvxfVmenOjUFCPox",
+        "sell_amount": 8112352.6339912, "sell_currency": "-Fallback-scrubbed-Erw",
+        "settlement_cutoff_at": "-Fallback-scrubbed-YWWJQCTPiMuJCgSwKmpWwKBm", "short_reference_id":
+        "-Fallback-scrubbed-BSfRJMkJgkrRYot", "status": "-Fallback-scrubbed-xjbHQyN",
+        "updated_at": "-Fallback-scrubbed-oIrkdwIFszAfjrrZWqNyAOaL"}, {"awx_rate":
+        -2.2238441283083, "buy_amount": -699086867656.74, "buy_currency": "-Fallback-scrubbed-uSK",
+        "client_rate": 917505.53382961, "conversion_date": "-Fallback-scrubbed-CUBFZrNVPA",
+        "conversion_id": "-Fallback-scrubbed-bZKjVWoSjcMsMncDDMXUyLiBxnrShAvTPhKh",
+        "created_at": "-Fallback-scrubbed-nLbZwjwCrKsTVJuCmyukbIQL", "currency_pair":
+        "-Fallback-scrubbed-HeJfsc", "dealt_currency": "-Fallback-scrubbed-cEP", "mid_rate":
+        -7249701789.3969, "quote_id": "-Fallback-scrubbed-uOngVNIOLZYSphZcXuAICPBDgqbXOwpHIvIS",
+        "rate_details": [{"buy_amount": -57037.3191723879, "level": "-Fallback-scrubbed-wQD",
+        "rate": -2.2238441283083, "sell_amount": 6.6337438227128}, {"buy_amount":
+        -699086867656.74, "level": "-Fallback-scrubbed-vSoNaB", "rate": 917505.53382961,
+        "sell_amount": 6.6337438227128}], "request_id": "-Fallback-scrubbed-LuutcaxVyRVOBiSxBwDdUZXRnlleLCgDlxLO",
+        "sell_amount": 6.6337438227128, "sell_currency": "-Fallback-scrubbed-cEP",
+        "settlement_cutoff_at": "-Fallback-scrubbed-nLbZwjwCrKsTVJuCmyukbIQL", "short_reference_id":
+        "-Fallback-scrubbed-oNxJNjicAegLnGV", "status": "-Fallback-scrubbed-xjbHQyN",
+        "updated_at": "-Fallback-scrubbed-nLbZwjwCrKsTVJuCmyukbIQL"}, {"awx_rate":
+        -8934.9285058049, "buy_amount": 6829.32051358056, "buy_currency": "-Fallback-scrubbed-UnP",
+        "client_rate": 7159089.92643937, "conversion_date": "-Fallback-scrubbed-PdgsRxudzT",
+        "conversion_id": "-Fallback-scrubbed-zszIDQQeOyaciUIxSiafWdEnJjFLStYjQrUO",
+        "created_at": "-Fallback-scrubbed-TsDDKLSOUDdTzatRwzHFzVDv", "currency_pair":
+        "-Fallback-scrubbed-qRmKUA", "dealt_currency": "-Fallback-scrubbed-cEP", "mid_rate":
+        892274420.76489, "quote_id": "-Fallback-scrubbed-gAXdnWiPZqxvptJDGInMZiGQpgBusFMkvFZV",
+        "rate_details": [{"buy_amount": 781.909637126265, "level": "-Fallback-scrubbed-wQD",
+        "rate": -8934.9285058049, "sell_amount": 8112352.6339912}, {"buy_amount":
+        6829.32051358056, "level": "-Fallback-scrubbed-vSoNaB", "rate": 7159089.92643937,
+        "sell_amount": 8112352.6339912}], "request_id": "-Fallback-scrubbed-UVhaepwiKcQOmxTwZiyhMcuKYjxlQEoaYOmt",
+        "sell_amount": 8112352.6339912, "sell_currency": "-Fallback-scrubbed-cEP",
+        "settlement_cutoff_at": "-Fallback-scrubbed-TsDDKLSOUDdTzatRwzHFzVDv", "short_reference_id":
+        "-Fallback-scrubbed-BHTyoamNriTZOBa", "status": "-Fallback-scrubbed-xjbHQyN",
+        "updated_at": "-Fallback-scrubbed-cTleihIptDqeVwgnqziNsgYS"}, {"awx_rate":
+        14.9293383045799, "buy_amount": 4.81608142665136, "buy_currency": "-Fallback-scrubbed-Erw",
+        "client_rate": -2784240197.3941, "conversion_date": "-Fallback-scrubbed-QAZBdxHmVV",
+        "conversion_id": "-Fallback-scrubbed-fIvciipMwHLNmcXUgyEElgiJBiBfmdaJyWWG",
+        "created_at": "-Fallback-scrubbed-IlaJMZFfqaYruPiWTXlQFSnX", "currency_pair":
+        "-Fallback-scrubbed-YkAZNL", "dealt_currency": "-Fallback-scrubbed-UnP", "mid_rate":
+        641728927.36918, "quote_id": "-Fallback-scrubbed-cBhjyAhpxNBALqFRvGgzGbUUsCmRRRuIUfTl",
+        "rate_details": [{"buy_amount": 25988276.6269516, "level": "-Fallback-scrubbed-wQD",
+        "rate": 14.9293383045799, "sell_amount": -20.7781462179302}, {"buy_amount":
+        4.81608142665136, "level": "-Fallback-scrubbed-vSoNaB", "rate": -2784240197.3941,
+        "sell_amount": -20.7781462179302}], "request_id": "-Fallback-scrubbed-bJhRsjoKFogGWfeiCXLFGTyVLHYYkPvSXWAP",
+        "sell_amount": -20.7781462179302, "sell_currency": "-Fallback-scrubbed-UnP",
+        "settlement_cutoff_at": "-Fallback-scrubbed-IlaJMZFfqaYruPiWTXlQFSnX", "short_reference_id":
+        "-Fallback-scrubbed-WfDfkIhHtADrXtw", "status": "-Fallback-scrubbed-xjbHQyN",
+        "updated_at": "-Fallback-scrubbed-PuTMaBaYwlptWerfGlVNICud"}, {"awx_rate":
+        -721882.608684299, "buy_amount": 5839476901.87344, "buy_currency": "-Fallback-scrubbed-Erw",
+        "client_rate": -558240538.288864, "conversion_date": "-Fallback-scrubbed-xwZDlvaExP",
+        "conversion_id": "-Fallback-scrubbed-tftqKcuVmOwWVUhgrtRCYlKMyCWrJYhYsmWE",
+        "created_at": "-Fallback-scrubbed-RORZMJBgNgcCOKAmAiHEMsXu", "currency_pair":
+        "-Fallback-scrubbed-YkAZNL", "dealt_currency": "-Fallback-scrubbed-UnP", "mid_rate":
+        -113267.671342129, "quote_id": "-Fallback-scrubbed-gqfrcgKCPeWteWHTWbNzacSQMCCXCFJKZQRD",
+        "rate_details": [{"buy_amount": 836183.713164694, "level": "-Fallback-scrubbed-wQD",
+        "rate": -721882.608684299, "sell_amount": 283967159355.784}, {"buy_amount":
+        5839476901.87344, "level": "-Fallback-scrubbed-vSoNaB", "rate": -558240538.288864,
+        "sell_amount": 283967159355.784}], "request_id": "-Fallback-scrubbed-qqcWRPveyusUgzmkFjmCsbpGQxbgeoaBgLeK",
+        "sell_amount": 283967159355.784, "sell_currency": "-Fallback-scrubbed-UnP",
+        "settlement_cutoff_at": "-Fallback-scrubbed-RORZMJBgNgcCOKAmAiHEMsXu", "short_reference_id":
+        "-Fallback-scrubbed-nskFjpQCzVBFmEn", "status": "-Fallback-scrubbed-xjbHQyN",
+        "updated_at": "-Fallback-scrubbed-PXQayjBRIElljVuxnWqvroqE"}, {"awx_rate":
+        4762946196680.1, "buy_amount": -6.92711043066086, "buy_currency": "-Fallback-scrubbed-Ewn",
+        "client_rate": -193.843788708906, "conversion_date": "-Fallback-scrubbed-aEAvQePGOX",
+        "conversion_id": "-Fallback-scrubbed-OtCCRBjtuHFThNYGEKInVUbqhKekBCapCmWi",
+        "created_at": "-Fallback-scrubbed-QQHGiYQmmNJKpRWjenurMulb", "currency_pair":
+        "-Fallback-scrubbed-scqHQc", "dealt_currency": "-Fallback-scrubbed-UnP", "mid_rate":
+        3155.37567482352, "quote_id": "-Fallback-scrubbed-dftzCrsiBQWaSzOeszirsQgrTeACUWunzTxq",
+        "rate_details": [{"buy_amount": -9215935198748.86, "level": "-Fallback-scrubbed-wQD",
+        "rate": 4762946196680.1, "sell_amount": -4142910.23002053}, {"buy_amount":
+        -6.92711043066086, "level": "-Fallback-scrubbed-vSoNaB", "rate": -193.843788708906,
+        "sell_amount": -4142910.23002053}], "request_id": "-Fallback-scrubbed-CfguMcbNyItqOzahxDgeDNnbqHkkdrjCNxjg",
+        "sell_amount": -4142910.23002053, "sell_currency": "-Fallback-scrubbed-UnP",
+        "settlement_cutoff_at": "-Fallback-scrubbed-QQHGiYQmmNJKpRWjenurMulb", "short_reference_id":
+        "-Fallback-scrubbed-vgZgmGdazHgJPHv", "status": "-Fallback-scrubbed-xjbHQyN",
+        "updated_at": "-Fallback-scrubbed-NagLiruWrnurplVUEXeJvbfE"}, {"awx_rate":
+        3074.99008031457, "buy_amount": -891.267965893188, "buy_currency": "-Fallback-scrubbed-cEP",
+        "client_rate": -1494577.26521006, "conversion_date": "-Fallback-scrubbed-aEAvQePGOX",
+        "conversion_id": "-Fallback-scrubbed-rYRQaStIVjKtdjXhqdHNBRbjLDGXjqroSZqI",
+        "created_at": "-Fallback-scrubbed-ZDzWHScjIqEFcPtTWFkloWYN", "currency_pair":
+        "-Fallback-scrubbed-NQPIEK", "dealt_currency": "-Fallback-scrubbed-Erw", "mid_rate":
+        -2612406230.12367, "quote_id": "-Fallback-scrubbed-PLjTqLHdtpXyIAmuABhOsARbLweZkKojNTSg",
+        "rate_details": [{"buy_amount": 768200203.969334, "level": "-Fallback-scrubbed-wQD",
+        "rate": 3074.99008031457, "sell_amount": 5062306.30050318}, {"buy_amount":
+        -891.267965893188, "level": "-Fallback-scrubbed-vSoNaB", "rate": -1494577.26521006,
+        "sell_amount": 5062306.30050318}], "request_id": "-Fallback-scrubbed-wrLfXoJFQSJNkVpGPQKWCVupTJwXgzMBITjr",
+        "sell_amount": 5062306.30050318, "sell_currency": "-Fallback-scrubbed-Erw",
+        "settlement_cutoff_at": "-Fallback-scrubbed-ZDzWHScjIqEFcPtTWFkloWYN", "short_reference_id":
+        "-Fallback-scrubbed-aIrztdPNWeUQPix", "status": "-Fallback-scrubbed-xjbHQyN",
+        "updated_at": "-Fallback-scrubbed-RIhRJIoikvUbanwVTSdJKuNC"}, {"awx_rate":
+        -56868238292330.9, "buy_amount": 98.3870577591004, "buy_currency": "-Fallback-scrubbed-Erw",
+        "client_rate": -83995106.7886394, "conversion_date": "-Fallback-scrubbed-TzuZjantno",
+        "conversion_id": "-Fallback-scrubbed-NkKmNsoPvVRxARmlZdGLsdjjvCPtuGUyLRwn",
+        "created_at": "-Fallback-scrubbed-rincPnhmRzKXiFtGCmNsNQWv", "currency_pair":
+        "-Fallback-scrubbed-YkAZNL", "dealt_currency": "-Fallback-scrubbed-UnP", "mid_rate":
+        30608419953.5429, "quote_id": "-Fallback-scrubbed-okGjmLQzDBpHamEekTTrhobTGZGkknSUxZiy",
+        "rate_details": [{"buy_amount": 359365949.7434, "level": "-Fallback-scrubbed-wQD",
+        "rate": -56868238292330.9, "sell_amount": 54563547908.8378}, {"buy_amount":
+        98.3870577591004, "level": "-Fallback-scrubbed-vSoNaB", "rate": -83995106.7886394,
+        "sell_amount": 54563547908.8378}], "request_id": "-Fallback-scrubbed-kJNsfWRlElumGFGluEGDePCNJUGamWRYHntM",
+        "sell_amount": 54563547908.8378, "sell_currency": "-Fallback-scrubbed-UnP",
+        "settlement_cutoff_at": "-Fallback-scrubbed-rincPnhmRzKXiFtGCmNsNQWv", "short_reference_id":
+        "-Fallback-scrubbed-rALWZwcUyLRkOaK", "status": "-Fallback-scrubbed-xjbHQyN",
+        "updated_at": "-Fallback-scrubbed-DKAQcUOULOssBDxjzUufqfkJ"}, {"awx_rate":
+        6208144578436.89, "buy_amount": -49024823.6152446, "buy_currency": "-Fallback-scrubbed-UnP",
+        "client_rate": 7702402366.9233, "conversion_date": "-Fallback-scrubbed-TzuZjantno",
+        "conversion_id": "-Fallback-scrubbed-KVLxftKPNtfhdkjZNroyrmttCFXlcKywwhKX",
+        "created_at": "-Fallback-scrubbed-oZSjdOtNsaRjLDsrHjULUgGJ", "currency_pair":
+        "-Fallback-scrubbed-qRmKUA", "dealt_currency": "-Fallback-scrubbed-cEP", "mid_rate":
+        436557223.20734, "quote_id": "-Fallback-scrubbed-tRXguOOSiQIrSUdKgYSICPGQtDjIMtaqKiQg",
+        "rate_details": [{"buy_amount": -5597.43772882877, "level": "-Fallback-scrubbed-wQD",
+        "rate": 6208144578436.89, "sell_amount": 8112352.6339912}, {"buy_amount":
+        -49024823.6152446, "level": "-Fallback-scrubbed-vSoNaB", "rate": 7702402366.9233,
+        "sell_amount": 8112352.6339912}], "request_id": "-Fallback-scrubbed-sWWlNkzDuiomxEEOAwAUZwaLWGbmOurbkNjf",
+        "sell_amount": 8112352.6339912, "sell_currency": "-Fallback-scrubbed-cEP",
+        "settlement_cutoff_at": "-Fallback-scrubbed-oZSjdOtNsaRjLDsrHjULUgGJ", "short_reference_id":
+        "-Fallback-scrubbed-XGGIAdcKjHTGsgS", "status": "-Fallback-scrubbed-xjbHQyN",
+        "updated_at": "-Fallback-scrubbed-FqxIWvQpMnMpXfrBAgdVQkZk"}, {"awx_rate":
+        1683045869707.3, "buy_amount": -3328.83629730105, "buy_currency": "-Fallback-scrubbed-Erw",
+        "client_rate": 1372071576.40632, "conversion_date": "-Fallback-scrubbed-TrosODSAwH",
+        "conversion_id": "-Fallback-scrubbed-LVgGRSCezKxzfXSNEvsYMwbePTqGMbZttGHf",
+        "created_at": "-Fallback-scrubbed-dVupqRZEaStKFpGRwdMIPsXK", "currency_pair":
+        "-Fallback-scrubbed-NQPIEK", "dealt_currency": "-Fallback-scrubbed-cEP", "mid_rate":
+        9752406156.82495, "quote_id": "-Fallback-scrubbed-mfMhcBmNpaxOtJKJTJZsdMNDuTeoyMJEbdsi",
+        "rate_details": [{"buy_amount": -9679778902129.1, "level": "-Fallback-scrubbed-wQD",
+        "rate": 1683045869707.3, "sell_amount": 8112352.6339912}, {"buy_amount": -3328.83629730105,
+        "level": "-Fallback-scrubbed-vSoNaB", "rate": 1372071576.40632, "sell_amount":
+        8112352.6339912}], "request_id": "-Fallback-scrubbed-xZTCQwZfjRubGdBjEcLHIYdoUlPSdMBkGNUi",
+        "sell_amount": 8112352.6339912, "sell_currency": "-Fallback-scrubbed-cEP",
+        "settlement_cutoff_at": "-Fallback-scrubbed-dVupqRZEaStKFpGRwdMIPsXK", "short_reference_id":
+        "-Fallback-scrubbed-IqpmtwrKDPXrLDA", "status": "-Fallback-scrubbed-xjbHQyN",
+        "updated_at": "-Fallback-scrubbed-xMGDzAZYAToGqTvoqdSzHwUa"}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '11805'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 0f3ef988c79f4feeaaf3b6d34263d161
+      date:
+      - Tue, 04 Aug 2026 13:56:45 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-0f3ef988c79f4feeaaf3b6d34263d161-21c57de714dd8458-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 0f3ef988c79f4feeaaf3b6d34263d161
+      x-b3-traceid:
+      - 0f3ef988c79f4feeaaf3b6d34263d161
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '118'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

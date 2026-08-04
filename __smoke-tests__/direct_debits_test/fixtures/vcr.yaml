@@ -1,0 +1,228 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.34.2
+    method: POST
+    uri: https://api-demo.airwallex.com/api/v1/authentication/login
+  response:
+    body:
+      string: '{"expires_at": "2026-08-04T14:23:48+0000", "token": "eyJ***"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '61'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:53:47 GMT
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-a71ee3b88adf4c8fb929281b0a5cc09e-dc8b73f1998d3b5a-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - a71ee3b88adf4c8fb929281b0a5cc09e
+      x-envoy-upstream-service-time:
+      - '164'
+    status:
+      code: 201
+      message: Created
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/account?page_size=100
+  response:
+    body:
+      string: '{"account_details": {"attachments": {"additional_files": []}, "business_details":
+        {"account_usage": {"estimated_monthly_revenue": {"amount": "-Fallback-scrubbed-gDkJTi",
+        "currency": "-Fallback-scrubbed-FWZ"}, "product_reference": []}, "as_trustee":
+        null, "attachments": {"business_documents": []}, "business_address": {"country_code":
+        "-Fallback-scrubbed-co", "postcode": "79738"}, "business_identifiers": [{"country_code":
+        "-Fallback-scrubbed-co", "number": "-Fallback-scrubbed-mbMJaJFqO", "type":
+        "-Fallback-scrubbed-oTJ"}], "business_name": "-Fallback-scrubbed-acaSruLjriciucyL",
+        "business_name_english": "-Fallback-scrubbed-acaSruLjriciucyL", "business_name_trading":
+        null, "business_start_date": "-Fallback-scrubbed-GkMQniuMeW", "business_structure":
+        "-Fallback-scrubbed-DVOjRNj", "contact_number": null, "description_of_goods_or_services":
+        "-Fallback-scrubbed-phXFqlsOLeAqgkFtUSxzyumNHKXvkhqC", "explanation_for_high_risk_countries_exposure":
+        null, "exports_goods_or_services": null, "fax_number": null, "has_constitution_document":
+        null, "has_member_holding_public_office": null, "has_nominee_shareholders":
+        null, "has_prior_financial_institution_refusal": null, "has_ringgit_borrowing":
+        null, "industry_category_code": "-Fallback-scrubbed-gmUWplnwYRpC", "no_shareholders_with_over_25percent":
+        null, "operating_country": [], "registration_address": {"country_code": "-Fallback-scrubbed-co",
+        "postcode": "79738"}, "registration_address_english": {"address_line1": "1423
+        Smith Grove", "country_code": "-Fallback-scrubbed-co", "postcode": "79738",
+        "state": "-Fallback-scrubbed-ej", "suburb": "-Fallback-scrubbed-wyxCsBeyLJH"},
+        "state_of_incorporation": null, "url": "-Fallback-scrubbed-qfFbMZaPWfSwaxYllnHPkONM",
+        "urls": ["-Fallback-scrubbed-qfFbMZaPWfSwaxYllnHPkONM"]}, "business_person_details":
+        [{"attachments": {"business_person_documents": []}, "date_of_birth": "2007-04-01",
+        "email": "olsonlisa@example.net", "first_name_english": "-Fallback-scrubbed-Qodse",
+        "identifications": {"primary": {"identification_type": "-Fallback-scrubbed-dDkhSx",
+        "issuing_country_code": "-Fallback-scrubbed-co", "tax_id": {"number": "-Fallback-scrubbed-mbMJaJFqO",
+        "type": "-Fallback-scrubbed-NOal"}}}, "job_title": "-Fallback-scrubbed-hTW",
+        "last_name_english": "-Fallback-scrubbed-TBjKgi", "nationality": "-Fallback-scrubbed-co",
+        "person_id": "-Fallback-scrubbed-FSjFxjppJQiliQussjfdVXNOkyFZQifqLYMa", "phone_number":
+        "479-350-2907x369", "residential_address": {"country_code": "-Fallback-scrubbed-co",
+        "postcode": "79738"}, "roles": ["-Fallback-scrubbed-KMrPHMaxZPoRCort", "-Fallback-scrubbed-HKpANVLKCyEOUhSKkw",
+        "-Fallback-scrubbed-yjUnUpFyCtPeWIEYM"]}], "store_details": {"cross_border_transaction_percent":
+        "-Fallback-scrubbed-TSwV", "employee_size": 1927, "estimated_transaction_volume":
+        {"average_amount_per_transaction": "-Fallback-scrubbed-kXVcTGk", "currency":
+        "-Fallback-scrubbed-Fyy", "max_amount_per_transaction": "-Fallback-scrubbed-kXVcTGk",
+        "monthly_transaction_amount": "-Fallback-scrubbed-dNYBcxJC"}, "financial_statements":
+        [], "fulfillment_days": 5757, "industry_code": "-Fallback-scrubbed-lzIFPsNneQLc",
+        "mcc": "-Fallback-scrubbed-VXgy", "operating_models": ["-Fallback-scrubbed-upBWBjnloZVlXku",
+        "-Fallback-scrubbed-LVNYrsLNluXyyiLDWUhJvPmFiXbqxV"], "payment_distribution":
+        [{"payment_type": "-Fallback-scrubbed-WmJsE", "percentage": "-Fallback-scrubbed-Ltmn"},
+        {"payment_type": "-Fallback-scrubbed-iRWsm", "percentage": "-Fallback-scrubbed-Ltmn"}],
+        "selling_to_country_codes": [], "shipping_from_country_codes": [], "store_description":
+        "-Fallback-scrubbed-jWOUxXfctXkglaiJXd", "store_name": "-Fallback-scrubbed-acaSruLjriciucyL",
+        "store_photos": [], "store_websites": [{"url": "-Fallback-scrubbed-iXIrwhARIJoBKlNPaWphesGdYyinmiDiTYUqZdWdOjhzdZYCBYKMhmn"}]},
+        "trustee_details": null, "individual_details": null, "legal_entity_id": "-Fallback-scrubbed-AHbdPHwWsMKsxXkjHJtJMXvZw",
+        "legal_entity_identifier": null, "legal_entity_type": "-Fallback-scrubbed-OBthrvxf"},
+        "created_at": "-Fallback-scrubbed-JPttMeKgegxuIybuKXgbETYz", "customer_agreements":
+        {"agreed_to_data_usage": true, "agreed_to_terms_and_conditions": true, "opt_in_for_marketing":
+        false, "terms_and_conditions": {"device_data": {}, "service_agreement_type":
+        "-Fallback-scrubbed-hAmd"}}, "id": "-Fallback-scrubbed-ItyOqDNYkdsiYItSjupjRhfGyjZ",
+        "nickname": "-Fallback-scrubbed-ItyOqDNYkdsiYItSjupjRhfGyjZ", "primary_contact":
+        {"attachments": {"identity_files": []}, "email": "olsonlisa@example.net",
+        "mobile": "479-350-2907x369"}, "status": "-Fallback-scrubbed-iEydCn", "view_type":
+        "-Fallback-scrubbed-OVrNgzuT"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '4589'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 03a4066682ae4d078500fb61f5d8b177
+      date:
+      - Tue, 04 Aug 2026 13:53:49 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-03a4066682ae4d078500fb61f5d8b177-954948e069fbe8b1-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 03a4066682ae4d078500fb61f5d8b177
+      x-b3-traceid:
+      - 03a4066682ae4d078500fb61f5d8b177
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '53'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/direct_debits?page_size=100
+  response:
+    body:
+      string: '{"has_more": false, "items": []}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:53:49 GMT
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-8e0fe73eacf44f4187ebbf026668d79e-bb95e7489f9d2c0f-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 8e0fe73eacf44f4187ebbf026668d79e
+      x-envoy-upstream-service-time:
+      - '15'
+    status:
+      code: 200
+      message: OK
+version: 1

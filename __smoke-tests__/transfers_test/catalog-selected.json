@@ -1,0 +1,4459 @@
+{
+  "streams": [
+    {
+      "tap_stream_id": "account_details",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "id"
+      ],
+      "schema": {
+        "properties": {
+          "account_details": {
+            "properties": {
+              "attachments": {
+                "properties": {
+                  "additional_files": {
+                    "items": {
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "business_details": {
+                "properties": {
+                  "account_usage": {
+                    "properties": {
+                      "estimated_monthly_revenue": {
+                        "properties": {
+                          "amount": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "currency": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "type": [
+                          "object",
+                          "null"
+                        ]
+                      },
+                      "product_reference": {
+                        "items": {
+                          "type": [
+                            "string"
+                          ]
+                        },
+                        "type": [
+                          "array",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "as_trustee": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "attachments": {
+                    "properties": {
+                      "business_documents": {
+                        "items": {
+                          "properties": {},
+                          "type": "object"
+                        },
+                        "type": [
+                          "array",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "business_address": {
+                    "properties": {
+                      "country_code": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "postcode": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "business_identifiers": {
+                    "items": {
+                      "properties": {
+                        "country_code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "number": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "type": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  },
+                  "business_name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "business_name_english": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "business_name_trading": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "business_start_date": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "business_structure": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "contact_number": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "description_of_goods_or_services": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "explanation_for_high_risk_countries_exposure": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "exports_goods_or_services": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "has_member_holding_public_office": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "has_nominee_shareholders": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "has_prior_financial_institution_refusal": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "has_ringgit_borrowing": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "industry_category_code": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "no_shareholders_with_over_25percent": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "operating_country": {
+                    "items": {
+                      "type": [
+                        "string"
+                      ]
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  },
+                  "registration_address": {
+                    "properties": {
+                      "country_code": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "postcode": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "registration_address_english": {
+                    "properties": {
+                      "address_line1": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "country_code": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "postcode": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "state": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "suburb": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "state_of_incorporation": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "url": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "urls": {
+                    "items": {
+                      "type": [
+                        "string"
+                      ]
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "business_person_details": {
+                "items": {
+                  "properties": {
+                    "attachments": {
+                      "properties": {
+                        "business_person_documents": {
+                          "items": {
+                            "properties": {},
+                            "type": "object"
+                          },
+                          "type": [
+                            "array",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "date_of_birth": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "email": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "first_name_english": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "identifications": {
+                      "properties": {
+                        "primary": {
+                          "properties": {
+                            "identification_type": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "issuing_country_code": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "tax_id": {
+                              "properties": {
+                                "number": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "type": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "type": [
+                                "object",
+                                "null"
+                              ]
+                            }
+                          },
+                          "type": [
+                            "object",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "job_title": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "last_name_english": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "nationality": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "person_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "phone_number": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "residential_address": {
+                      "properties": {
+                        "country_code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "postcode": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": [
+                        "object",
+                        "null"
+                      ]
+                    },
+                    "roles": {
+                      "items": {
+                        "type": [
+                          "string"
+                        ]
+                      },
+                      "type": [
+                        "array",
+                        "null"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "store_details": {
+                "properties": {
+                  "cross_border_transaction_percent": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "employee_size": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "estimated_transaction_volume": {
+                    "properties": {
+                      "average_amount_per_transaction": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "currency": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "max_amount_per_transaction": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "monthly_transaction_amount": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "financial_statements": {
+                    "items": {
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  },
+                  "fulfillment_days": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "industry_code": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "mcc": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "operating_models": {
+                    "items": {
+                      "type": [
+                        "string"
+                      ]
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  },
+                  "payment_distribution": {
+                    "items": {
+                      "properties": {
+                        "payment_type": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "percentage": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  },
+                  "selling_to_country_codes": {
+                    "items": {
+                      "type": [
+                        "string"
+                      ]
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  },
+                  "shipping_from_country_codes": {
+                    "items": {
+                      "type": [
+                        "string"
+                      ]
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  },
+                  "store_description": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "store_name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "store_photos": {
+                    "items": {
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  },
+                  "store_websites": {
+                    "items": {
+                      "properties": {
+                        "url": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "trustee_details": {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "individual_details": {
+                "properties": {},
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "legal_entity_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "legal_entity_identifier": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "legal_entity_type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "customer_agreements": {
+            "properties": {
+              "agreed_to_data_usage": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "agreed_to_terms_and_conditions": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "opt_in_for_marketing": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "terms_and_conditions": {
+                "properties": {
+                  "device_data": {
+                    "properties": {},
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "service_agreement_type": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nickname": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "primary_contact": {
+            "properties": {
+              "attachments": {
+                "properties": {
+                  "identity_files": {
+                    "items": {
+                      "properties": {},
+                      "type": "object"
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "email": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "mobile": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "view_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "account_details",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "account_details"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "created_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "customer_agreements"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "nickname"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "primary_contact"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "view_type"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": true,
+            "table-key-properties": [
+              "id"
+            ]
+          }
+        }
+      ],
+      "selected": true
+    },
+    {
+      "tap_stream_id": "accounts",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "id"
+      ],
+      "schema": {
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "accounts",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": true,
+            "table-key-properties": [
+              "id"
+            ]
+          }
+        }
+      ],
+      "selected": true
+    },
+    {
+      "tap_stream_id": "bills",
+      "replication_key": "created_at",
+      "replication_method": "INCREMENTAL",
+      "key_properties": [
+        "id"
+      ],
+      "schema": {
+        "properties": {
+          "approvers": {
+            "items": {
+              "type": [
+                "string"
+              ]
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "attachments": {
+            "items": {
+              "properties": {
+                "content_type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "created_at": {
+                  "format": "date-time",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "file_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "file_url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "bill_payments": {
+            "items": {
+              "properties": {
+                "amount": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "card_transaction": {
+                  "properties": {
+                    "account_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "card_funding_type": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "card_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "card_transaction_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "source_amount": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "source_currency": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "transacted_at": {
+                      "format": "date-time",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "created_at": {
+                  "format": "date-time",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "currency": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "transfer": {
+                  "properties": {
+                    "account_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "multi_bill": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "source_amount": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "source_currency": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "transfer_date": {
+                      "format": "date-time",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "transfer_id": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "billing_amount": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "billing_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "due_date": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "external_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "invoice_number": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "issued_date": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "legal_entity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "line_items": {
+            "items": {
+              "properties": {
+                "accounting_field_selections": {
+                  "items": {
+                    "properties": {
+                      "external_id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "type": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "value": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "value_label": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "description": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "purchase_order_line_item_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "quantity": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "tax_amount": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "total_amount": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "unit_price": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "purchase_order_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sync_error_message": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sync_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tax_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vendor_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "bills",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "approvers"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "attachments"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "bill_payments"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "billing_amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "billing_currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "created_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "description"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "due_date"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "external_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "invoice_number"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "issued_date"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "legal_entity_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "line_items"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "purchase_order_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "sync_error_message"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "sync_status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "tax_status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "updated_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "vendor_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": false,
+            "table-key-properties": [
+              "id"
+            ],
+            "valid-replication-keys": [
+              "created_at"
+            ]
+          }
+        }
+      ],
+      "selected": false
+    },
+    {
+      "tap_stream_id": "conversions",
+      "replication_key": "created_at",
+      "replication_method": "INCREMENTAL",
+      "key_properties": [
+        "conversion_id"
+      ],
+      "schema": {
+        "properties": {
+          "application_fee_options": {
+            "items": {
+              "properties": {
+                "amount": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "currency": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "metadata": {
+                  "type": [
+                    "object",
+                    "string",
+                    "null"
+                  ]
+                },
+                "percentage": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "source_type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "application_fees": {
+            "items": {
+              "properties": {
+                "amount": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "currency": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "source_type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "awx_rate": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "buy_amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "buy_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "client_rate": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "conversion_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "conversion_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "currency_pair": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dealt_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "funding": {
+            "properties": {
+              "debit_type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "failure_reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "funding_source_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "funding_source": {
+            "properties": {
+              "debit_type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "mid_rate": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "quote_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rate_details": {
+            "items": {
+              "properties": {
+                "buy_amount": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "level": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "rate": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "sell_amount": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "request_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sell_amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "sell_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "settlement_cutoff_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "short_reference_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "conversions",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "application_fee_options"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "application_fees"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "awx_rate"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "buy_amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "buy_currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "client_rate"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "conversion_date"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "conversion_id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "created_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "currency_pair"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "dealt_currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "funding"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "funding_source"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "mid_rate"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "quote_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "rate_details"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "request_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "sell_amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "sell_currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "settlement_cutoff_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "short_reference_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "updated_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": false,
+            "table-key-properties": [
+              "conversion_id"
+            ],
+            "valid-replication-keys": [
+              "created_at"
+            ]
+          }
+        }
+      ],
+      "selected": false
+    },
+    {
+      "tap_stream_id": "deposits",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "id"
+      ],
+      "schema": {
+        "properties": {
+          "amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "estimated_settled_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "failure_details": {
+            "type": [
+              "object",
+              "string",
+              "null"
+            ]
+          },
+          "fee": {
+            "properties": {
+              "amount": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "currency": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "funding_source_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "global_account_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "payer": {
+            "type": [
+              "object",
+              "string",
+              "null"
+            ]
+          },
+          "provider_transaction_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reference": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "settled_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "deposits",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "created_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "estimated_settled_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "failure_details"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "fee"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "funding_source_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "global_account_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "payer"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "provider_transaction_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "reference"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "settled_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "type"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": false,
+            "table-key-properties": [
+              "id"
+            ]
+          }
+        }
+      ],
+      "selected": false
+    },
+    {
+      "tap_stream_id": "direct_debits",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "transaction_id"
+      ],
+      "schema": {
+        "properties": {
+          "amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "debtor_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "global_account_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "mandate_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "statement_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transaction_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "direct_debits",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "created_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "debtor_name"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "global_account_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "mandate_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "statement_ref"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transaction_id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": false,
+            "table-key-properties": [
+              "transaction_id"
+            ]
+          }
+        }
+      ],
+      "selected": false
+    },
+    {
+      "tap_stream_id": "expenses",
+      "replication_key": "created_at",
+      "replication_method": "INCREMENTAL",
+      "key_properties": [
+        "id"
+      ],
+      "schema": {
+        "properties": {
+          "account_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "accounting_field_selections": {
+            "items": {
+              "properties": {
+                "external_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "value_label": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "approvers": {
+            "items": {
+              "type": [
+                "string"
+              ]
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "attachments": {
+            "items": {
+              "properties": {
+                "content_type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "created_at": {
+                  "format": "date-time",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "file_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "file_url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "attendees": {
+            "items": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "billing_amount": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "billing_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "card_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "card_transaction": {
+            "properties": {
+              "amount": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "currency": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "comments": {
+            "items": {
+              "properties": {
+                "content": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "created_at": {
+                  "format": "date-time",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "created_by": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "legal_entity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "line_items": {
+            "items": {
+              "properties": {
+                "accounting_field_selections": {
+                  "items": {
+                    "properties": {
+                      "external_id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "type": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "value": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "value_label": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": [
+                    "array",
+                    "null"
+                  ]
+                },
+                "description": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "transaction_amount": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "merchant": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "settled_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sync_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "expenses",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "account_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "accounting_field_selections"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "approvers"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "attachments"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "attendees"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "billing_amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "billing_currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "card_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "card_transaction"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "comments"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "created_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "description"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "legal_entity_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "line_items"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "merchant"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "settled_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "sync_status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "updated_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": false,
+            "table-key-properties": [
+              "id"
+            ],
+            "valid-replication-keys": [
+              "created_at"
+            ]
+          }
+        }
+      ],
+      "selected": false
+    },
+    {
+      "tap_stream_id": "financial_transactions",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "id",
+        "transaction_type"
+      ],
+      "schema": {
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "batch_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "funding_source_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transaction_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "client_rate": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "currency_pair": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "net": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "fee": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "estimated_settled_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "settled_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "legal_entity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "account_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "financial_transactions",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "batch_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "source_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "funding_source_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "source_type"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transaction_type"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "client_rate"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "currency_pair"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "net"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "fee"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "estimated_settled_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "settled_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "description"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "created_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "legal_entity_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "account_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": false,
+            "table-key-properties": [
+              "id",
+              "transaction_type"
+            ]
+          }
+        }
+      ],
+      "selected": false
+    },
+    {
+      "tap_stream_id": "issuing_transactions",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "transaction_id"
+      ],
+      "schema": {
+        "properties": {
+          "acquiring_institution_identifier": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "auth_code": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "billing_amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "billing_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "card_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "card_nickname": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "card_transaction_data": {
+            "properties": {
+              "card_transaction_event_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "card_transaction_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "card_transaction_lifecycle_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "lifecycle_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "masked_card_number": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "merchant": {
+            "properties": {
+              "additional_merchant_info": {
+                "properties": {
+                  "merchant_category": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "merchant_sub_category": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "category_code": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "city": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "country": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "identifier": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "network_transaction_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "posted_date": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "retrieval_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "risk_details": {
+            "properties": {
+              "risk_actions_performed": {
+                "items": {
+                  "type": [
+                    "string"
+                  ]
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "risk_factors": {
+                "items": {
+                  "type": [
+                    "string"
+                  ]
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "three_dsecure_outcome": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transaction_amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "transaction_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transaction_date": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transaction_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transaction_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "legal_entity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "account_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "issuing_transactions",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "acquiring_institution_identifier"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "auth_code"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "billing_amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "billing_currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "card_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "card_nickname"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "card_transaction_data"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "lifecycle_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "masked_card_number"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "merchant"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "network_transaction_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "posted_date"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "retrieval_ref"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "risk_details"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transaction_amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transaction_currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transaction_date"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transaction_id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transaction_type"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "legal_entity_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "account_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": false,
+            "table-key-properties": [
+              "transaction_id"
+            ]
+          }
+        }
+      ],
+      "selected": false
+    },
+    {
+      "tap_stream_id": "transfers",
+      "replication_method": "FULL_TABLE",
+      "key_properties": [
+        "id"
+      ],
+      "schema": {
+        "properties": {
+          "amount_beneficiary_receives": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "amount_payer_pays": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "beneficiary": {
+            "properties": {
+              "additional_info": {
+                "properties": {
+                  "personal_id_number": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "personal_id_type": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "personal_mobile_number": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "address": {
+                "properties": {
+                  "city": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "country_code": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "postcode": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "state": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "street_address": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "bank_details": {
+                "properties": {
+                  "account_currency": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "account_name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "account_number": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "bank_country_code": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "bank_name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "swift_code": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "date_of_birth": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "entity_type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "first_name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "last_name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "beneficiary_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "conversion": {
+            "properties": {
+              "currency_pair": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "rate": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fee_amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "fee_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fee_paid_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "funding": {
+            "properties": {
+              "status": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "payer": {
+            "properties": {
+              "additional_info": {
+                "properties": {
+                  "business_incorporation_date": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "business_registration_number": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "business_registration_type": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "address": {
+                "properties": {
+                  "city": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "country_code": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "postcode": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "state": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "street_address": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "company_name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "entity_type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reference": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "remarks": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "request_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "short_reference_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "source_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "swift_charge_option": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transfer_amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "transfer_currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transfer_date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "transfer_method": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "stream": "transfers",
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "amount_beneficiary_receives"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "amount_payer_pays"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "beneficiary"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "beneficiary_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "conversion"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "created_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "fee_amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "fee_currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "fee_paid_by"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "funding"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "id"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "payer"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "reason"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "reference"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "remarks"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "request_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "short_reference_id"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "source_amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "source_currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "status"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "swift_charge_option"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transfer_amount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transfer_currency"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transfer_date"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "transfer_method"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "updated_at"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "inclusion": "available",
+            "selected": true,
+            "table-key-properties": [
+              "id"
+            ]
+          }
+        }
+      ],
+      "selected": true
+    }
+  ]
+}

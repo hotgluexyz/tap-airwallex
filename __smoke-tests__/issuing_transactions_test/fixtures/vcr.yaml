@@ -1,0 +1,748 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.34.2
+    method: POST
+    uri: https://api-demo.airwallex.com/api/v1/authentication/login
+  response:
+    body:
+      string: '{"expires_at": "2026-08-04T14:26:22+0000", "token": "eyJ***"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '61'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:21 GMT
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-099e633a6acb43cc88e6da9d73f75789-7fa1f9b82cabbf9e-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 099e633a6acb43cc88e6da9d73f75789
+      x-envoy-upstream-service-time:
+      - '172'
+    status:
+      code: 201
+      message: Created
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/account?page_size=100
+  response:
+    body:
+      string: '{"account_details": {"attachments": {"additional_files": []}, "business_details":
+        {"account_usage": {"estimated_monthly_revenue": {"amount": "-Fallback-scrubbed-JijUmn",
+        "currency": "-Fallback-scrubbed-MpH"}, "product_reference": []}, "as_trustee":
+        null, "attachments": {"business_documents": []}, "business_address": {"country_code":
+        "-Fallback-scrubbed-bq", "postcode": "66230"}, "business_identifiers": [{"country_code":
+        "-Fallback-scrubbed-bq", "number": "-Fallback-scrubbed-DKPopnHZB", "type":
+        "-Fallback-scrubbed-ReH"}], "business_name": "-Fallback-scrubbed-AyaQobEzpAXPELNM",
+        "business_name_english": "-Fallback-scrubbed-AyaQobEzpAXPELNM", "business_name_trading":
+        null, "business_start_date": "-Fallback-scrubbed-FJfwexEIep", "business_structure":
+        "-Fallback-scrubbed-QDvqERz", "contact_number": null, "description_of_goods_or_services":
+        "-Fallback-scrubbed-TJZPSzEQLplXYTjRtxhUPUaqDMHUhzLJ", "explanation_for_high_risk_countries_exposure":
+        null, "exports_goods_or_services": null, "fax_number": null, "has_constitution_document":
+        null, "has_member_holding_public_office": null, "has_nominee_shareholders":
+        null, "has_prior_financial_institution_refusal": null, "has_ringgit_borrowing":
+        null, "industry_category_code": "-Fallback-scrubbed-vQCabCdTIjts", "no_shareholders_with_over_25percent":
+        null, "operating_country": [], "registration_address": {"country_code": "-Fallback-scrubbed-bq",
+        "postcode": "66230"}, "registration_address_english": {"address_line1": "6054
+        Gonzalez Wall Suite 965", "country_code": "-Fallback-scrubbed-bq", "postcode":
+        "66230", "state": "-Fallback-scrubbed-ZG", "suburb": "-Fallback-scrubbed-zIzCYbqZuPg"},
+        "state_of_incorporation": null, "url": "-Fallback-scrubbed-WBNFeehxCLGlRHCNjzzJiOaF",
+        "urls": ["-Fallback-scrubbed-WBNFeehxCLGlRHCNjzzJiOaF"]}, "business_person_details":
+        [{"attachments": {"business_person_documents": []}, "date_of_birth": "2008-01-20",
+        "email": "allison89@example.com", "first_name_english": "-Fallback-scrubbed-Iuntx",
+        "identifications": {"primary": {"identification_type": "-Fallback-scrubbed-fpxGhr",
+        "issuing_country_code": "-Fallback-scrubbed-bq", "tax_id": {"number": "-Fallback-scrubbed-DKPopnHZB",
+        "type": "-Fallback-scrubbed-Wksf"}}}, "job_title": "-Fallback-scrubbed-tZQ",
+        "last_name_english": "-Fallback-scrubbed-nARauP", "nationality": "-Fallback-scrubbed-bq",
+        "person_id": "-Fallback-scrubbed-mkojCCmryXNgKlNIVSszmIYGLXzOSmeyKyGq", "phone_number":
+        "(949)387-8857x04347", "residential_address": {"country_code": "-Fallback-scrubbed-bq",
+        "postcode": "66230"}, "roles": ["-Fallback-scrubbed-AYsRIedlGQivPfsm", "-Fallback-scrubbed-CUBpdbbOxPHleyXEjH",
+        "-Fallback-scrubbed-vPwKWlvpdHgrExVUB"]}], "store_details": {"cross_border_transaction_percent":
+        "-Fallback-scrubbed-ymdQ", "employee_size": 3072, "estimated_transaction_volume":
+        {"average_amount_per_transaction": "-Fallback-scrubbed-bjkcALB", "currency":
+        "-Fallback-scrubbed-Opi", "max_amount_per_transaction": "-Fallback-scrubbed-bjkcALB",
+        "monthly_transaction_amount": "-Fallback-scrubbed-LMsxbfgO"}, "financial_statements":
+        [], "fulfillment_days": 8088, "industry_code": "-Fallback-scrubbed-FpDEsSOmvtZy",
+        "mcc": "-Fallback-scrubbed-urDk", "operating_models": ["-Fallback-scrubbed-KrlkDPOzgQEiaWy",
+        "-Fallback-scrubbed-DkHNKHXIFUOEDXoNAvxVstHUVIKrnm"], "payment_distribution":
+        [{"payment_type": "-Fallback-scrubbed-WiNQN", "percentage": "-Fallback-scrubbed-zLaX"},
+        {"payment_type": "-Fallback-scrubbed-afyIl", "percentage": "-Fallback-scrubbed-zLaX"}],
+        "selling_to_country_codes": [], "shipping_from_country_codes": [], "store_description":
+        "-Fallback-scrubbed-uxPUjOXWPLJnYDnIwi", "store_name": "-Fallback-scrubbed-AyaQobEzpAXPELNM",
+        "store_photos": [], "store_websites": [{"url": "-Fallback-scrubbed-BxwnZnWlQrEbEMmaMaCNkugpAHqvoycXQzlFcCHEJwfEygVcNjFejMW"}]},
+        "trustee_details": null, "individual_details": null, "legal_entity_id": "-Fallback-scrubbed-ZsOIIkBpJEagCFkJCzDEtSScO",
+        "legal_entity_identifier": null, "legal_entity_type": "-Fallback-scrubbed-UKqzhycS"},
+        "created_at": "-Fallback-scrubbed-qRrlpshqzZZxdXgMTQdphiIa", "customer_agreements":
+        {"agreed_to_data_usage": false, "agreed_to_terms_and_conditions": false, "opt_in_for_marketing":
+        true, "terms_and_conditions": {"device_data": {}, "service_agreement_type":
+        "-Fallback-scrubbed-Koiu"}}, "id": "-Fallback-scrubbed-ZuPmmQQpDerLbBPEeXmoSunNEDp",
+        "nickname": "-Fallback-scrubbed-ZuPmmQQpDerLbBPEeXmoSunNEDp", "primary_contact":
+        {"attachments": {"identity_files": []}, "email": "allison89@example.com",
+        "mobile": "(949)387-8857x04347"}, "status": "-Fallback-scrubbed-eWvJFf", "view_type":
+        "-Fallback-scrubbed-vKiRRMaV"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '4608'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 4cb4db9a6d494e2892817dddabe2918a
+      date:
+      - Tue, 04 Aug 2026 13:56:23 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-4cb4db9a6d494e2892817dddabe2918a-987e1f0fab5c6ceb-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 4cb4db9a6d494e2892817dddabe2918a
+      x-b3-traceid:
+      - 4cb4db9a6d494e2892817dddabe2918a
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '55'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/issuing/transactions?page_size=100&from_created_at=2026-01-01T00%3A00%3A00.000000Z&to_created_at=2026-01-31T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": []}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - Server-Timing
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:24 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-9e2070cc66254dafad6845a6a866e393-83dd677e9538ab37-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 9e2070cc66254dafad6845a6a866e393
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '18'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/issuing/transactions?page_size=100&from_created_at=2026-02-01T00%3A00%3A00.000000Z&to_created_at=2026-02-28T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": []}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - Server-Timing
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:24 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-e7bc8fc6f4d742be8cdc2794d44c3062-ae99ca57a0e2b19f-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - e7bc8fc6f4d742be8cdc2794d44c3062
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '16'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/issuing/transactions?page_size=100&from_created_at=2026-03-01T00%3A00%3A00.000000Z&to_created_at=2026-03-31T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": []}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - Server-Timing
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:25 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-4b00efba7444407aa59c8ebf31eae00a-305f29ab44b9d3a5-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 4b00efba7444407aa59c8ebf31eae00a
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '12'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/issuing/transactions?page_size=100&from_created_at=2026-04-01T00%3A00%3A00.000000Z&to_created_at=2026-04-30T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": []}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - Server-Timing
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:25 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-05173c4472a246ef9f4d1e9f58874939-7f6df56ba0c2ec72-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 05173c4472a246ef9f4d1e9f58874939
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '16'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/issuing/transactions?page_size=100&from_created_at=2026-05-01T00%3A00%3A00.000000Z&to_created_at=2026-05-31T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": []}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - Server-Timing
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:25 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-c0925029d6e3433690089190c0b693a2-1a92cf66f6494217-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - c0925029d6e3433690089190c0b693a2
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '14'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/issuing/transactions?page_size=100&from_created_at=2026-06-01T00%3A00%3A00.000000Z&to_created_at=2026-06-30T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [{"acquiring_institution_identifier":
+        "-Fallback-scrubbed-yheaIkOlGrA", "auth_code": "-Fallback-scrubbed-tawxHA",
+        "billing_amount": 8506264.89199514, "billing_currency": "-Fallback-scrubbed-MpH",
+        "card_id": "-Fallback-scrubbed-DcaAjIOeBinYoXOdwbUwrHVxHtlXccpCGphN", "card_nickname":
+        "-Fallback-scrubbed-EgvSjhMHorNVxKH", "card_transaction_data": {"card_transaction_event_id":
+        "-Fallback-scrubbed-xLYFngyhZXqTiuDEQJhxNJPvNcxSyfUhRjWl", "card_transaction_id":
+        "-Fallback-scrubbed-WYcpATKWayTwAYNlkPWpnvhbWGaCiQupWiFk", "card_transaction_lifecycle_id":
+        "-Fallback-scrubbed-oNqvkJCxjnctQEWsZdUfZetTOxohBDtpoQHF"}, "lifecycle_id":
+        "-Fallback-scrubbed-WYcpATKWayTwAYNlkPWpnvhbWGaCiQupWiFk", "masked_card_number":
+        "-Fallback-scrubbed-QpobyhnzhpZaYyny", "merchant": {"additional_merchant_info":
+        {"merchant_category": "-Fallback-scrubbed-yDqiwfPlZ", "merchant_sub_category":
+        "-Fallback-scrubbed-FLPqHyYnTjrOOPkCzC"}, "category_code": "-Fallback-scrubbed-eeVD",
+        "city": "Boydfurt", "country": "-Fallback-scrubbed-", "identifier": "-Fallback-scrubbed-hcdUdbiMRnQKORC",
+        "name": "Carol Moon"}, "network_transaction_id": "-Fallback-scrubbed-MzQeglUhdFmnGbL",
+        "posted_date": "-Fallback-scrubbed-ZeJpYyDAYnIbTJCnbdVLbSxxaNsm", "retrieval_ref":
+        "-Fallback-scrubbed-tbMKgEAghhEe", "risk_details": {"risk_actions_performed":
+        [], "risk_factors": [], "three_dsecure_outcome": "-Fallback-scrubbed-ZMQJyRWYiohgTa"},
+        "status": "-Fallback-scrubbed-GcsqrkaC", "transaction_amount": 8506264.89199514,
+        "transaction_currency": "-Fallback-scrubbed-MpH", "transaction_date": "-Fallback-scrubbed-ZeJpYyDAYnIbTJCnbdVLbSxxaNsm",
+        "transaction_id": "-Fallback-scrubbed-UxUgIacMWghsKtmDWYMsBmOpIHnxEvwoobIk",
+        "transaction_type": "-Fallback-scrubbed-IXDdKsET"}, {"acquiring_institution_identifier":
+        "-Fallback-scrubbed-NKzWRWEHUDx", "auth_code": "-Fallback-scrubbed-IFHqaD",
+        "billing_amount": 97198180.3287833, "billing_currency": "-Fallback-scrubbed-MpH",
+        "card_id": "-Fallback-scrubbed-DcaAjIOeBinYoXOdwbUwrHVxHtlXccpCGphN", "card_nickname":
+        "-Fallback-scrubbed-EgvSjhMHorNVxKH", "card_transaction_data": {"card_transaction_event_id":
+        "-Fallback-scrubbed-AvqZbViAAgpNIuyTpQyvaCgjAMFMbielZMFd", "card_transaction_id":
+        "-Fallback-scrubbed-NMziFLBDIjUdtVNqIQXYVlfagySUJIRDarIw", "card_transaction_lifecycle_id":
+        "-Fallback-scrubbed-CpIQYaCNNciABQzpuuHfiiPtnXwPVhLtpIqN"}, "lifecycle_id":
+        "-Fallback-scrubbed-NMziFLBDIjUdtVNqIQXYVlfagySUJIRDarIw", "masked_card_number":
+        "-Fallback-scrubbed-QpobyhnzhpZaYyny", "merchant": {"additional_merchant_info":
+        {"merchant_category": "-Fallback-scrubbed-yDqiwfPlZ", "merchant_sub_category":
+        "-Fallback-scrubbed-FLPqHyYnTjrOOPkCzC"}, "category_code": "-Fallback-scrubbed-eeVD",
+        "city": "Boydfurt", "country": "-Fallback-scrubbed-", "identifier": "-Fallback-scrubbed-YTEbjhEicMTfqgd",
+        "name": "Hailey Gilbert"}, "network_transaction_id": "-Fallback-scrubbed-rxPzykQJnoICBMc",
+        "posted_date": "-Fallback-scrubbed-ITgjCEZugDgNGzLzjubinHcRUwQR", "retrieval_ref":
+        "-Fallback-scrubbed-qlLYWZPcIRVX", "risk_details": {"risk_actions_performed":
+        [], "risk_factors": [], "three_dsecure_outcome": "-Fallback-scrubbed-ZMQJyRWYiohgTa"},
+        "status": "-Fallback-scrubbed-GcsqrkaC", "transaction_amount": 97198180.3287833,
+        "transaction_currency": "-Fallback-scrubbed-MpH", "transaction_date": "-Fallback-scrubbed-ITgjCEZugDgNGzLzjubinHcRUwQR",
+        "transaction_id": "-Fallback-scrubbed-UPduldpVivAhZPJJvWxFFclYivXglnMTKPAp",
+        "transaction_type": "-Fallback-scrubbed-IXDdKsET"}, {"acquiring_institution_identifier":
+        "-Fallback-scrubbed-bStuuqpzkqW", "auth_code": "-Fallback-scrubbed-xMfaAt",
+        "billing_amount": 9544.61413439567, "billing_currency": "-Fallback-scrubbed-MpH",
+        "card_id": "-Fallback-scrubbed-DcaAjIOeBinYoXOdwbUwrHVxHtlXccpCGphN", "card_nickname":
+        "-Fallback-scrubbed-EgvSjhMHorNVxKH", "card_transaction_data": {"card_transaction_event_id":
+        "-Fallback-scrubbed-LWLONmkrKfbPaldmWzhimDLRNORZvHpLZJnw", "card_transaction_id":
+        "-Fallback-scrubbed-ATTCXrPVRvUauEOrXSRJjtfeibhAeyvQsqAB", "card_transaction_lifecycle_id":
+        "-Fallback-scrubbed-NeWQhcRHKEfUyuDEOKnRwLdPqCpxFQAsNHgv"}, "lifecycle_id":
+        "-Fallback-scrubbed-ATTCXrPVRvUauEOrXSRJjtfeibhAeyvQsqAB", "masked_card_number":
+        "-Fallback-scrubbed-QpobyhnzhpZaYyny", "merchant": {"additional_merchant_info":
+        {"merchant_category": "-Fallback-scrubbed-yDqiwfPlZ", "merchant_sub_category":
+        "-Fallback-scrubbed-FLPqHyYnTjrOOPkCzC"}, "category_code": "-Fallback-scrubbed-eeVD",
+        "city": "Boydfurt", "country": "-Fallback-scrubbed-", "identifier": "-Fallback-scrubbed-gNnYrybCXcvjKHt",
+        "name": "Hailey Gilbert"}, "network_transaction_id": "-Fallback-scrubbed-ZFqNQjcIkqILfzi",
+        "posted_date": "-Fallback-scrubbed-aCwYUBAVrtCNgUNUyqXRFDTVOaSu", "retrieval_ref":
+        "-Fallback-scrubbed-qSLuLJeUhySF", "risk_details": {"risk_actions_performed":
+        [], "risk_factors": [], "three_dsecure_outcome": "-Fallback-scrubbed-ZMQJyRWYiohgTa"},
+        "status": "-Fallback-scrubbed-GcsqrkaC", "transaction_amount": 9544.61413439567,
+        "transaction_currency": "-Fallback-scrubbed-MpH", "transaction_date": "-Fallback-scrubbed-aCwYUBAVrtCNgUNUyqXRFDTVOaSu",
+        "transaction_id": "-Fallback-scrubbed-xLkMNtXCMfYaxctpvnkYvVNJeNUDYbmSbDmY",
+        "transaction_type": "-Fallback-scrubbed-IXDdKsET"}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - Server-Timing
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:26 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-b5ff1cca0be844cfa9fa3711e117086d-ce63bfc737cb1ce8-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - b5ff1cca0be844cfa9fa3711e117086d
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '142'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/issuing/transactions?page_size=100&from_created_at=2026-07-01T00%3A00%3A00.000000Z&to_created_at=2026-07-31T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [{"acquiring_institution_identifier":
+        "-Fallback-scrubbed-iaLCvMDBrYF", "auth_code": "-Fallback-scrubbed-IFHqaD",
+        "billing_amount": 2741, "billing_currency": "-Fallback-scrubbed-MpH", "card_id":
+        "-Fallback-scrubbed-DcaAjIOeBinYoXOdwbUwrHVxHtlXccpCGphN", "card_nickname":
+        "-Fallback-scrubbed-EgvSjhMHorNVxKH", "card_transaction_data": {"card_transaction_event_id":
+        "-Fallback-scrubbed-bweAgauSfIBPHoZGIWQoelyIcYAMCZtXddSU", "card_transaction_id":
+        "-Fallback-scrubbed-WVbnBsXdMafHIvmoXUEaeNbhUOsaOqGSdXFH", "card_transaction_lifecycle_id":
+        "-Fallback-scrubbed-CpIQYaCNNciABQzpuuHfiiPtnXwPVhLtpIqN"}, "lifecycle_id":
+        "-Fallback-scrubbed-NMziFLBDIjUdtVNqIQXYVlfagySUJIRDarIw", "masked_card_number":
+        "-Fallback-scrubbed-QpobyhnzhpZaYyny", "merchant": {"additional_merchant_info":
+        {"merchant_category": "-Fallback-scrubbed-yDqiwfPlZ", "merchant_sub_category":
+        "-Fallback-scrubbed-FLPqHyYnTjrOOPkCzC"}, "category_code": "-Fallback-scrubbed-eeVD",
+        "city": "Boydfurt", "country": "-Fallback-scrubbed-", "identifier": "-Fallback-scrubbed-uCjXSXsoqthbKHL",
+        "name": "Frederick Stanley"}, "network_transaction_id": "-Fallback-scrubbed-TqYzoanRXWqClRw",
+        "posted_date": "-Fallback-scrubbed-tGwwsMSmfBnACoVCJuVpeEVMtMlG", "retrieval_ref":
+        "-Fallback-scrubbed-qQrcwWUpArje", "risk_details": {"risk_actions_performed":
+        [], "risk_factors": [], "three_dsecure_outcome": "-Fallback-scrubbed-ZMQJyRWYiohgTa"},
+        "status": "-Fallback-scrubbed-RDLqfgz", "transaction_amount": 2741, "transaction_currency":
+        "-Fallback-scrubbed-MpH", "transaction_date": "-Fallback-scrubbed-tGwwsMSmfBnACoVCJuVpeEVMtMlG",
+        "transaction_id": "-Fallback-scrubbed-ppBaQLjwLupfxrMhuTTLWxEYomTGrgqbDhAV",
+        "transaction_type": "-Fallback-scrubbed-IXDdKsET"}, {"acquiring_institution_identifier":
+        "-Fallback-scrubbed-PGQmbeBbTjU", "auth_code": "-Fallback-scrubbed-JFGaxK",
+        "billing_amount": 2741, "billing_currency": "-Fallback-scrubbed-MpH", "card_id":
+        "-Fallback-scrubbed-DcaAjIOeBinYoXOdwbUwrHVxHtlXccpCGphN", "card_nickname":
+        "-Fallback-scrubbed-EgvSjhMHorNVxKH", "card_transaction_data": {"card_transaction_event_id":
+        "-Fallback-scrubbed-bKqNxKgPeXiVCnLSJhnGvGCwhXAFgKeHQzwo", "card_transaction_id":
+        "-Fallback-scrubbed-KOzOEYZuFhiVciCMdbAlqjrlEyPRxPvOyOWX", "card_transaction_lifecycle_id":
+        "-Fallback-scrubbed-DGAnnXnCWehcuOGmmrBBHaYUhkLaFUyzVVrB"}, "lifecycle_id":
+        "-Fallback-scrubbed-KOzOEYZuFhiVciCMdbAlqjrlEyPRxPvOyOWX", "masked_card_number":
+        "-Fallback-scrubbed-QpobyhnzhpZaYyny", "merchant": {"additional_merchant_info":
+        {"merchant_category": "-Fallback-scrubbed-yDqiwfPlZ", "merchant_sub_category":
+        "-Fallback-scrubbed-FLPqHyYnTjrOOPkCzC"}, "category_code": "-Fallback-scrubbed-eeVD",
+        "city": "Boydfurt", "country": "-Fallback-scrubbed-", "identifier": "-Fallback-scrubbed-nKBjKfOslwTrJaL",
+        "name": "Joseph Lyons"}, "network_transaction_id": "-Fallback-scrubbed-TqYzoanRXWqClRw",
+        "posted_date": "-Fallback-scrubbed-cgUVnNEqyiwZvrLMtwmxPSnKBMdf", "retrieval_ref":
+        "-Fallback-scrubbed-oVhudcLpfhMl", "risk_details": {"risk_actions_performed":
+        [], "risk_factors": [], "three_dsecure_outcome": "-Fallback-scrubbed-ZMQJyRWYiohgTa"},
+        "status": "-Fallback-scrubbed-GcsqrkaC", "transaction_amount": 2741, "transaction_currency":
+        "-Fallback-scrubbed-MpH", "transaction_date": "-Fallback-scrubbed-cgUVnNEqyiwZvrLMtwmxPSnKBMdf",
+        "transaction_id": "-Fallback-scrubbed-vIUocjVyVDFJaNRTIfyafAwrGxRSXCZCvxTb",
+        "transaction_type": "-Fallback-scrubbed-IXDdKsET"}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - Server-Timing
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:27 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-2095ce7a1aaa4df7b49bfaa9ce2e7f03-a0089494cb67b48f-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 2095ce7a1aaa4df7b49bfaa9ce2e7f03
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '120'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/issuing/transactions?page_size=100&from_created_at=2026-08-01T00%3A00%3A00.000000Z&to_created_at=2026-08-04T13%3A54%3A00.000000Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [{"acquiring_institution_identifier":
+        "-Fallback-scrubbed-befwItPrdPK", "auth_code": "-Fallback-scrubbed-xMfaAt",
+        "billing_amount": 9091, "billing_currency": "-Fallback-scrubbed-MpH", "card_id":
+        "-Fallback-scrubbed-DcaAjIOeBinYoXOdwbUwrHVxHtlXccpCGphN", "card_nickname":
+        "-Fallback-scrubbed-EgvSjhMHorNVxKH", "card_transaction_data": {"card_transaction_event_id":
+        "-Fallback-scrubbed-WeYGaHeEyUhrFlPPPLeMvmWKMLslnUbeERDw", "card_transaction_id":
+        "-Fallback-scrubbed-SbwLXTbadMtCdhjJIPTzqxbjtkWwSQURjQSz", "card_transaction_lifecycle_id":
+        "-Fallback-scrubbed-NeWQhcRHKEfUyuDEOKnRwLdPqCpxFQAsNHgv"}, "failure_reason":
+        "-Fallback-scrubbed-WshjAdbVzzKceP", "lifecycle_id": "-Fallback-scrubbed-ATTCXrPVRvUauEOrXSRJjtfeibhAeyvQsqAB",
+        "masked_card_number": "-Fallback-scrubbed-QpobyhnzhpZaYyny", "merchant": {"additional_merchant_info":
+        {"merchant_category": "-Fallback-scrubbed-yDqiwfPlZ", "merchant_sub_category":
+        "-Fallback-scrubbed-FLPqHyYnTjrOOPkCzC"}, "category_code": "-Fallback-scrubbed-eeVD",
+        "city": "Boydfurt", "country": "-Fallback-scrubbed-", "identifier": "-Fallback-scrubbed-YTPutAxirCkgYNX",
+        "name": "Joseph Lyons"}, "network_transaction_id": "-Fallback-scrubbed-mlbkfCHyojEnJCk",
+        "posted_date": "-Fallback-scrubbed-wlJEsDmhtHApCzYumqdYoMdixSet", "retrieval_ref":
+        "-Fallback-scrubbed-PIYKqDzbSxht", "risk_details": {"risk_actions_performed":
+        [], "risk_factors": [], "three_dsecure_outcome": "-Fallback-scrubbed-ZMQJyRWYiohgTa"},
+        "status": "-Fallback-scrubbed-RgOXME", "transaction_amount": 9091, "transaction_currency":
+        "-Fallback-scrubbed-MpH", "transaction_date": "-Fallback-scrubbed-wlJEsDmhtHApCzYumqdYoMdixSet",
+        "transaction_id": "-Fallback-scrubbed-vgNWpArBAnPRQgFChSgejOoxqVeGJDYEJSdF",
+        "transaction_type": "-Fallback-scrubbed-IXDdKsET"}, {"acquiring_institution_identifier":
+        "-Fallback-scrubbed-ngSqBKzvhfV", "auth_code": "-Fallback-scrubbed-GKQPPc",
+        "billing_amount": -50900537.3914439, "billing_currency": "-Fallback-scrubbed-MpH",
+        "card_id": "-Fallback-scrubbed-DcaAjIOeBinYoXOdwbUwrHVxHtlXccpCGphN", "card_nickname":
+        "-Fallback-scrubbed-EgvSjhMHorNVxKH", "card_transaction_data": {"card_transaction_event_id":
+        "-Fallback-scrubbed-FRHTnRHpHUoSRaGuVSxTCPrDMztDqNhinOVE", "card_transaction_id":
+        "-Fallback-scrubbed-QqzBMXHzPAxjXTBSMsHwEZOtWsNGXbGIMETf", "card_transaction_lifecycle_id":
+        "-Fallback-scrubbed-FcyFINiEzFBvNSODIOAAPlJDjRysHdXpwHPT"}, "lifecycle_id":
+        "-Fallback-scrubbed-QqzBMXHzPAxjXTBSMsHwEZOtWsNGXbGIMETf", "masked_card_number":
+        "-Fallback-scrubbed-QpobyhnzhpZaYyny", "merchant": {"additional_merchant_info":
+        {"merchant_category": "-Fallback-scrubbed-yDqiwfPlZ", "merchant_sub_category":
+        "-Fallback-scrubbed-FLPqHyYnTjrOOPkCzC"}, "category_code": "-Fallback-scrubbed-eeVD",
+        "city": "Boydfurt", "country": "-Fallback-scrubbed-", "identifier": "-Fallback-scrubbed-zVDjOJQtVjNqChl",
+        "name": "Joseph Lyons"}, "network_transaction_id": "-Fallback-scrubbed-FUxxduBVpSnrciR",
+        "posted_date": "-Fallback-scrubbed-rIrkpBJcKRRWMAQfxTadkRhHOSbv", "retrieval_ref":
+        "-Fallback-scrubbed-LQjVrFrtRACa", "risk_details": {"risk_actions_performed":
+        [], "risk_factors": [], "three_dsecure_outcome": "-Fallback-scrubbed-ZMQJyRWYiohgTa"},
+        "status": "-Fallback-scrubbed-GcsqrkaC", "transaction_amount": -50900537.3914439,
+        "transaction_currency": "-Fallback-scrubbed-MpH", "transaction_date": "-Fallback-scrubbed-rIrkpBJcKRRWMAQfxTadkRhHOSbv",
+        "transaction_id": "-Fallback-scrubbed-mASEbQfxUoBXPxmEnffqHUsheyXFQVwfmTqr",
+        "transaction_type": "-Fallback-scrubbed-IXDdKsET"}]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - Server-Timing
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:27 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-b9f7a799b33440abb027eb0e797adc50-1b98fd29bfe912ee-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - b9f7a799b33440abb027eb0e797adc50
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '83'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1
