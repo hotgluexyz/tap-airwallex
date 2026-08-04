@@ -30,7 +30,7 @@ STREAM_TYPES = [
 ]
 
 
-class Tapairwallex(Tap):
+class TapAirwallex(Tap):
     """airwallex tap class."""
     name = "tap-airwallex"
 
@@ -61,4 +61,4 @@ class Tapairwallex(Tap):
 
 
 if __name__ == "__main__":
-    Tapairwallex.cli()
+    TapAirwallex.cli()

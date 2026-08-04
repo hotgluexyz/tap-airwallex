@@ -35,4 +35,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 # CLI declaration
-tap-airwallex = 'tap_airwallex.tap:Tapairwallex.cli'
+tap-airwallex = 'tap_airwallex.tap:TapAirwallex.cli'

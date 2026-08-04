@@ -1,0 +1,176 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.34.2
+    method: POST
+    uri: https://api-demo.airwallex.com/api/v1/authentication/login
+  response:
+    body:
+      string: '{"expires_at": "2026-08-04T14:18:30+0000", "token": "eyJ***"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '61'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:48:30 GMT
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-3a094954020c4ad9b993f56a4ce1edae-135257c989a21f4e-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 3a094954020c4ad9b993f56a4ce1edae
+      x-envoy-upstream-service-time:
+      - '174'
+    status:
+      code: 201
+      message: Created
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/account?page_size=100
+  response:
+    body:
+      string: '{"account_details": {"attachments": {"additional_files": []}, "business_details":
+        {"account_usage": {"estimated_monthly_revenue": {"amount": "-Fallback-scrubbed-MwtVSc",
+        "currency": "-Fallback-scrubbed-yim"}, "product_reference": []}, "as_trustee":
+        null, "attachments": {"business_documents": []}, "business_address": {"country_code":
+        "-Fallback-scrubbed-mG", "postcode": "04450"}, "business_identifiers": [{"country_code":
+        "-Fallback-scrubbed-mG", "number": "-Fallback-scrubbed-opMNVkGws", "type":
+        "-Fallback-scrubbed-QYM"}], "business_name": "-Fallback-scrubbed-PCwuZKTudQpwndOg",
+        "business_name_english": "-Fallback-scrubbed-PCwuZKTudQpwndOg", "business_name_trading":
+        null, "business_start_date": "-Fallback-scrubbed-PQlqzrLkcA", "business_structure":
+        "-Fallback-scrubbed-XQwqBeo", "contact_number": null, "description_of_goods_or_services":
+        "-Fallback-scrubbed-cADdiiUbSGuqUHjTDAkgtKAJmgvYOsFT", "explanation_for_high_risk_countries_exposure":
+        null, "exports_goods_or_services": null, "fax_number": null, "has_constitution_document":
+        null, "has_member_holding_public_office": null, "has_nominee_shareholders":
+        null, "has_prior_financial_institution_refusal": null, "has_ringgit_borrowing":
+        null, "industry_category_code": "-Fallback-scrubbed-ecCgycJeFzRR", "no_shareholders_with_over_25percent":
+        null, "operating_country": [], "registration_address": {"country_code": "-Fallback-scrubbed-mG",
+        "postcode": "04450"}, "registration_address_english": {"address_line1": "334
+        Goodwin Loaf", "country_code": "-Fallback-scrubbed-mG", "postcode": "04450",
+        "state": "-Fallback-scrubbed-sY", "suburb": "-Fallback-scrubbed-UaTgdUPRgqG"},
+        "state_of_incorporation": null, "url": "-Fallback-scrubbed-cqWkXFCWZpehZWTCtHmEVVTC",
+        "urls": ["-Fallback-scrubbed-cqWkXFCWZpehZWTCtHmEVVTC"]}, "business_person_details":
+        [{"attachments": {"business_person_documents": []}, "date_of_birth": "2017-08-13",
+        "email": "gilberttiffany@example.org", "first_name_english": "-Fallback-scrubbed-oHmyb",
+        "identifications": {"primary": {"identification_type": "-Fallback-scrubbed-hLGrnq",
+        "issuing_country_code": "-Fallback-scrubbed-mG", "tax_id": {"number": "-Fallback-scrubbed-opMNVkGws",
+        "type": "-Fallback-scrubbed-SbUi"}}}, "job_title": "-Fallback-scrubbed-Ywt",
+        "last_name_english": "-Fallback-scrubbed-sTUUvD", "nationality": "-Fallback-scrubbed-mG",
+        "person_id": "-Fallback-scrubbed-CZlLGsfKqASuPoPruepchwqNrmQHtNzwFCcw", "phone_number":
+        "785-856-2308", "residential_address": {"country_code": "-Fallback-scrubbed-mG",
+        "postcode": "04450"}, "roles": ["-Fallback-scrubbed-KrcAKiofSlnjmFpc", "-Fallback-scrubbed-NQTvJsHLADQBnBFybM",
+        "-Fallback-scrubbed-MvPtaYDCiMGdLtGbX"]}], "store_details": {"cross_border_transaction_percent":
+        "-Fallback-scrubbed-xUQr", "employee_size": 6878, "estimated_transaction_volume":
+        {"average_amount_per_transaction": "-Fallback-scrubbed-hCrIuMc", "currency":
+        "-Fallback-scrubbed-qCH", "max_amount_per_transaction": "-Fallback-scrubbed-hCrIuMc",
+        "monthly_transaction_amount": "-Fallback-scrubbed-VwqXoAoM"}, "financial_statements":
+        [], "fulfillment_days": 8125, "industry_code": "-Fallback-scrubbed-gmPHrweZcspx",
+        "mcc": "-Fallback-scrubbed-Jwyy", "operating_models": ["-Fallback-scrubbed-LzNIOdtVRMzgHwm",
+        "-Fallback-scrubbed-PeIzueuJsesrThrdBewoaamVQCFuCR"], "payment_distribution":
+        [{"payment_type": "-Fallback-scrubbed-KjbVz", "percentage": "-Fallback-scrubbed-NiLT"},
+        {"payment_type": "-Fallback-scrubbed-pfjCD", "percentage": "-Fallback-scrubbed-NiLT"}],
+        "selling_to_country_codes": [], "shipping_from_country_codes": [], "store_description":
+        "-Fallback-scrubbed-OiNUKtuyroikQHZZXs", "store_name": "-Fallback-scrubbed-PCwuZKTudQpwndOg",
+        "store_photos": [], "store_websites": [{"url": "-Fallback-scrubbed-iYLZOwLZkicqFTvoxhHVipwRLIyIdufZFCfFsMznepwfKRdWnVRZnml"}]},
+        "trustee_details": null, "individual_details": null, "legal_entity_id": "-Fallback-scrubbed-xOmQLkIHnhXyhwnteXlHUgCCh",
+        "legal_entity_identifier": null, "legal_entity_type": "-Fallback-scrubbed-IdZTKxMQ"},
+        "created_at": "-Fallback-scrubbed-rvOZBngWHrOFfyWhttMSDCMa", "customer_agreements":
+        {"agreed_to_data_usage": true, "agreed_to_terms_and_conditions": true, "opt_in_for_marketing":
+        false, "terms_and_conditions": {"device_data": {}, "service_agreement_type":
+        "-Fallback-scrubbed-ozLQ"}}, "id": "-Fallback-scrubbed-nggRmQEiRJTkXZrIfdwirkVxvZx",
+        "nickname": "-Fallback-scrubbed-nggRmQEiRJTkXZrIfdwirkVxvZx", "primary_contact":
+        {"attachments": {"identity_files": []}, "email": "gilberttiffany@example.org",
+        "mobile": "785-856-2308"}, "status": "-Fallback-scrubbed-SFAOCT", "view_type":
+        "-Fallback-scrubbed-LvciWNoL"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '4591'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - e736723c918d4b868499d67c7ab7a9b4
+      date:
+      - Tue, 04 Aug 2026 13:48:30 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-e736723c918d4b868499d67c7ab7a9b4-37583c374fcdf03d-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - e736723c918d4b868499d67c7ab7a9b4
+      x-b3-traceid:
+      - e736723c918d4b868499d67c7ab7a9b4
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '85'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

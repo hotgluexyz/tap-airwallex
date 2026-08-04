@@ -4,7 +4,7 @@ import datetime
 
 from hotglue_singer_sdk.testing import get_standard_tap_tests
 
-from tap_airwallex.tap import Tapairwallex
+from tap_airwallex.tap import TapAirwallex
 
 SAMPLE_CONFIG = {
     "start_date": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
@@ -16,7 +16,7 @@ SAMPLE_CONFIG = {
 def test_standard_tap_tests():
     """Run standard tap tests from the SDK."""
     tests = get_standard_tap_tests(
-        Tapairwallex,
+        TapAirwallex,
         config=SAMPLE_CONFIG
     )
     for test in tests:

@@ -1,0 +1,221 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.34.2
+    method: POST
+    uri: https://api-demo.airwallex.com/api/v1/authentication/login
+  response:
+    body:
+      string: '{"expires_at": "2026-08-04T14:23:19+0000", "token": "eyJ***"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '61'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:53:19 GMT
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-2b80343f82de404a8318f02996cba7c5-c08f83e6186494cd-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 2b80343f82de404a8318f02996cba7c5
+      x-envoy-upstream-service-time:
+      - '108'
+    status:
+      code: 201
+      message: Created
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/spend/expenses?from_created_at=2026-01-01T00%3A00%3A00.000000Z
+  response:
+    body:
+      string: '{"items": [{"account_id": "-Fallback-scrubbed-KGPIvcYqkkbleJWyhgGEWqiMerT",
+        "accounting_field_selections": [], "approvers": [], "attachments": [], "attendees":
+        [], "billing_amount": "-Fallback-scrubbed-kjtU", "billing_currency": "-Fallback-scrubbed-FTF",
+        "card_id": "-Fallback-scrubbed-kGnHNaPlAhLyCtQKXSoIfAOZxWThEeOJxdFI", "card_transaction":
+        {"amount": "-Fallback-scrubbed-kjtU", "currency": "-Fallback-scrubbed-FTF",
+        "status": "-Fallback-scrubbed-grTeekQ"}, "comments": [], "created_at": "-Fallback-scrubbed-pdEsBKsKqQJMwFSiOeBZ",
+        "description": "-Fallback-scrubbed-jbNooyhUYtJohqlIhpNZmoMWcoF", "id": "-Fallback-scrubbed-jxVmAmhFrjumSsiliWZPCCUaoIvIkCPuHAiN",
+        "legal_entity_id": "-Fallback-scrubbed-izISxVxHHRAHfMaeavFXPLmef", "line_items":
+        [{"accounting_field_selections": [{"external_id": "-Fallback-scrubbed-hIIdRYYZuOSISjApfKBUxugynoEuuULoPzoR",
+        "name": null, "type": "-Fallback-scrubbed-IDnLPvLttaPjzgvCcPRmsH", "value":
+        "-Fallback-scrubbed-lVqPcHjeYxcRrxDksl", "value_label": "-Fallback-scrubbed-lVqPcHjeYxcRrxDksl"},
+        {"external_id": "-Fallback-scrubbed-PaRmGpXCNIkQkbFYDecFYrFdOiasTOuiZKwl",
+        "name": "Kathy King", "type": "-Fallback-scrubbed-EHMCG", "value": "-Fallback-scrubbed-MY",
+        "value_label": "-Fallback-scrubbed-MY"}, {"external_id": "-Fallback-scrubbed-zemIwemuwCofPJVcVLpaECFPhplGtoHteRFO",
+        "name": "Rachel Choi", "type": "-Fallback-scrubbed-EHMCG", "value": "-Fallback-scrubbed-zngyRQgKPiI",
+        "value_label": "-Fallback-scrubbed-zngyRQgKPiI"}], "description": null, "id":
+        "-Fallback-scrubbed-ujsDWfqWSUPIGRjexxFYhLfCGHQSQFDHbdgG", "transaction_amount":
+        "-Fallback-scrubbed-kjtU"}], "merchant": "-Fallback-scrubbed-ZfReD", "settled_at":
+        "-Fallback-scrubbed-EMxssAIJdbOQpGAjYBhv", "status": "-Fallback-scrubbed-gVXtZWAc",
+        "sync_status": "-Fallback-scrubbed-iChvnZDLAg", "updated_at": "-Fallback-scrubbed-SqwXyfzXaDLybbTPXxOU"},
+        {"account_id": "-Fallback-scrubbed-KGPIvcYqkkbleJWyhgGEWqiMerT", "accounting_field_selections":
+        [], "approvers": [], "attachments": [], "attendees": [], "billing_amount":
+        "-Fallback-scrubbed-vLrN", "billing_currency": "-Fallback-scrubbed-FTF", "card_id":
+        "-Fallback-scrubbed-kGnHNaPlAhLyCtQKXSoIfAOZxWThEeOJxdFI", "card_transaction":
+        {"amount": "-Fallback-scrubbed-vLrN", "currency": "-Fallback-scrubbed-FTF",
+        "status": "-Fallback-scrubbed-grTeekQ"}, "comments": [], "created_at": "-Fallback-scrubbed-qHdGewdBSUaZraxZUbvz",
+        "description": null, "id": "-Fallback-scrubbed-mSzJEXqmoiugdyKvyurfioyEQZbhrdqcAYMM",
+        "legal_entity_id": "-Fallback-scrubbed-izISxVxHHRAHfMaeavFXPLmef", "line_items":
+        [{"accounting_field_selections": [{"external_id": null, "name": null, "type":
+        "-Fallback-scrubbed-IDnLPvLttaPjzgvCcPRmsH", "value": "-Fallback-scrubbed-LeUIgUAbnEuOAOYy",
+        "value_label": "-Fallback-scrubbed-LeUIgUAbnEuOAOYy"}], "description": null,
+        "id": "-Fallback-scrubbed-KnBsDHTxPjOzvRfckimwxwGAgtnkiXKweTAS", "transaction_amount":
+        "-Fallback-scrubbed-vLrN"}], "merchant": null, "settled_at": "-Fallback-scrubbed-xiuzQGKDecyKCllFJiPr",
+        "status": "-Fallback-scrubbed-CEeYJ", "sync_status": "-Fallback-scrubbed-iChvnZDLAg",
+        "updated_at": "-Fallback-scrubbed-EUNCVPIWFSrqBsUgyYsM"}, {"account_id": "-Fallback-scrubbed-KGPIvcYqkkbleJWyhgGEWqiMerT",
+        "accounting_field_selections": [], "approvers": [], "attachments": [], "attendees":
+        [], "billing_amount": "-Fallback-scrubbed-vLrN", "billing_currency": "-Fallback-scrubbed-FTF",
+        "card_id": "-Fallback-scrubbed-kGnHNaPlAhLyCtQKXSoIfAOZxWThEeOJxdFI", "card_transaction":
+        {"amount": "-Fallback-scrubbed-vLrN", "currency": "-Fallback-scrubbed-FTF",
+        "status": "-Fallback-scrubbed-grTeekQ"}, "comments": [], "created_at": "-Fallback-scrubbed-biQlTxVtmEOFmUJNhrWn",
+        "description": null, "id": "-Fallback-scrubbed-HlKwxiAixOjFNdzbqnyaanlbgFwTHSdBdkZm",
+        "legal_entity_id": "-Fallback-scrubbed-izISxVxHHRAHfMaeavFXPLmef", "line_items":
+        [{"accounting_field_selections": [{"external_id": null, "name": null, "type":
+        "-Fallback-scrubbed-IDnLPvLttaPjzgvCcPRmsH", "value": "-Fallback-scrubbed-UYlQryModbmtjPyKQesPUD",
+        "value_label": "-Fallback-scrubbed-UYlQryModbmtjPyKQesPUD"}], "description":
+        null, "id": "-Fallback-scrubbed-hFXrDUVUnLxVtsMmjepkptILazzddbmXIEkH", "transaction_amount":
+        "-Fallback-scrubbed-vLrN"}], "merchant": null, "settled_at": "-Fallback-scrubbed-biQlTxVtmEOFmUJNhrWn",
+        "status": "-Fallback-scrubbed-CEeYJ", "sync_status": "-Fallback-scrubbed-iChvnZDLAg",
+        "updated_at": "-Fallback-scrubbed-qYnsXWPCXQPCiZGsHxrG"}, {"account_id": "-Fallback-scrubbed-KGPIvcYqkkbleJWyhgGEWqiMerT",
+        "accounting_field_selections": [], "approvers": [], "attachments": [], "attendees":
+        [], "billing_amount": "-Fallback-scrubbed-rOdpn", "billing_currency": "-Fallback-scrubbed-FTF",
+        "card_id": "-Fallback-scrubbed-kGnHNaPlAhLyCtQKXSoIfAOZxWThEeOJxdFI", "card_transaction":
+        {"amount": "-Fallback-scrubbed-rOdpn", "currency": "-Fallback-scrubbed-FTF",
+        "status": "-Fallback-scrubbed-AtpuauhzTt"}, "comments": [], "created_at":
+        "-Fallback-scrubbed-UnqHjcHJnedBkswMYkue", "description": null, "id": "-Fallback-scrubbed-gZqorWFDheGKHwSbzGLFKXyNkzHATahKXmEK",
+        "legal_entity_id": "-Fallback-scrubbed-izISxVxHHRAHfMaeavFXPLmef", "line_items":
+        [{"accounting_field_selections": [{"external_id": null, "name": null, "type":
+        "-Fallback-scrubbed-IDnLPvLttaPjzgvCcPRmsH", "value": "-Fallback-scrubbed-LeUIgUAbnEuOAOYy",
+        "value_label": "-Fallback-scrubbed-LeUIgUAbnEuOAOYy"}], "description": null,
+        "id": "-Fallback-scrubbed-LHUEJzHOOFSlInvLAmmIXRIjVzOfumCPcWpH", "transaction_amount":
+        "-Fallback-scrubbed-rOdpn"}], "merchant": null, "settled_at": null, "status":
+        "-Fallback-scrubbed-CEeYJ", "sync_status": "-Fallback-scrubbed-iChvnZDLAg",
+        "updated_at": "-Fallback-scrubbed-gQHlmwsYHbUKVojyVDnU"}, {"account_id": "-Fallback-scrubbed-KGPIvcYqkkbleJWyhgGEWqiMerT",
+        "accounting_field_selections": [], "approvers": [], "attachments": [], "attendees":
+        [], "billing_amount": "-Fallback-scrubbed-HmWgG", "billing_currency": "-Fallback-scrubbed-FTF",
+        "card_id": "-Fallback-scrubbed-kGnHNaPlAhLyCtQKXSoIfAOZxWThEeOJxdFI", "card_transaction":
+        {"amount": "-Fallback-scrubbed-HmWgG", "currency": "-Fallback-scrubbed-FTF",
+        "status": "-Fallback-scrubbed-grTeekQ"}, "comments": [], "created_at": "-Fallback-scrubbed-ExYsXrVFOkxCngczKDTV",
+        "description": null, "id": "-Fallback-scrubbed-pWJLlkHWwfZjCCuEhlYCKGlSlWyuGMOGiQkU",
+        "legal_entity_id": "-Fallback-scrubbed-izISxVxHHRAHfMaeavFXPLmef", "line_items":
+        [{"accounting_field_selections": [{"external_id": null, "name": null, "type":
+        "-Fallback-scrubbed-IDnLPvLttaPjzgvCcPRmsH", "value": "-Fallback-scrubbed-LeUIgUAbnEuOAOYy",
+        "value_label": "-Fallback-scrubbed-LeUIgUAbnEuOAOYy"}], "description": null,
+        "id": "-Fallback-scrubbed-FqQYgWOyAEcNkWOoRaqYvpFZfcGixiMDygxq", "transaction_amount":
+        "-Fallback-scrubbed-HmWgG"}], "merchant": null, "settled_at": "-Fallback-scrubbed-CZnNJDZVcaevlAPrxmcE",
+        "status": "-Fallback-scrubbed-CEeYJ", "sync_status": "-Fallback-scrubbed-iChvnZDLAg",
+        "updated_at": "-Fallback-scrubbed-dbmWewYnNmeFrBRfHfFb"}, {"account_id": "-Fallback-scrubbed-KGPIvcYqkkbleJWyhgGEWqiMerT",
+        "accounting_field_selections": [], "approvers": [], "attachments": [{"content_type":
+        "-Fallback-scrubbed-OgXckqZiAOmfIoo", "created_at": "-Fallback-scrubbed-rqFpZfWYHOWVAdgUNYMQ",
+        "file_name": "-Fallback-scrubbed-AGnogAEMnoXd", "file_url": "-Fallback-scrubbed-RNkOIyrMAACvsMbNmKBWqbcwGuKbBGujdXaGRonurNQSiFfGwjJrekAyZRjLItyVTlboMkLPReunXKGJMyUtAPItiaWsOWXUKvhwtvpLfvIXnZzlbDjRLWcMkVzAzqXKJSJuBBMpRFxYZBOgOmuxMnVaZHEXfosRnwHlHccBmfclPRCVDShgTgVFgWIWPyLNlgewMyqMuWnIGtSjsILTuerIcUbLTVrGMHDcoswPUoYFkDJhNxQgnuWQbBztleVIsTsMuKQbGAkoaAgQbjiiUVWrpXTMvKgVMOxetRcXpBScwqqoGdVGHNgkLRbikNAfFiDAfxOQudCbVusyrzWxrGPnQdvFaFOKbralfDExmOolCZcKAvFAiukeNPhELFFpBsIpDwKfvAeWvhlzOracxRSkALvjdCQiNvcbdGyHhTHYWjWjQMSbTQHnBkXXHwjCtNMzFQyHmhegCqVxfuEGhbtdGbwITwIgEybrcKPLIjcfKoWspeZpsGWeALOoLafcvhOoOijvZuzOKDITwDEVAshtOIfKYRVRnjhqZUsPNrwYnqQFTqtkxDaKboALxVpwbevLPSaWSfHuQImNTKrXeFCasLRxPypnNRJmGzYbOOVdEokBQOiARrQzZZtoilcUcAjBKLELwgAdKcngpiObYWzGIrJpemdsYfGAbLQxPUsvPtOlvwFxUXOeznKBFcbhOsNyWpzknGtQMiNfQrgvBWgGRlTKTscbFPopYMzUniznqFaQjkisRjrsKKcSlWvFDbmoxTNYkpGkAGurVgNEdHbrCkEpoTVVYuLrxZbnEbwevDxvgpxQUPYPVhmQtnIJBqzjVpmNnAPVLYwTQ",
+        "id": "-Fallback-scrubbed-GEInfEvlxchIJVLKtcnQdQsBKTNjaOzzisba"}], "attendees":
+        [], "billing_amount": "-Fallback-scrubbed-zZmT", "billing_currency": "-Fallback-scrubbed-FTF",
+        "card_id": "-Fallback-scrubbed-kGnHNaPlAhLyCtQKXSoIfAOZxWThEeOJxdFI", "card_transaction":
+        {"amount": "-Fallback-scrubbed-zZmT", "currency": "-Fallback-scrubbed-FTF",
+        "status": "-Fallback-scrubbed-grTeekQ"}, "comments": [], "created_at": "-Fallback-scrubbed-sUntdVePUlBkxGTwTlxw",
+        "description": null, "id": "-Fallback-scrubbed-EcpiWhUuECOZrGoGJYMWqyMZRkjmqAowYEJK",
+        "legal_entity_id": "-Fallback-scrubbed-izISxVxHHRAHfMaeavFXPLmef", "line_items":
+        [{"accounting_field_selections": [{"external_id": null, "name": null, "type":
+        "-Fallback-scrubbed-IDnLPvLttaPjzgvCcPRmsH", "value": "-Fallback-scrubbed-LeUIgUAbnEuOAOYy",
+        "value_label": "-Fallback-scrubbed-LeUIgUAbnEuOAOYy"}], "description": null,
+        "id": "-Fallback-scrubbed-kOditMgFSjrbtVCUlVAYbpnHAdFEtikmrSdL", "transaction_amount":
+        "-Fallback-scrubbed-zZmT"}], "merchant": "-Fallback-scrubbed-mRYPPv", "settled_at":
+        "-Fallback-scrubbed-dZYxTBJfoCdvpWiagIeP", "status": "-Fallback-scrubbed-gVXtZWAc",
+        "sync_status": "-Fallback-scrubbed-iChvnZDLAg", "updated_at": "-Fallback-scrubbed-ZspXqahjjMIRkhMLUxaO"},
+        {"account_id": "-Fallback-scrubbed-KGPIvcYqkkbleJWyhgGEWqiMerT", "accounting_field_selections":
+        [], "approvers": [], "attachments": [], "attendees": [], "billing_amount":
+        "-Fallback-scrubbed-snXNl", "billing_currency": "-Fallback-scrubbed-FTF",
+        "card_id": "-Fallback-scrubbed-kGnHNaPlAhLyCtQKXSoIfAOZxWThEeOJxdFI", "card_transaction":
+        {"amount": "-Fallback-scrubbed-snXNl", "currency": "-Fallback-scrubbed-FTF",
+        "status": "-Fallback-scrubbed-grTeekQ"}, "comments": [], "created_at": "-Fallback-scrubbed-pTJCgCMKMWIGtyAlXaEq",
+        "description": null, "id": "-Fallback-scrubbed-zdBFOyQPOrcPsGXqhHFRfSfIOBIYlbLSnOEr",
+        "legal_entity_id": "-Fallback-scrubbed-izISxVxHHRAHfMaeavFXPLmef", "line_items":
+        [{"accounting_field_selections": [{"external_id": null, "name": null, "type":
+        "-Fallback-scrubbed-IDnLPvLttaPjzgvCcPRmsH", "value": "-Fallback-scrubbed-LeUIgUAbnEuOAOYy",
+        "value_label": "-Fallback-scrubbed-LeUIgUAbnEuOAOYy"}], "description": null,
+        "id": "-Fallback-scrubbed-jxAyWTFLvfgCIlmFIxniKibbAZMAuFfVFTiJ", "transaction_amount":
+        "-Fallback-scrubbed-snXNl"}], "merchant": null, "settled_at": "-Fallback-scrubbed-yEgqAeWSQWroumfLmRqO",
+        "status": "-Fallback-scrubbed-CEeYJ", "sync_status": "-Fallback-scrubbed-iChvnZDLAg",
+        "updated_at": "-Fallback-scrubbed-hhIaHATcXFVGleBPMuCU"}], "page_after": null,
+        "page_before": null}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - Server-Timing
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:53:20 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-27f4bf393a5d499587864d8035930f72-b3719c1c6dd3fc4f-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 27f4bf393a5d499587864d8035930f72
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '266'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1

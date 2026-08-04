@@ -1,0 +1,728 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.34.2
+    method: POST
+    uri: https://api-demo.airwallex.com/api/v1/authentication/login
+  response:
+    body:
+      string: '{"expires_at": "2026-08-04T14:26:33+0000", "token": "eyJ***"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '61'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      content-type:
+      - application/json
+      date:
+      - Tue, 04 Aug 2026 13:56:33 GMT
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-0f66080afc284a1f97a95966e0be9170-c744de4da5eaff0f-01"
+      strict-transport-security:
+      - max-age=15552000
+      via:
+      - 1.1 google, 1.1 google
+      x-b3-traceid:
+      - 0f66080afc284a1f97a95966e0be9170
+      x-envoy-upstream-service-time:
+      - '178'
+    status:
+      code: 201
+      message: Created
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/account?page_size=100
+  response:
+    body:
+      string: '{"account_details": {"attachments": {"additional_files": []}, "business_details":
+        {"account_usage": {"estimated_monthly_revenue": {"amount": "-Fallback-scrubbed-bxUUPS",
+        "currency": "-Fallback-scrubbed-TRk"}, "product_reference": []}, "as_trustee":
+        null, "attachments": {"business_documents": []}, "business_address": {"country_code":
+        "-Fallback-scrubbed-Ek", "postcode": "18723"}, "business_identifiers": [{"country_code":
+        "-Fallback-scrubbed-Ek", "number": "-Fallback-scrubbed-VxYXfuzbc", "type":
+        "-Fallback-scrubbed-OkS"}], "business_name": "-Fallback-scrubbed-hCgFMUcCnAyBzrFs",
+        "business_name_english": "-Fallback-scrubbed-hCgFMUcCnAyBzrFs", "business_name_trading":
+        null, "business_start_date": "-Fallback-scrubbed-JreTLRHgis", "business_structure":
+        "-Fallback-scrubbed-ouCozrU", "contact_number": null, "description_of_goods_or_services":
+        "-Fallback-scrubbed-PrHLBVvXTDKvrmqaNSKiLtqmyNBehgrU", "explanation_for_high_risk_countries_exposure":
+        null, "exports_goods_or_services": null, "fax_number": null, "has_constitution_document":
+        null, "has_member_holding_public_office": null, "has_nominee_shareholders":
+        null, "has_prior_financial_institution_refusal": null, "has_ringgit_borrowing":
+        null, "industry_category_code": "-Fallback-scrubbed-CeCPaAowcaKw", "no_shareholders_with_over_25percent":
+        null, "operating_country": [], "registration_address": {"country_code": "-Fallback-scrubbed-Ek",
+        "postcode": "18723"}, "registration_address_english": {"address_line1": "674
+        Krueger Haven Apt. 795", "country_code": "-Fallback-scrubbed-Ek", "postcode":
+        "18723", "state": "-Fallback-scrubbed-rI", "suburb": "-Fallback-scrubbed-yxmxDsLoZcY"},
+        "state_of_incorporation": null, "url": "-Fallback-scrubbed-oBElSOBPxrYJlgbDXmhBJAMH",
+        "urls": ["-Fallback-scrubbed-oBElSOBPxrYJlgbDXmhBJAMH"]}, "business_person_details":
+        [{"attachments": {"business_person_documents": []}, "date_of_birth": "1999-04-22",
+        "email": "oboyer@example.org", "first_name_english": "-Fallback-scrubbed-sdDjh",
+        "identifications": {"primary": {"identification_type": "-Fallback-scrubbed-JCLCTi",
+        "issuing_country_code": "-Fallback-scrubbed-Ek", "tax_id": {"number": "-Fallback-scrubbed-VxYXfuzbc",
+        "type": "-Fallback-scrubbed-bUvV"}}}, "job_title": "-Fallback-scrubbed-yaS",
+        "last_name_english": "-Fallback-scrubbed-LldKuK", "nationality": "-Fallback-scrubbed-Ek",
+        "person_id": "-Fallback-scrubbed-kFdqYzTcWEbsXhtPWDQdgblLQWZfXxaPnYFX", "phone_number":
+        "2875465946", "residential_address": {"country_code": "-Fallback-scrubbed-Ek",
+        "postcode": "18723"}, "roles": ["-Fallback-scrubbed-lLZAVcXbtUIfpsLm", "-Fallback-scrubbed-bzYfRKlpxbDLdnHVIP",
+        "-Fallback-scrubbed-uhzNVEVTwZgLMVTai"]}], "store_details": {"cross_border_transaction_percent":
+        "-Fallback-scrubbed-CrZs", "employee_size": 2887, "estimated_transaction_volume":
+        {"average_amount_per_transaction": "-Fallback-scrubbed-iTOLgWV", "currency":
+        "-Fallback-scrubbed-Htr", "max_amount_per_transaction": "-Fallback-scrubbed-iTOLgWV",
+        "monthly_transaction_amount": "-Fallback-scrubbed-jrDnMbpY"}, "financial_statements":
+        [], "fulfillment_days": 1321, "industry_code": "-Fallback-scrubbed-VhdvSKfPtylk",
+        "mcc": "-Fallback-scrubbed-cKMK", "operating_models": ["-Fallback-scrubbed-OcwzRzfEAVURetl",
+        "-Fallback-scrubbed-rqirpIdUDFOmpleSctamZaqxTssJbx"], "payment_distribution":
+        [{"payment_type": "-Fallback-scrubbed-TWolK", "percentage": "-Fallback-scrubbed-gvOH"},
+        {"payment_type": "-Fallback-scrubbed-rkHEq", "percentage": "-Fallback-scrubbed-gvOH"}],
+        "selling_to_country_codes": [], "shipping_from_country_codes": [], "store_description":
+        "-Fallback-scrubbed-CjoIYKXwveVDxSCVIn", "store_name": "-Fallback-scrubbed-hCgFMUcCnAyBzrFs",
+        "store_photos": [], "store_websites": [{"url": "-Fallback-scrubbed-eiMFnECXTfwabiMsQQIkArgrCRySsUaqesjARuoZBVIEAJXRICbCJXQ"}]},
+        "trustee_details": null, "individual_details": null, "legal_entity_id": "-Fallback-scrubbed-OOikXZfSdLZlsWxTTsoxoXhOz",
+        "legal_entity_identifier": null, "legal_entity_type": "-Fallback-scrubbed-ZUvICUtI"},
+        "created_at": "-Fallback-scrubbed-PSzcBBDFOJJAITjQJvpazHpf", "customer_agreements":
+        {"agreed_to_data_usage": true, "agreed_to_terms_and_conditions": true, "opt_in_for_marketing":
+        true, "terms_and_conditions": {"device_data": {}, "service_agreement_type":
+        "-Fallback-scrubbed-JfUl"}}, "id": "-Fallback-scrubbed-hkAYcZWdmaTwUGUhEBeHdAXbvea",
+        "nickname": "-Fallback-scrubbed-hkAYcZWdmaTwUGUhEBeHdAXbvea", "primary_contact":
+        {"attachments": {"identity_files": []}, "email": "oboyer@example.org", "mobile":
+        "2875465946"}, "status": "-Fallback-scrubbed-jwsneO", "view_type": "-Fallback-scrubbed-zoSimekG"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '4580'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 01faa4c6564641cb881d763aae61ed71
+      date:
+      - Tue, 04 Aug 2026 13:56:34 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-01faa4c6564641cb881d763aae61ed71-0f44264e9e6df70a-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 01faa4c6564641cb881d763aae61ed71
+      x-b3-traceid:
+      - 01faa4c6564641cb881d763aae61ed71
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '72'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/deposits?page_size=100&page_num=0&from_created_at=2026-01-01T00%3A00%3A00.000000Z&to_created_at=2026-01-31T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [], "total_count": 2887}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '53'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 7428d87faa67402e87aff426c23ff27a
+      date:
+      - Tue, 04 Aug 2026 13:56:34 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-7428d87faa67402e87aff426c23ff27a-148256224a8a4057-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 7428d87faa67402e87aff426c23ff27a
+      x-b3-traceid:
+      - 7428d87faa67402e87aff426c23ff27a
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '17'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/deposits?page_size=100&page_num=0&from_created_at=2026-02-01T00%3A00%3A00.000000Z&to_created_at=2026-02-28T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [], "total_count": 2887}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '53'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 026e83d53066474eaea0820ff2915bf3
+      date:
+      - Tue, 04 Aug 2026 13:56:35 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-026e83d53066474eaea0820ff2915bf3-3d2449e277470473-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 026e83d53066474eaea0820ff2915bf3
+      x-b3-traceid:
+      - 026e83d53066474eaea0820ff2915bf3
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '70'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/deposits?page_size=100&page_num=0&from_created_at=2026-03-01T00%3A00%3A00.000000Z&to_created_at=2026-03-31T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [], "total_count": 2887}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '53'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 2b5b4d429b9545d89168e76aa90ab870
+      date:
+      - Tue, 04 Aug 2026 13:56:35 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-2b5b4d429b9545d89168e76aa90ab870-43755b0d2a4cd4d9-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 2b5b4d429b9545d89168e76aa90ab870
+      x-b3-traceid:
+      - 2b5b4d429b9545d89168e76aa90ab870
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '17'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/deposits?page_size=100&page_num=0&from_created_at=2026-04-01T00%3A00%3A00.000000Z&to_created_at=2026-04-30T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [], "total_count": 2887}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '53'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 594ca92c4a1a4d34a46c7b8438ba2612
+      date:
+      - Tue, 04 Aug 2026 13:56:36 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-594ca92c4a1a4d34a46c7b8438ba2612-bef9f59bf9c0032a-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 594ca92c4a1a4d34a46c7b8438ba2612
+      x-b3-traceid:
+      - 594ca92c4a1a4d34a46c7b8438ba2612
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '15'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/deposits?page_size=100&page_num=0&from_created_at=2026-05-01T00%3A00%3A00.000000Z&to_created_at=2026-05-31T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [], "total_count": 2887}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '53'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - e8f229a6a584489dbae5e9014629089a
+      date:
+      - Tue, 04 Aug 2026 13:56:36 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-e8f229a6a584489dbae5e9014629089a-01f4b5192aaa833b-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - e8f229a6a584489dbae5e9014629089a
+      x-b3-traceid:
+      - e8f229a6a584489dbae5e9014629089a
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '20'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/deposits?page_size=100&page_num=0&from_created_at=2026-06-01T00%3A00%3A00.000000Z&to_created_at=2026-06-30T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [{"amount": 1.7641917566268, "created_at":
+        "-Fallback-scrubbed-VTbbhUfIdgQjRNxrmaJlyFJP", "currency": "-Fallback-scrubbed-JfR",
+        "fee": {"amount": -2460896502863.84, "currency": "-Fallback-scrubbed-JfR"},
+        "id": "-Fallback-scrubbed-iZSdGFTXCqkqdyXELOdsIKJrYYnOGsTjwAyl", "payer":
+        {"digital_wallet": {"account_name": "-Fallback-scrubbed-NETUmSVXjvkrYalkZhi",
+        "provider": "-Fallback-scrubbed-dWRXJhdbh"}, "name": "-Fallback-scrubbed-NETUmSVXjvkrYalkZhi"},
+        "provider_transaction_id": "-Fallback-scrubbed-iZSdGFTXCqkqdyXELOdsIKJrYYnOGsTjwAyl",
+        "reference": "-Fallback-scrubbed-nWmlXv", "settled_at": "-Fallback-scrubbed-pGeCHWInyikmKCKxxGSFtllq",
+        "status": "-Fallback-scrubbed-lxMWnkT", "type": "-Fallback-scrubbed-ssmrBTiIfeCpunyHyKrBcqU"}],
+        "total_count": 6728}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '786'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 4bf8d061b0584c9493d78e8fb7cbedc7
+      date:
+      - Tue, 04 Aug 2026 13:56:37 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-4bf8d061b0584c9493d78e8fb7cbedc7-bcb68178acec9432-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 4bf8d061b0584c9493d78e8fb7cbedc7
+      x-b3-traceid:
+      - 4bf8d061b0584c9493d78e8fb7cbedc7
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '15'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/deposits?page_size=100&page_num=0&from_created_at=2026-07-01T00%3A00%3A00.000000Z&to_created_at=2026-07-31T23%3A59%3A59.999999Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [], "total_count": 2887}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000
+      Content-Length:
+      - '53'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 8a2d83a574144798ad2558dd72ae14a8
+      date:
+      - Tue, 04 Aug 2026 13:56:37 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-8a2d83a574144798ad2558dd72ae14a8-ae24b1a8ef67ab60-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 8a2d83a574144798ad2558dd72ae14a8
+      x-b3-traceid:
+      - 8a2d83a574144798ad2558dd72ae14a8
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '20'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.34.2
+      x-api-version:
+      - '2026-06-30'
+    method: GET
+    uri: https://api-demo.airwallex.com/api/v1/deposits?page_size=100&page_num=0&from_created_at=2026-08-01T00%3A00%3A00.000000Z&to_created_at=2026-08-04T13%3A54%3A00.000000Z
+  response:
+    body:
+      string: '{"has_more": false, "items": [], "total_count": 2887}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '53'
+      access-control-allow-headers:
+      - '*'
+      access-control-allow-methods:
+      - PUT,PATCH,DELETE,GET,OPTIONS,POST
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - '*'
+      access-control-max-age:
+      - '5'
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      correlation-id:
+      - 9229f383ee614fbaa01e24a1b43440a9
+      date:
+      - Tue, 04 Aug 2026 13:56:38 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      server:
+      - APISIX
+      server-timing:
+      - traceparent;desc="00-9229f383ee614fbaa01e24a1b43440a9-83a16f0aea17c9a0-01"
+      strict-transport-security:
+      - max-age=15552000
+      vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      via:
+      - 1.1 google, 1.1 google
+      x-awx-trace-id:
+      - 9229f383ee614fbaa01e24a1b43440a9
+      x-b3-traceid:
+      - 9229f383ee614fbaa01e24a1b43440a9
+      x-content-type-options:
+      - nosniff
+      x-envoy-upstream-service-time:
+      - '20'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1
