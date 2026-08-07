@@ -702,7 +702,7 @@ class PaymentAttemptsStream(AirwallexStream):
     primary_keys = ["id"]
     permission_type = "account"
     replication_key_filter_field = "from_created_at"
-    replication_key = "updated_at"
+    replication_key = "created_at"
     parent_stream_type = AccountDetailsStream
 
     schema = th.PropertiesList(

@@ -28,7 +28,7 @@ class AirwallexStream(RESTStream):
 
     records_jsonpath = "$.items[*]"
     replication_key_filter_field = None
-    pagination_page_field = "page"
+    pagination_page_field = "page_num"
     page_size_field = "page_size"
 
     @property
