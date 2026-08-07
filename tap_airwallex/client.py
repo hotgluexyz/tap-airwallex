@@ -28,6 +28,8 @@ class AirwallexStream(RESTStream):
 
     records_jsonpath = "$.items[*]"
     replication_key_filter_field = None
+    pagination_page_field = "page"
+    page_size_field = "page_size"
 
     @property
     @cached
@@ -59,9 +61,9 @@ class AirwallexStream(RESTStream):
     ) -> Dict[str, Any]:
         """Return a dictionary of values to be used in URL parameterization."""
         params: dict = {}
-        params["page_size"] = 100
+        params[self.page_size_field] = 100
         if next_page_token is not None:
-            params["page_num"] = next_page_token
+            params[self.pagination_page_field] = next_page_token
         if self.replication_key and self.replication_key_filter_field:
             start_date = self.get_starting_time(context)
             params[self.replication_key_filter_field] = start_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ")

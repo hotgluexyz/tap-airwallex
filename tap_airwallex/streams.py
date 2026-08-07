@@ -447,3 +447,409 @@ class ConversionsStream(AirwallexStream):
         params["from_created_at"] = self.get_starting_time(context).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         params["to_created_at"] = datetime.now(tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         return params
+
+
+class PaymentDisputesStream(AirwallexStream):
+    """Define payment disputes stream."""
+
+    name = "payment_disputes"
+    path = "/pa/payment_disputes"
+    primary_keys = ["id"]
+    permission_type = "account"
+    replication_key_filter_field = "from_updated_at"
+    replication_key = "updated_at"
+    pagination_page_field = "page"
+    page_size_field = "page_size"
+    parent_stream_type = AccountDetailsStream
+
+    schema = th.PropertiesList(
+        th.Property(
+            "accept_details",
+            th.ArrayType(
+                th.ObjectType(
+                    th.Property("accepted_at", th.DateTimeType),
+                    th.Property("accepted_by", th.StringType),
+                    th.Property("description", th.StringType),
+                    th.Property("reason", th.StringType),
+                    th.Property(
+                        "refund",
+                        th.ObjectType(
+                            th.Property("amount", th.NumberType),
+                            th.Property("reason", th.StringType),
+                        ),
+                    ),
+                    th.Property("stage", th.StringType),
+                )
+            ),
+        ),
+        th.Property("acquirer_reference_number", th.StringType),
+        th.Property(
+            "ai_dispute_automation",
+            th.ObjectType(
+                th.Property(
+                    "recommendation",
+                    th.ObjectType(
+                        th.Property("action", th.StringType),
+                        th.Property(
+                            "evidence_to_submit",
+                            th.ArrayType(th.StringType),
+                        ),
+                    ),
+                ),
+                th.Property("status", th.StringType),
+                th.Property("unavailable_reason", th.StringType),
+            ),
+        ),
+        th.Property("amount", th.NumberType),
+        th.Property("card_brand", th.StringType),
+        th.Property(
+            "challenge_details",
+            th.ArrayType(
+                th.ObjectType(
+                    th.Property("challenge_method", th.StringType),
+                    th.Property("challenged_at", th.DateTimeType),
+                    th.Property("challenged_by", th.StringType),
+                    th.Property(
+                        "customer_info",
+                        th.ObjectType(
+                            th.Property("billing_address", th.StringType),
+                            th.Property("device_id", th.StringType),
+                            th.Property("email", th.StringType),
+                            th.Property("ip", th.StringType),
+                            th.Property("name", th.StringType),
+                            th.Property("phone_number", th.StringType),
+                        ),
+                    ),
+                    th.Property(
+                        "delivery_info",
+                        th.ObjectType(
+                            th.Property("address", th.StringType),
+                            th.Property("delivered_at", th.DateTimeType),
+                            th.Property("fee_amount", th.NumberType),
+                            th.Property("fee_currency", th.StringType),
+                            th.Property("name", th.StringType),
+                            th.Property("phone_number", th.StringType),
+                            th.Property("shipped_at", th.DateTimeType),
+                            th.Property("shipping_company", th.StringType),
+                            th.Property("shipping_method", th.StringType),
+                            th.Property("status", th.StringType),
+                            th.Property("tracking_number", th.StringType),
+                        ),
+                    ),
+                    th.Property(
+                        "evidence",
+                        th.CustomType({"type": ["object", "string"]}),
+                    ),
+                    th.Property(
+                        "order_info",
+                        th.ObjectType(
+                            th.Property("created_at", th.DateTimeType),
+                            th.Property("id", th.StringType),
+                            th.Property("invoice_number", th.StringType),
+                            th.Property(
+                                "products",
+                                th.ArrayType(
+                                    th.ObjectType(
+                                        th.Property("category", th.StringType),
+                                        th.Property("code", th.StringType),
+                                        th.Property("desc", th.StringType),
+                                        th.Property("effective_end_at", th.StringType),
+                                        th.Property(
+                                            "effective_start_at", th.StringType
+                                        ),
+                                        th.Property("image_url", th.StringType),
+                                        th.Property("name", th.StringType),
+                                        th.Property("quantity", th.IntegerType),
+                                        th.Property(
+                                            "seller",
+                                            th.ObjectType(
+                                                th.Property(
+                                                    "identifier", th.StringType
+                                                ),
+                                                th.Property("name", th.StringType),
+                                            ),
+                                        ),
+                                        th.Property("sku", th.StringType),
+                                        th.Property("type", th.StringType),
+                                        th.Property("unit_price", th.NumberType),
+                                        th.Property("url", th.StringType),
+                                    )
+                                ),
+                            ),
+                            th.Property("total_amount", th.NumberType),
+                            th.Property("total_currency", th.StringType),
+                        ),
+                    ),
+                    th.Property("product_description", th.StringType),
+                    th.Property("product_type", th.StringType),
+                    th.Property("reason", th.StringType),
+                    th.Property("refund_refusal_reason", th.StringType),
+                    th.Property(
+                        "seller_info",
+                        th.ObjectType(
+                            th.Property("name", th.StringType),
+                            th.Property("store_name", th.StringType),
+                            th.Property("store_physical_address", th.StringType),
+                            th.Property("store_url", th.StringType),
+                        ),
+                    ),
+                    th.Property("stage", th.StringType),
+                    th.Property(
+                        "supporting_documents",
+                        th.ObjectType(
+                            th.Property(
+                                "customer_communication_documents",
+                                th.ArrayType(th.StringType),
+                            ),
+                            th.Property(
+                                "customer_signature_documents",
+                                th.ArrayType(th.StringType),
+                            ),
+                            th.Property(
+                                "documents",
+                                th.ArrayType(
+                                    th.ObjectType(
+                                        th.Property("description", th.StringType),
+                                        th.Property(
+                                            "file_ids",
+                                            th.ArrayType(th.StringType),
+                                        ),
+                                        th.Property("type", th.StringType),
+                                    )
+                                ),
+                            ),
+                            th.Property(
+                                "duplicate_charge_defense_documents",
+                                th.ArrayType(th.StringType),
+                            ),
+                            th.Property(
+                                "generated_files",
+                                th.ArrayType(th.StringType),
+                            ),
+                            th.Property(
+                                "other_documents",
+                                th.ArrayType(th.StringType),
+                            ),
+                            th.Property(
+                                "proof_of_delivery_documents",
+                                th.ArrayType(th.StringType),
+                            ),
+                            th.Property(
+                                "receipt_documents",
+                                th.ArrayType(th.StringType),
+                            ),
+                            th.Property(
+                                "refund_policy_documents",
+                                th.ArrayType(th.StringType),
+                            ),
+                        ),
+                    ),
+                )
+            ),
+        ),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("currency", th.StringType),
+        th.Property("customer_id", th.StringType),
+        th.Property("customer_name", th.StringType),
+        th.Property("due_at", th.DateTimeType),
+        th.Property("id", th.StringType),
+        th.Property("issuer_comment", th.StringType),
+        th.Property("issuer_documents", th.ArrayType(th.StringType)),
+        th.Property("merchant_order_id", th.StringType),
+        th.Property(
+            "metadata",
+            th.CustomType({"type": ["object", "string"]}),
+        ),
+        th.Property("mode", th.StringType),
+        th.Property("payment_attempt_id", th.StringType),
+        th.Property("payment_intent_id", th.StringType),
+        th.Property("payment_method_type", th.StringType),
+        th.Property(
+            "reason",
+            th.ObjectType(
+                th.Property("description", th.StringType),
+                th.Property("original_code", th.StringType),
+                th.Property("type", th.StringType),
+            ),
+        ),
+        th.Property(
+            "refunds",
+            th.ArrayType(
+                th.ObjectType(
+                    th.Property("acquirer_reference_number", th.StringType),
+                    th.Property("id", th.StringType),
+                )
+            ),
+        ),
+        th.Property("stage", th.StringType),
+        th.Property("status", th.StringType),
+        th.Property("transaction_type", th.StringType),
+        th.Property("updated_at", th.DateTimeType),
+    ).to_dict()
+
+    def get_next_page_token(
+        self, response: requests.Response, previous_token: Optional[Any]
+    ) -> Optional[Any]:
+        """Return a token for identifying next page or None if no more pages."""
+        return response.json().get("page_after")
+
+
+class PaymentAttemptsStream(AirwallexStream):
+    """Define payment attempts stream."""
+
+    name = "payment_attempts"
+    path = "/pa/payment_attempts"
+    primary_keys = ["id"]
+    permission_type = "account"
+    replication_key_filter_field = "from_created_at"
+    replication_key = "updated_at"
+    parent_stream_type = AccountDetailsStream
+
+    schema = th.PropertiesList(
+        th.Property("acquirer_reference_number", th.StringType),
+        th.Property("amount", th.NumberType),
+        th.Property(
+            "authentication_data",
+            th.ObjectType(
+                th.Property("authentication_type", th.StringType),
+                th.Property("avs_result", th.StringType),
+                th.Property("cvc_code", th.StringType),
+                th.Property("cvc_result", th.StringType),
+                th.Property(
+                    "ds_data",
+                    th.CustomType({"type": ["object", "string"]}),
+                ),
+                th.Property(
+                    "fraud_data",
+                    th.ObjectType(
+                        th.Property("action", th.StringType),
+                        th.Property(
+                            "post_authorization_check",
+                            th.ObjectType(
+                                th.Property("action", th.StringType),
+                                th.Property(
+                                    "risk_factors",
+                                    th.ArrayType(
+                                        th.ObjectType(
+                                            th.Property("description", th.StringType),
+                                        )
+                                    ),
+                                ),
+                            ),
+                        ),
+                        th.Property(
+                            "risk_factors",
+                            th.ArrayType(
+                                th.ObjectType(
+                                    th.Property("description", th.StringType),
+                                )
+                            ),
+                        ),
+                        th.Property("score", th.StringType),
+                    ),
+                ),
+                th.Property("passkey_setup_status", th.StringType),
+                th.Property(
+                    "sca_exemption",
+                    th.ObjectType(
+                        th.Property("applied_exemption", th.StringType),
+                        th.Property("requested_exemption", th.StringType),
+                    ),
+                ),
+            ),
+        ),
+        th.Property("authorization_code", th.StringType),
+        th.Property("captured_amount", th.NumberType),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("currency", th.StringType),
+        th.Property(
+            "dcc_data",
+            th.ObjectType(
+                th.Property("amount", th.NumberType),
+                th.Property("currency", th.StringType),
+            ),
+        ),
+        th.Property("failure_code", th.StringType),
+        th.Property(
+            "failure_details",
+            th.CustomType({"type": ["object", "string"]}),
+        ),
+        th.Property("id", th.StringType),
+        th.Property("merchant_advice_code", th.StringType),
+        th.Property("merchant_order_id", th.StringType),
+        th.Property("payment_consent_id", th.StringType),
+        th.Property("payment_intent_id", th.StringType),
+        th.Property(
+            "payment_method",
+            th.ObjectType(
+                th.Property("created_at", th.DateTimeType),
+                th.Property("customer_id", th.StringType),
+                th.Property("id", th.StringType),
+                th.Property("status", th.StringType),
+                th.Property("type", th.StringType),
+                th.Property("updated_at", th.DateTimeType),
+                th.Property(
+                    "card",
+                    th.ObjectType(
+                        th.Property(
+                            "billing",
+                            th.ObjectType(
+                                th.Property(
+                                    "address",
+                                    th.ObjectType(
+                                        th.Property("city", th.StringType),
+                                        th.Property("country_code", th.StringType),
+                                        th.Property("postcode", th.StringType),
+                                        th.Property("state", th.StringType),
+                                        th.Property("street", th.StringType),
+                                    ),
+                                ),
+                                th.Property("email", th.StringType),
+                                th.Property("first_name", th.StringType),
+                                th.Property("last_name", th.StringType),
+                                th.Property("phone_number", th.StringType),
+                            ),
+                        ),
+                        th.Property("bin", th.StringType),
+                        th.Property("brand", th.StringType),
+                        th.Property(
+                            "card_updater_info",
+                            th.ObjectType(
+                                th.Property("expiry_updated", th.BooleanType),
+                                th.Property("number_updated", th.BooleanType),
+                            ),
+                        ),
+                        th.Property("card_type", th.StringType),
+                        th.Property("expiry_month", th.StringType),
+                        th.Property("expiry_year", th.StringType),
+                        th.Property("fingerprint", th.StringType),
+                        th.Property("is_commercial", th.BooleanType),
+                        th.Property("issuer_country_code", th.StringType),
+                        th.Property("issuer_name", th.StringType),
+                        th.Property("last4", th.StringType),
+                        th.Property("name", th.StringType),
+                        th.Property("number_type", th.StringType),
+                    ),
+                ),
+            ),
+        ),
+        th.Property(
+            "payment_method_options",
+            th.ObjectType(
+                th.Property(
+                    "card",
+                    th.ObjectType(
+                        th.Property("authorization_type", th.StringType),
+                    ),
+                ),
+            ),
+        ),
+        th.Property("payment_method_transaction_id", th.StringType),
+        th.Property("provider_original_response_code", th.StringType),
+        th.Property("provider_transaction_id", th.StringType),
+        th.Property("refunded_amount", th.NumberType),
+        th.Property("settle_via", th.StringType),
+        th.Property("status", th.StringType),
+        th.Property("updated_at", th.DateTimeType),
+    ).to_dict()
+
