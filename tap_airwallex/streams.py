@@ -459,7 +459,7 @@ class PaymentDisputesStream(AirwallexStream):
     replication_key_filter_field = "from_updated_at"
     replication_key = "updated_at"
     pagination_page_field = "page"
-    page_size_field = "page_size"
+    page_size_field = "size"
     parent_stream_type = AccountDetailsStream
 
     schema = th.PropertiesList(
