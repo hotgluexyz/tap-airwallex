@@ -3,7 +3,9 @@
 from typing import List
 
 from hotglue_singer_sdk import Tap, Stream
-from hotglue_singer_sdk import typing as th  
+from hotglue_singer_sdk import typing as th
+from hotglue_singer_sdk.helpers.capabilities import AlertingLevel
+from hotglue_etl_exceptions import InvalidCredentialsError
 from tap_airwallex.streams import (
     AccountsStream,
     AccountDetailsStream,
@@ -37,6 +39,11 @@ STREAM_TYPES = [
 class TapAirwallex(Tap):
     """airwallex tap class."""
     name = "tap-airwallex"
+
+    alerting_level = AlertingLevel.ERROR
+    exception_alerting_level_map = {
+        InvalidCredentialsError: AlertingLevel.NONE,
+    }
 
     config_jsonschema = th.PropertiesList(
         th.Property(
