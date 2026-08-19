@@ -121,8 +121,6 @@ class BillsStream(SpendStream):
     name = "bills"
     path = "/spend/bills"
     primary_keys = ["id"]
-    replication_key = "created_at"
-    replication_key_filter_field = "from_created_at"
     permission_type = "organization"
 
     schema = th.PropertiesList(
@@ -213,8 +211,6 @@ class ExpensesStream(SpendStream):
     name = "expenses"
     path = "/spend/expenses"
     primary_keys = ["id"]
-    replication_key = "created_at"
-    replication_key_filter_field = "from_created_at"
     permission_type = "organization"
 
     schema = th.PropertiesList(
