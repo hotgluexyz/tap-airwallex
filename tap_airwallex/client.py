@@ -118,7 +118,7 @@ class SpendStream(AirwallexStream):
         # bills can't be updated after being approved, but status can change once bill is paid
         # so if we use from_created_at as a normal replication key the tap won't fetch status updates
         # defaulting from_created_at to 2020-01-01 to emulate a full sync
-        params["from_created_at"] = "2020-01-01T00:00:00.000Z"
+        params["from_created_at"] = "2020-01-01T00:00:00.000000Z"
         return params
 
 

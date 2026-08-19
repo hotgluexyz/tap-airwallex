@@ -67,7 +67,7 @@ interactions:
       x-api-version:
       - '2026-06-30'
     method: GET
-    uri: https://api-demo.airwallex.com/api/v1/spend/expenses?from_created_at=2026-01-01T00%3A00%3A00.000000Z
+    uri: https://api-demo.airwallex.com/api/v1/spend/expenses?from_created_at=2020-01-01T00%3A00%3A00.000000Z
   response:
     body:
       string: '{"items": [{"account_id": "-Fallback-scrubbed-KGPIvcYqkkbleJWyhgGEWqiMerT",
