@@ -11,6 +11,8 @@ from hotglue_singer_sdk.streams import RESTStream
 from hotglue_singer_sdk.exceptions import FatalAPIError, RetriableAPIError
 from hotglue_etl_exceptions import InvalidCredentialsError
 
+from tap_airwallex.exceptions import InsufficientPermissionsError
+
 from tap_airwallex.auth import AirwallexAuthenticator
 
 
@@ -70,6 +72,20 @@ class AirwallexStream(RESTStream):
             params[self.replication_key_filter_field] = start_date.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         return params
 
+    permission_error_hints = ("permission", "scope", "insufficient")
+
+    def _is_permission_error(self, response: requests.Response) -> bool:
+        try:
+            body = response.json()
+        except ValueError:
+            return False
+        if not isinstance(body, dict):
+            return False
+        text = " ".join(
+            str(body.get(field, "")) for field in ("code", "message", "details")
+        ).lower()
+        return any(hint in text for hint in self.permission_error_hints)
+
     def validate_response(self, response: requests.Response) -> None:
         """Log Airwallex error body before raising — SDK message only includes path."""
         if 400 <= response.status_code < 500:
@@ -80,6 +96,8 @@ class AirwallexStream(RESTStream):
                 response.text,
             )
         if response.status_code in (401, 403):
+            if self._is_permission_error(response):
+                raise InsufficientPermissionsError(self.response_error_message(response))
             raise InvalidCredentialsError(self.response_error_message(response))
         if response.status_code == 429:
             raise RetriableAPIError(self.response_error_message(response), response)
