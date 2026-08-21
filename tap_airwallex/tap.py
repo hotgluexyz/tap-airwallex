@@ -5,8 +5,7 @@ from typing import List
 from hotglue_singer_sdk import Tap, Stream
 from hotglue_singer_sdk import typing as th
 from hotglue_singer_sdk.helpers.capabilities import AlertingLevel
-from hotglue_etl_exceptions import InvalidCredentialsError
-from tap_airwallex.exceptions import InsufficientPermissionsError
+from hotglue_etl_exceptions import InsufficientPermissionsError, InvalidCredentialsError
 from tap_airwallex.streams import (
     AccountsStream,
     AccountDetailsStream,

@@ -8,10 +8,6 @@ import requests
 PERMISSION_ERROR_HINTS = ("permission", "scope")
 
 
-class InsufficientPermissionsError(Exception):
-    """Raised when credentials are valid but lack the required permission scope."""
-
-
 def is_permission_error(response: requests.Response) -> bool:
     try:
         body = response.json()

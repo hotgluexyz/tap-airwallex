@@ -9,9 +9,9 @@ from memoization import cached
 
 from hotglue_singer_sdk.streams import RESTStream
 from hotglue_singer_sdk.exceptions import FatalAPIError, RetriableAPIError
-from hotglue_etl_exceptions import InvalidCredentialsError
+from hotglue_etl_exceptions import InsufficientPermissionsError, InvalidCredentialsError
 
-from tap_airwallex.exceptions import InsufficientPermissionsError, is_permission_error
+from tap_airwallex.exceptions import is_permission_error
 
 from tap_airwallex.auth import AirwallexAuthenticator
 
