@@ -8,7 +8,10 @@ from datetime import datetime, timedelta, timezone
 from memoization import cached
 
 from hotglue_singer_sdk.streams import RESTStream
-from hotglue_singer_sdk.exceptions import FatalAPIError
+from hotglue_singer_sdk.exceptions import FatalAPIError, RetriableAPIError
+from hotglue_etl_exceptions import InsufficientPermissionsError, InvalidCredentialsError
+
+from tap_airwallex.exceptions import is_permission_error
 
 from tap_airwallex.auth import AirwallexAuthenticator
 
@@ -78,6 +81,12 @@ class AirwallexStream(RESTStream):
                 response.url,
                 response.text,
             )
+        if response.status_code in (401, 403):
+            if is_permission_error(response):
+                raise InsufficientPermissionsError(self.response_error_message(response))
+            raise InvalidCredentialsError(self.response_error_message(response))
+        if response.status_code == 429:
+            raise RetriableAPIError(self.response_error_message(response), response)
         super().validate_response(response)
 
     def prepare_request(
