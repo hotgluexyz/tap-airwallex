@@ -245,7 +245,7 @@ class YieldBalancesStream(AirwallexStream):
 
     name = "yield_balances"
     path = "/balances/current"
-    primary_keys = ["currency"]
+    primary_keys = ["account_id", "currency"]
     records_jsonpath = "$.[*]"
     parent_stream_type = AccountDetailsStream
     permission_type = "account"
