@@ -240,6 +240,88 @@ class ExpensesStream(SpendStream):
     ).to_dict()
 
 
+class YieldBalancesStream(AirwallexStream):
+    """Current Yield wallet balances per account."""
+
+    name = "yield_balances"
+    path = "/balances/current"
+    primary_keys = ["account_id", "currency"]
+    records_jsonpath = "$.[*]"
+    parent_stream_type = AccountDetailsStream
+    permission_type = "account"
+
+    schema = th.PropertiesList(
+        th.Property("account_type", th.StringType),
+        th.Property("currency", th.StringType),
+        th.Property("available_amount", th.NumberType),
+        th.Property("pending_amount", th.NumberType),
+        th.Property("reserved_amount", th.NumberType),
+        th.Property("total_amount", th.NumberType),
+        th.Property("prepayment_amount", th.NumberType),
+        th.Property("legal_entity_id", th.StringType),
+        th.Property("account_id", th.StringType),
+    ).to_dict()
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return URL params for current Yield balances (no pagination)."""
+        return {"account_type": "yield"}
+
+    def get_next_page_token(
+        self, response: requests.Response, previous_token: Optional[Any]
+    ) -> Optional[Any]:
+        """Yield balances are a bare array with no pagination."""
+        return None
+
+
+class YieldBalanceHistoryStream(AirwallexStream):
+    """Yield wallet balance history per account."""
+
+    name = "yield_balance_history"
+    path = "/balances/history"
+    primary_keys = ["id"]
+    parent_stream_type = AccountDetailsStream
+    permission_type = "account"
+
+    schema = th.PropertiesList(
+        th.Property("id", th.StringType),
+        th.Property("source", th.StringType),
+        th.Property("source_id", th.StringType),
+        th.Property("amount", th.NumberType),
+        th.Property("currency", th.StringType),
+        th.Property("balance", th.NumberType),
+        th.Property("description", th.StringType),
+        th.Property("fee", th.NumberType),
+        th.Property("posted_at", th.DateTimeType),
+        th.Property("source_type", th.StringType),
+        th.Property("transaction_type", th.StringType),
+        th.Property("account_type", th.StringType),
+        th.Property("legal_entity_id", th.StringType),
+        th.Property("account_id", th.StringType),
+    ).to_dict()
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return URL params; start at page=0 for full history window."""
+        params: dict = {
+            "account_type": "yield",
+            "page_size": 100,
+            "page": next_page_token or 0,
+        }
+        return params
+
+    def get_next_page_token(
+        self, response: requests.Response, previous_token: Optional[Any]
+    ) -> Optional[Any]:
+        """Return page_after token or None when exhausted."""
+        res_json = response.json()
+        next_page_token = res_json.get("page_after")
+        if next_page_token:
+            return next_page_token
+
+
 class IssuingTransactionsStream(DateRangeStream):
     """Define issuing transactions stream."""
 
