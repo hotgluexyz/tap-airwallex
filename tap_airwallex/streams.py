@@ -931,3 +931,63 @@ class PaymentAttemptsStream(AirwallexStream):
         th.Property("updated_at", th.DateTimeType),
     ).to_dict()
 
+
+class VendorsStream(SpendStream):
+    name = "vendors"
+    path = "/spend/vendors"
+    primary_keys = ["id"]
+    replication_key_filter_field = "from_updated_at"
+    replication_key = "updated_at"
+
+    schema = th.PropertiesList(
+        th.Property(
+            "address",
+            th.ObjectType(
+                th.Property("city", th.StringType),
+                th.Property("country_code", th.StringType),
+                th.Property("postcode", th.StringType),
+                th.Property("state", th.StringType),
+                th.Property("street_address", th.StringType),
+            ),
+        ),
+        th.Property("approvers", th.ArrayType(th.StringType)),
+        th.Property("attachments", th.ArrayType(_bill_attachment_type)),
+        th.Property("business_name", th.StringType),
+        th.Property("business_registration_number", th.StringType),
+        th.Property("comments", th.ArrayType(_expense_comment_type)),
+        th.Property(
+            "contacts",
+            th.ArrayType(
+                th.ObjectType(
+                    th.Property("contact_name", th.StringType),
+                    th.Property("email", th.StringType),
+                    th.Property("phone_number", th.StringType),
+                ),
+            ),
+        ),
+        th.Property("country_code", th.StringType),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("external_id", th.StringType),
+        th.Property("id", th.StringType),
+        th.Property("legal_entity_ids", th.ArrayType(th.StringType)),
+        th.Property("name", th.StringType),
+        th.Property("owner_email", th.StringType),
+        th.Property("status", th.StringType),
+        th.Property("sync_error_message", th.StringType),
+        th.Property("sync_status", th.StringType),
+        th.Property("updated_at", th.DateTimeType),
+    ).to_dict()
+
+    def get_url_params(
+        self, context: Optional[dict], next_page_token: Optional[Any]
+    ) -> Dict[str, Any]:
+        """Return a dictionary of values to be used in URL parameterization."""
+        # this endpoint needs to pass from_created_at to bypass 30 day limit
+        # inherits from SpendStream
+        params: dict = super().get_url_params(context, next_page_token)
+        # additionally we can pass from_updated_at to act as a normal replication key
+        # these are independent filters, so we can use both
+        start_date = self.get_starting_time(context, is_inclusive=True)
+        if start_date:
+            params[self.replication_key_filter_field] = start_date.isoformat()
+        return params
