@@ -938,6 +938,7 @@ class VendorsStream(SpendStream):
     primary_keys = ["id"]
     replication_key_filter_field = "from_updated_at"
     replication_key = "updated_at"
+    permission_type = "organization"
 
     schema = th.PropertiesList(
         th.Property(
