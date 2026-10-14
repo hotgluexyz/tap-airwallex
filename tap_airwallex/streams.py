@@ -121,7 +121,6 @@ class BillsStream(SpendStream):
     name = "bills"
     path = "/spend/bills"
     primary_keys = ["id"]
-    permission_type = "organization"
 
     schema = th.PropertiesList(
         th.Property("approvers", th.ArrayType(th.StringType)),
@@ -211,7 +210,6 @@ class ExpensesStream(SpendStream):
     name = "expenses"
     path = "/spend/expenses"
     primary_keys = ["id"]
-    permission_type = "organization"
 
     schema = th.PropertiesList(
         th.Property("account_id", th.StringType),
@@ -236,6 +234,88 @@ class ExpensesStream(SpendStream):
         th.Property("settled_at", th.DateTimeType),
         th.Property("status", th.StringType),
         th.Property("sync_status", th.StringType),
+        th.Property("updated_at", th.DateTimeType),
+    ).to_dict()
+
+
+class ReimbursementReportsStream(SpendStream):
+    """Define reimbursement reports stream."""
+
+    name = "reimbursement_reports"
+    path = "/spend/reimbursement_reports"
+    primary_keys = ["id"]
+    replication_key_filter_field = "from_updated_at"
+    replication_key = "updated_at"
+
+    schema = th.PropertiesList(
+        th.Property(
+            "accounting_field_selections",
+            th.ArrayType(_bill_accounting_field_selection_type),
+        ),
+        th.Property("approvers", th.ArrayType(th.StringType)),
+        th.Property("beneficiary_id", th.StringType),
+        th.Property("billing_currency", th.StringType),
+        th.Property("comments", th.ArrayType(_expense_comment_type)),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("created_by", th.StringType),
+        th.Property("id", th.StringType),
+        th.Property("legal_entity_id", th.StringType),
+        th.Property("name", th.StringType),
+        th.Property(
+            "reimbursement_report_transfer_ids",
+            th.ArrayType(th.StringType),
+        ),
+        th.Property("status", th.StringType),
+        th.Property("sync_status", th.StringType),
+        th.Property("updated_at", th.DateTimeType),
+    ).to_dict()
+
+    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
+        """Return a dictionary of values to be used in child context."""
+        return {"reimbursement_report_id": record["id"]}
+
+
+class ReimbursementsStream(SpendStream):
+    """Define reimbursements stream."""
+
+    name = "reimbursements"
+    path = "/spend/reimbursement_reports/{reimbursement_report_id}/reimbursements"
+    primary_keys = ["id"]
+    parent_stream_type = ReimbursementReportsStream
+    apply_date_filter = False
+
+    schema = th.PropertiesList(
+        th.Property(
+            "accounting_field_selections",
+            th.ArrayType(_bill_accounting_field_selection_type),
+        ),
+        th.Property("attachments", th.ArrayType(_bill_attachment_type)),
+        th.Property("attendees", th.ArrayType(th.ObjectType())),
+        th.Property("billing_amount", th.StringType),
+        th.Property("comments", th.ArrayType(_expense_comment_type)),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("description", th.StringType),
+        th.Property("id", th.StringType),
+        th.Property(
+            "line_items",
+            th.ArrayType(
+                th.ObjectType(
+                    th.Property(
+                        "accounting_field_selections",
+                        th.ArrayType(_bill_accounting_field_selection_type),
+                    ),
+                    th.Property("billing_amount", th.StringType),
+                    th.Property("id", th.StringType),
+                    th.Property("tax_amount", th.StringType),
+                    th.Property("transaction_amount", th.StringType),
+                ),
+            ),
+        ),
+        th.Property("merchant_name", th.StringType),
+        th.Property("reimbursement_report_id", th.StringType),
+        th.Property("transaction_amount", th.StringType),
+        th.Property("transaction_currency", th.StringType),
+        th.Property("transaction_date", th.DateTimeType),
         th.Property("updated_at", th.DateTimeType),
     ).to_dict()
 
@@ -938,7 +1018,6 @@ class VendorsStream(SpendStream):
     primary_keys = ["id"]
     replication_key_filter_field = "from_updated_at"
     replication_key = "updated_at"
-    permission_type = "organization"
 
     schema = th.PropertiesList(
         th.Property(
@@ -978,17 +1057,3 @@ class VendorsStream(SpendStream):
         th.Property("sync_status", th.StringType),
         th.Property("updated_at", th.DateTimeType),
     ).to_dict()
-
-    def get_url_params(
-        self, context: Optional[dict], next_page_token: Optional[Any]
-    ) -> Dict[str, Any]:
-        """Return a dictionary of values to be used in URL parameterization."""
-        # this endpoint needs to pass from_created_at to bypass 30 day limit
-        # inherits from SpendStream
-        params: dict = super().get_url_params(context, next_page_token)
-        # additionally we can pass from_updated_at to act as a normal replication key
-        # these are independent filters, so we can use both
-        start_date = self.get_starting_time(context, is_inclusive=True)
-        if start_date:
-            params[self.replication_key_filter_field] = start_date.isoformat()
-        return params
