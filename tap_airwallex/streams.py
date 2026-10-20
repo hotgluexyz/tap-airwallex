@@ -48,6 +48,16 @@ class AccountsStream(AirwallexStream):
         for account_id in account_ids:
             yield {"id": account_id}
 
+    def get_estimated_record_count(self) -> Optional[int]:
+        """Return the number of account records configured for this tap."""
+        try:
+            return sum(1 for _ in self.get_records(None))
+        except Exception as error:
+            self.logger.warning(
+                "Could not estimate record count for %s: %s", self.name, error
+            )
+            return None
+
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
         """Return a dictionary of values to be used in child context."""
         return {
