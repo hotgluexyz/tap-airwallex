@@ -7,6 +7,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 from hotglue_singer_sdk.testing import get_standard_tap_tests
 
+from tap_airwallex.auth import AirwallexOAuthAuthenticator
 from tap_airwallex.streams import AccountsStream
 from tap_airwallex.tap import TapAirwallex
 
@@ -82,6 +83,24 @@ def test_access_token_support_uses_sandbox_login_endpoint(tmp_path):
     assert request_token.call_args_list[0][0][0] == (
         "https://api.airwallex.com/api/v1/authentication/login"
     )
+
+
+def test_token_context_includes_account_scope():
+    """Persisted tokens cannot cross account and organization scopes."""
+    tap = MagicMock()
+    tap.config = SAMPLE_CONFIG
+    stream = MagicMock()
+    stream._tap = tap
+    stream.config = SAMPLE_CONFIG
+    stream.permission_type = "account"
+    authenticator = AirwallexOAuthAuthenticator(
+        stream=stream,
+        auth_endpoint="https://api.airwallex.com/api/v1/authentication/login",
+    )
+    authenticator.account_id = "account-1"
+
+    assert authenticator._token_context()["permission_type"] == "account"
+    assert authenticator._token_context()["account_id"] == "account-1"
 
 
 @pytest.mark.parametrize(

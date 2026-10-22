@@ -34,12 +34,15 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
         self._token_account_id = None
 
     def _token_context(self) -> dict:
+        permission_type = getattr(self._stream, "permission_type", None)
         return {
             "is_sandbox": bool(self.config.get("is_sandbox", False)),
             "client_id": self.config["client_id"],
             "api_key_sha256": hashlib.sha256(
                 self.config["api_key"].encode()
             ).hexdigest(),
+            "permission_type": permission_type,
+            "account_id": self.account_id if permission_type == "account" else None,
         }
 
     @property
@@ -93,14 +96,11 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
         # add account_id as _token_account_id before make the request
         self._token_account_id = self.account_id
 
-        try:
-            token_response = requests.post(
-                self.auth_endpoint,
-                headers=self.oauth_request_headers,
-                timeout=30,
-            )
-        except requests.exceptions.RequestException as ex:
-            raise InvalidCredentialsError(f"Failed OAuth login: {ex}") from ex
+        token_response = requests.post(
+            self.auth_endpoint,
+            headers=self.oauth_request_headers,
+            timeout=30,
+        )
         try:
             token_response.raise_for_status()
             self.logger.info("OAuth authorization attempt was successful.")
