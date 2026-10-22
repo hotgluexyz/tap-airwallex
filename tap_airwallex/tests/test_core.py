@@ -54,7 +54,15 @@ def test_access_token_support_uses_sandbox_login_endpoint(tmp_path):
         "x-api-key": "test-api-key",
         "x-client-id": "test-client-id",
     }
+    assert request_token.call_args_list[0][1]["timeout"] == 30
     assert json.loads(config_path.read_text())["access_token"] == "airwallex-access-token"
+
+    cached_tap = TapAirwallex(config=config_path)
+    with patch("tap_airwallex.auth.requests.post") as request_token:
+        assert TapAirwallex.fetch_access_token(cached_tap) == {
+            "access_token": "airwallex-access-token"
+        }
+    request_token.assert_not_called()
 
 
 @pytest.mark.parametrize(
