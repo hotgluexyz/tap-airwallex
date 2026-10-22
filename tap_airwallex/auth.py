@@ -1,14 +1,13 @@
 """airwallex Authentication."""
 
 
-import hashlib
-import json
-from datetime import datetime, timezone
-
 from hotglue_singer_sdk.authenticators import OAuthAuthenticator
 from hotglue_singer_sdk.authenticators import SingletonMeta
-from hotglue_etl_exceptions import InvalidCredentialsError
 from pendulum import parse
+from datetime import datetime, timezone
+import hashlib
+import json
+from hotglue_etl_exceptions import InvalidCredentialsError
 import requests
 
 
