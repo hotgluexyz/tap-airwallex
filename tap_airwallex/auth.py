@@ -1,12 +1,14 @@
 """airwallex Authentication."""
 
 
+import hashlib
+import json
+from datetime import datetime, timezone
+
 from hotglue_singer_sdk.authenticators import OAuthAuthenticator
 from hotglue_singer_sdk.authenticators import SingletonMeta
-from pendulum import parse
-from datetime import datetime, timezone
-import json
 from hotglue_etl_exceptions import InvalidCredentialsError
+from pendulum import parse
 import requests
 
 
@@ -30,6 +32,15 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
         self._stream = stream
         self.account_id = None
         self._token_account_id = None
+
+    def _token_context(self) -> dict:
+        return {
+            "is_sandbox": bool(self.config.get("is_sandbox", False)),
+            "client_id": self.config["client_id"],
+            "api_key_sha256": hashlib.sha256(
+                self.config["api_key"].encode()
+            ).hexdigest(),
+        }
 
     @property
     def oauth_request_headers(self) -> str:
@@ -58,10 +69,18 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
         if permission_type == "organization" and self._token_account_id is not None:
             return False
         if self.expires_in is None:
-            if self._tap.config.get("access_token") and self._tap.config.get("expires_in"):
+            token_context_matches = (
+                self._tap.config.get("_access_token_context")
+                == self._token_context()
+            )
+            if (
+                token_context_matches
+                and self._tap.config.get("access_token")
+                and self._tap.config.get("expires_in")
+            ):
                 self.access_token = self._tap.config["access_token"]
                 self.expires_in = self._tap.config["expires_in"]
-            elif self._tap.config.get("expires_at"):
+            elif token_context_matches and self._tap.config.get("expires_at"):
                 self.expires_in = parse(self._tap.config["expires_at"]).timestamp()
         if not self.expires_in:
             return False
@@ -97,6 +116,7 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
         # Update the tap config with the new access_token and refresh_token
         self._tap._config["access_token"] = token_json["token"]
         self._tap._config["expires_in"] = self.expires_in
+        self._tap._config["_access_token_context"] = self._token_context()
 
         # Write the updated config back to the file (only when config was loaded from a path)
         if self._tap.config_file is not None:

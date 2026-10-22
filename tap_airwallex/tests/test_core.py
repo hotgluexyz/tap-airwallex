@@ -64,6 +64,25 @@ def test_access_token_support_uses_sandbox_login_endpoint(tmp_path):
         }
     request_token.assert_not_called()
 
+    production_config = json.loads(config_path.read_text())
+    production_config["is_sandbox"] = False
+    config_path.write_text(json.dumps(production_config))
+    production_tap = TapAirwallex(config=config_path)
+    production_response = MagicMock()
+    production_response.json.return_value = {
+        "token": "production-access-token",
+        "expires_at": "2030-01-01T00:00:00+00:00",
+    }
+    with patch(
+        "tap_airwallex.auth.requests.post", return_value=production_response
+    ) as request_token:
+        assert TapAirwallex.fetch_access_token(production_tap) == {
+            "access_token": "production-access-token"
+        }
+    assert request_token.call_args_list[0][0][0] == (
+        "https://api.airwallex.com/api/v1/authentication/login"
+    )
+
 
 @pytest.mark.parametrize(
     "account_ids, expected_count",
