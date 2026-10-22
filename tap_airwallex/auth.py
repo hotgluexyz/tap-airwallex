@@ -9,8 +9,15 @@ import json
 from hotglue_etl_exceptions import InvalidCredentialsError
 import requests
 
-class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
-    """Authenticator class for airwallex."""
+
+def get_login_endpoint(is_sandbox: bool) -> str:
+    """Return the Airwallex login endpoint for the configured environment."""
+    api_host = "https://api-demo.airwallex.com" if is_sandbox else "https://api.airwallex.com"
+    return f"{api_host}/api/v1/authentication/login"
+
+
+class AirwallexOAuthAuthenticator(OAuthAuthenticator):
+    """Connector-bound authenticator for Airwallex OAuth access tokens."""
 
     def __init__(self, stream, auth_endpoint=None, oauth_scopes=None, default_expiration=None, config_file=None):
         super().__init__(
@@ -20,6 +27,7 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
             default_expiration=default_expiration,
             config_file=config_file,
         )
+        self._stream = stream
         self.account_id = None
         self._token_account_id = None
 
@@ -86,9 +94,12 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
             with open(self._tap.config_file, "w") as outfile:
                 json.dump(self._tap._config, outfile, indent=4)
 
+class AirwallexAuthenticator(AirwallexOAuthAuthenticator, metaclass=SingletonMeta):
+    """Singleton authenticator used by normal stream syncs."""
+
     @classmethod
     def create_for_stream(cls, stream) -> "AirwallexAuthenticator":
-        auth_endpoint = stream.url_base + "/authentication/login"
+        auth_endpoint = get_login_endpoint(stream.config.get("is_sandbox", False))
         return cls(
             stream=stream,
             auth_endpoint=auth_endpoint,
