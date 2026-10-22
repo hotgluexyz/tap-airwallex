@@ -4,6 +4,7 @@ from typing import List
 
 from hotglue_singer_sdk import Tap, Stream
 from hotglue_singer_sdk import typing as th  
+from tap_airwallex.auth import AirwallexOAuthAuthenticator, get_login_endpoint
 from tap_airwallex.streams import (
     AccountsStream,
     AccountDetailsStream,
@@ -68,6 +69,11 @@ class TapAirwallex(Tap):
     def discover_streams(self) -> List[Stream]:
         """Return a list of discovered streams."""
         return [stream_class(tap=self) for stream_class in STREAM_TYPES]
+
+    @classmethod
+    def access_token_support(cls, connector=None):
+        is_sandbox = connector.config.get("is_sandbox", False) if connector else False
+        return AirwallexOAuthAuthenticator, get_login_endpoint(is_sandbox)
 
 
 if __name__ == "__main__":
