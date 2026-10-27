@@ -1,7 +1,8 @@
 """Tests standard tap features using the built-in SDK tests library."""
 
 import datetime
-from unittest.mock import MagicMock
+import json
+from unittest.mock import MagicMock, patch
 
 import pytest
 from hotglue_singer_sdk.testing import get_standard_tap_tests
@@ -15,7 +16,6 @@ SAMPLE_CONFIG = {
 }
 
 
-# Run standard built-in tap tests from the SDK:
 def test_standard_tap_tests():
     """Run standard tap tests from the SDK."""
     tests = get_standard_tap_tests(
@@ -24,6 +24,41 @@ def test_standard_tap_tests():
     )
     for test in tests:
         test()
+
+
+def test_access_token_support_uses_sandbox_login_endpoint(tmp_path):
+    config_path = tmp_path / "config.json"
+    config_path.write_text(
+        json.dumps(
+            {
+                "api_key": "test-api-key",
+                "client_id": "test-client-id",
+                "is_sandbox": True,
+            }
+        )
+    )
+    token_response = MagicMock()
+    token_response.json.return_value = {
+        "token": "airwallex-access-token",
+        "expires_at": "2030-01-01T00:00:00+00:00",
+    }
+
+    with patch("tap_airwallex.auth.requests.post", return_value=token_response) as request_token:
+        assert TapAirwallex.fetch_access_token(TapAirwallex(config=config_path)) == {
+            "access_token": "airwallex-access-token"
+        }
+
+    assert request_token.call_args_list[0][0][0] == (
+        "https://api-demo.airwallex.com/api/v1/authentication/login"
+    )
+    assert request_token.call_args_list[0][1]["timeout"] == 30
+    assert json.loads(config_path.read_text())["access_token"] == "airwallex-access-token"
+
+    with patch("tap_airwallex.auth.requests.post") as request_token:
+        assert TapAirwallex.fetch_access_token(TapAirwallex(config=config_path)) == {
+            "access_token": "airwallex-access-token"
+        }
+    request_token.assert_not_called()
 
 
 @pytest.mark.parametrize(
