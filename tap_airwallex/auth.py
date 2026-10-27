@@ -5,20 +5,13 @@ from hotglue_singer_sdk.authenticators import OAuthAuthenticator
 from hotglue_singer_sdk.authenticators import SingletonMeta
 from pendulum import parse
 from datetime import datetime, timezone
-import hashlib
 import json
 from hotglue_etl_exceptions import InvalidCredentialsError
 import requests
 
 
-def get_login_endpoint(is_sandbox: bool) -> str:
-    """Return the Airwallex login endpoint for the configured environment."""
-    api_host = "https://api-demo.airwallex.com" if is_sandbox else "https://api.airwallex.com"
-    return f"{api_host}/api/v1/authentication/login"
-
-
 class AirwallexOAuthAuthenticator(OAuthAuthenticator):
-    """Connector-bound authenticator for Airwallex OAuth access tokens."""
+    """Authenticator class for airwallex."""
 
     def __init__(self, stream, auth_endpoint=None, oauth_scopes=None, default_expiration=None, config_file=None):
         super().__init__(
@@ -31,18 +24,6 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
         self._stream = stream
         self.account_id = None
         self._token_account_id = None
-
-    def _token_context(self) -> dict:
-        permission_type = getattr(self._stream, "permission_type", None)
-        return {
-            "is_sandbox": bool(self.config.get("is_sandbox", False)),
-            "client_id": self.config["client_id"],
-            "api_key_sha256": hashlib.sha256(
-                self.config["api_key"].encode()
-            ).hexdigest(),
-            "permission_type": permission_type,
-            "account_id": self.account_id if permission_type == "account" else None,
-        }
 
     @property
     def oauth_request_headers(self) -> str:
@@ -70,20 +51,8 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
             return False
         if permission_type == "organization" and self._token_account_id is not None:
             return False
-        if self.expires_in is None:
-            token_context_matches = (
-                self._tap.config.get("_access_token_context")
-                == self._token_context()
-            )
-            if (
-                token_context_matches
-                and self._tap.config.get("access_token")
-                and self._tap.config.get("expires_in")
-            ):
-                self.access_token = self._tap.config["access_token"]
-                self.expires_in = self._tap.config["expires_in"]
-            elif token_context_matches and self._tap.config.get("expires_at"):
-                self.expires_in = parse(self._tap.config["expires_at"]).timestamp()
+        if self.expires_in is None and self._tap.config.get("expires_at"):
+            self.expires_in = parse(self._tap.config["expires_at"]).timestamp()
         if not self.expires_in:
             return False
         if int(self.expires_in) - int(datetime.now(timezone.utc).timestamp()) > 120:
@@ -95,11 +64,7 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
         # add account_id as _token_account_id before make the request
         self._token_account_id = self.account_id
 
-        token_response = requests.post(
-            self.auth_endpoint,
-            headers=self.oauth_request_headers,
-            timeout=30,
-        )
+        token_response = requests.post(self.auth_endpoint, headers=self.oauth_request_headers)
         try:
             token_response.raise_for_status()
             self.logger.info("OAuth authorization attempt was successful.")
@@ -115,7 +80,6 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
         # Update the tap config with the new access_token and refresh_token
         self._tap._config["access_token"] = token_json["token"]
         self._tap._config["expires_in"] = self.expires_in
-        self._tap._config["_access_token_context"] = self._token_context()
 
         # Write the updated config back to the file (only when config was loaded from a path)
         if self._tap.config_file is not None:
@@ -123,11 +87,14 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
                 json.dump(self._tap._config, outfile, indent=4)
 
 class AirwallexAuthenticator(AirwallexOAuthAuthenticator, metaclass=SingletonMeta):
-    """Singleton authenticator used by normal stream syncs."""
+    """Authenticator class for airwallex."""
+
+    def update_access_token(self) -> None:
+        self.update_access_token_locally()
 
     @classmethod
     def create_for_stream(cls, stream) -> "AirwallexAuthenticator":
-        auth_endpoint = get_login_endpoint(stream.config.get("is_sandbox", False))
+        auth_endpoint = stream.url_base + "/authentication/login"
         return cls(
             stream=stream,
             auth_endpoint=auth_endpoint,
