@@ -64,7 +64,11 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
         # add account_id as _token_account_id before make the request
         self._token_account_id = self.account_id
 
-        token_response = requests.post(self.auth_endpoint, headers=self.oauth_request_headers)
+        token_response = requests.post(
+            self.auth_endpoint,
+            headers=self.oauth_request_headers,
+            timeout=30,
+        )
         try:
             token_response.raise_for_status()
             self.logger.info("OAuth authorization attempt was successful.")
