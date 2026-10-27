@@ -51,8 +51,12 @@ class AirwallexOAuthAuthenticator(OAuthAuthenticator):
             return False
         if permission_type == "organization" and self._token_account_id is not None:
             return False
-        if self.expires_in is None and self._tap.config.get("expires_at"):
-            self.expires_in = parse(self._tap.config["expires_at"]).timestamp()
+        if self.expires_in is None:
+            if self._tap.config.get("access_token") and self._tap.config.get("expires_in"):
+                self.access_token = self._tap.config["access_token"]
+                self.expires_in = self._tap.config["expires_in"]
+            elif self._tap.config.get("expires_at"):
+                self.expires_in = parse(self._tap.config["expires_at"]).timestamp()
         if not self.expires_in:
             return False
         if int(self.expires_in) - int(datetime.now(timezone.utc).timestamp()) > 120:
