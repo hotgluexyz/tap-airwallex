@@ -9,7 +9,8 @@ import json
 from hotglue_etl_exceptions import InvalidCredentialsError
 import requests
 
-class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
+
+class AirwallexOAuthAuthenticator(OAuthAuthenticator):
     """Authenticator class for airwallex."""
 
     def __init__(self, stream, auth_endpoint=None, oauth_scopes=None, default_expiration=None, config_file=None):
@@ -20,6 +21,7 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
             default_expiration=default_expiration,
             config_file=config_file,
         )
+        self._stream = stream
         self.account_id = None
         self._token_account_id = None
 
@@ -64,7 +66,11 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
         # add account_id as _token_account_id before make the request
         self._token_account_id = self.account_id
 
-        token_response = requests.post(self.auth_endpoint, headers=self.oauth_request_headers)
+        token_response = requests.post(
+            self.auth_endpoint,
+            headers=self.oauth_request_headers,
+            timeout=30,
+        )
         try:
             token_response.raise_for_status()
             self.logger.info("OAuth authorization attempt was successful.")
@@ -85,6 +91,12 @@ class AirwallexAuthenticator(OAuthAuthenticator, metaclass=SingletonMeta):
         if self._tap.config_file is not None:
             with open(self._tap.config_file, "w") as outfile:
                 json.dump(self._tap._config, outfile, indent=4)
+
+class AirwallexAuthenticator(AirwallexOAuthAuthenticator, metaclass=SingletonMeta):
+    """Authenticator class for airwallex."""
+
+    def update_access_token(self) -> None:
+        self.update_access_token_locally()
 
     @classmethod
     def create_for_stream(cls, stream) -> "AirwallexAuthenticator":
