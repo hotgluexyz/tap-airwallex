@@ -30,7 +30,7 @@ jobs:
         run: |
           uv venv .venv
           source .venv/bin/activate
-          uv pip install . --safe-chain-logging=verbose
+          uv pip install . -- --safe-chain-logging=verbose
           uv pip install hotglue-smoke-test
 
       - name: Setup and run tests
