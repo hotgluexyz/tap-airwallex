@@ -11,13 +11,6 @@ jobs:
     steps:
       - name: Checkout current repository
         uses: actions/checkout@v7
-      
-      - name: Install safe-chain
-        run: |
-          curl -fsSL https://github.com/AikidoSec/safe-chain/releases/download/1.5.27/install-safe-chain.sh -o /tmp/install-safe-chain.sh
-          echo "600ebddcb3aaf1fd53653a8d7985df44528722c0f5ee7eb9fff86f26a1a4e5a8  /tmp/install-safe-chain.sh" | sha256sum -c -
-          sh /tmp/install-safe-chain.sh --ci
-          rm /tmp/install-safe-chain.sh
 
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
@@ -30,8 +23,8 @@ jobs:
         run: |
           uv venv .venv
           source .venv/bin/activate
-          uv pip install . --safe-chain-logging=verbose
-          uv pip install hotglue-smoke-test --safe-chain-logging=verbose
+          uv pip install .
+          uv pip install hotglue-smoke-test
 
       - name: Setup and run tests
         run: |
