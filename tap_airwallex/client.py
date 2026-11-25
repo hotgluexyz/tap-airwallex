@@ -98,6 +98,8 @@ class AirwallexStream(RESTStream):
 class SpendStream(AirwallexStream):
     """Define spend stream."""
 
+    apply_date_filter = True
+
     def get_next_page_token(
         self, response: requests.Response, previous_token: Optional[Any]
     ) -> Optional[Any]:
@@ -114,6 +116,10 @@ class SpendStream(AirwallexStream):
         params: dict = {}
         if next_page_token:
             params["page"] = next_page_token
+
+        if not self.apply_date_filter:
+            return params
+
         # spend streams need to pass from_created_at to bypass 30 day limit
         # bills can't be updated after being approved, but status can change once bill is paid
         # so if we use from_created_at as a normal replication key the tap won't fetch status updates
