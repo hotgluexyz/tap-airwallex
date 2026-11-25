@@ -278,37 +278,10 @@ class ReimbursementReportsStream(SpendStream):
             "reimbursement_report_transfer_ids",
             th.ArrayType(th.StringType),
         ),
-        th.Property(
-            "reimbursement_report_transfers",
-            th.ArrayType(
-                th.ObjectType(
-                    th.Property("account_id", th.StringType),
-                    th.Property("beneficiary_id", th.StringType),
-                    th.Property("id", th.StringType),
-                    th.Property("transfer_id", th.StringType),
-                ),
-            ),
-        ),
         th.Property("status", th.StringType),
         th.Property("sync_status", th.StringType),
         th.Property("updated_at", th.DateTimeType),
     ).to_dict()
-
-    def post_process(self, row: dict, context: Optional[dict] = None) -> dict:
-        """Resolve report-transfer IDs to the underlying transfer IDs."""
-        transfers = []
-        for report_transfer_id in row.get("reimbursement_report_transfer_ids") or []:
-            request = self.build_prepared_request(
-                method="GET",
-                url=(
-                    f"{self.url_base}/spend/reimbursement_reports/{row['id']}"
-                    f"/transfers/{report_transfer_id}"
-                ),
-                headers=self.http_headers,
-            )
-            transfers.append(self._request(request, context).json())
-        row["reimbursement_report_transfers"] = transfers
-        return row
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
         """Return the report ID for reimbursement child requests."""
