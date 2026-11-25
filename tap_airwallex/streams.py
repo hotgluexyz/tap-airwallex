@@ -250,6 +250,90 @@ class ExpensesStream(SpendStream):
     ).to_dict()
 
 
+class ReimbursementReportsStream(SpendStream):
+    """Define reimbursement reports stream."""
+
+    name = "reimbursement_reports"
+    path = "/spend/reimbursement_reports"
+    primary_keys = ["id"]
+    replication_key_filter_field = "from_updated_at"
+    replication_key = "updated_at"
+    permission_type = "organization"
+
+    schema = th.PropertiesList(
+        th.Property(
+            "accounting_field_selections",
+            th.ArrayType(_bill_accounting_field_selection_type),
+        ),
+        th.Property("approvers", th.ArrayType(th.StringType)),
+        th.Property("beneficiary_id", th.StringType),
+        th.Property("billing_currency", th.StringType),
+        th.Property("comments", th.ArrayType(_expense_comment_type)),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("created_by", th.StringType),
+        th.Property("id", th.StringType),
+        th.Property("legal_entity_id", th.StringType),
+        th.Property("name", th.StringType),
+        th.Property(
+            "reimbursement_report_transfer_ids",
+            th.ArrayType(th.StringType),
+        ),
+        th.Property("status", th.StringType),
+        th.Property("sync_status", th.StringType),
+        th.Property("updated_at", th.DateTimeType),
+    ).to_dict()
+
+    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
+        """Return the report ID for reimbursement child requests."""
+        return {"reimbursement_report_id": record["id"]}
+
+
+class ReimbursementsStream(SpendStream):
+    """Define reimbursement claim stream."""
+
+    name = "reimbursements"
+    path = "/spend/reimbursement_reports/{reimbursement_report_id}/reimbursements"
+    primary_keys = ["id"]
+    parent_stream_type = ReimbursementReportsStream
+    apply_date_filter = False
+    permission_type = "organization"
+
+    schema = th.PropertiesList(
+        th.Property(
+            "accounting_field_selections",
+            th.ArrayType(_bill_accounting_field_selection_type),
+        ),
+        th.Property("attachments", th.ArrayType(_bill_attachment_type)),
+        th.Property("attendees", th.ArrayType(th.ObjectType())),
+        th.Property("billing_amount", th.StringType),
+        th.Property("comments", th.ArrayType(_expense_comment_type)),
+        th.Property("created_at", th.DateTimeType),
+        th.Property("description", th.StringType),
+        th.Property("id", th.StringType),
+        th.Property(
+            "line_items",
+            th.ArrayType(
+                th.ObjectType(
+                    th.Property(
+                        "accounting_field_selections",
+                        th.ArrayType(_bill_accounting_field_selection_type),
+                    ),
+                    th.Property("billing_amount", th.StringType),
+                    th.Property("id", th.StringType),
+                    th.Property("tax_amount", th.StringType),
+                    th.Property("transaction_amount", th.StringType),
+                ),
+            ),
+        ),
+        th.Property("merchant_name", th.StringType),
+        th.Property("reimbursement_report_id", th.StringType),
+        th.Property("transaction_amount", th.StringType),
+        th.Property("transaction_currency", th.StringType),
+        th.Property("transaction_date", th.DateTimeType),
+        th.Property("updated_at", th.DateTimeType),
+    ).to_dict()
+
+
 class YieldBalancesStream(AirwallexStream):
     """Current Yield wallet balances per account."""
 
